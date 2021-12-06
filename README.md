@@ -4,10 +4,18 @@ Sistema de portagens electrónicas de monitorização de portagens e automatiza�
 
 ## Sobre o Projeto 
 
-O objetivo deste sistema é gerir os pórticos em autoestradas e outras vias. 
-Para tal, tem que monitorar os carros que transitam na via destinada ao Fast Travel e conferir se os mesmos têm o identificador, o trajeto percorrido, o custo da viagem e retirar o correspondente montante da conta bancária associada ao cliente, e assim, agilizar o processo de viagem com pagamentos instantâneos.
+O sistema tem como objetivo gerir os pórticos em autoestradas e outras vias, para tal, tem que monitorar os automóveis que transitam na via destinada ao Fast Travel. Conferir também, se os mesmos têm o identificador, o trajeto percorrido e o custo da viagem, retirar o correspondente montante da conta bancária associada ao cliente, e assim, agilizar o processo de viagem com pagamentos instantâneos.
 
 ## Backlog
+Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
+
+* **[GitHub Projects](https://github.com/eva-pomposo/IES_Project/projects)**
+* **Jira**
+
+##  Constituição do projeto
+
+* **[reports](https://github.com/eva-pomposo/IES_Project/tree/main/Reports)**
+* **[prototype](https://github.com/eva-pomposo/IES_Project/tree/main/projFastTravel)**
 
 ## Papéis 
 
@@ -15,9 +23,5 @@ Para tal, tem que monitorar os carros que transitam na via destinada ao Fast Tra
 * **Product Owner**: [Marta Fradique](https://github.com/MartaFradique), nº 98629
 * **Architect**: [André Freixo](https://github.com/andre180701), nº 98495
 * **DevOps Master**: [Luís Martins](https://github.com/luisccmartins), nº 98521
-* 
-##  Constituição do projeto
-
-[Reports](https://github.com/eva-pomposo/IES_Project/tree/main/Reports)
 
 
