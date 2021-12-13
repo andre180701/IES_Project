@@ -3,7 +3,7 @@
 Sistema de portagens electrónicas de monitorização de portagens e automatização de pagamentos.
 
 ## Sobre o Projeto 
-
+a
 O sistema tem como objetivo gerir os pórticos em autoestradas e outras vias, para tal, tem que monitorar os automóveis que transitam na via destinada ao Fast Travel. Conferir também, se os mesmos têm o identificador, o trajeto percorrido e o custo da viagem, retirar o correspondente montante da conta bancária associada ao cliente, e assim, agilizar o processo de viagem com pagamentos instantâneos.
 
 ## Backlog
