@@ -24,4 +24,3 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 * **Architect**: [André Freixo](https://github.com/andre180701), nº 98495
 * **DevOps Master**: [Luís Martins](https://github.com/luisccmartins), nº 98521
 
-
