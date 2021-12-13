@@ -1,0 +1,30 @@
+version: "3.1"
+
+services:
+    fastTravel:
+        build: .
+        ports: 
+            - "8000:80"
+        volumes:
+            - ../projFastTravel/var/www/html/
+        links:
+            - dataBase
+        networks:
+            - default
+        restart: always
+    dataBase:
+        image: mysql:8.0
+        ports: 
+            - "3306:3306"
+        command: --default-authentication-plugin=mysql_native_password --secure-file-priv=''
+        environment:
+            MYSQL_DATABASE: fastTravelDB
+            MYSQL_USER: admin
+            MYSQL_ROOT_PASSWORD: admin
+            MYSQL_PASSWORD: admin 
+        volumes:
+            - ./dataBase:/var/lib/mysql
+        networks:
+            - default
+        restart: always
+    
