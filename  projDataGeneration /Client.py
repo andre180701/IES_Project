@@ -1,30 +1,25 @@
 import itertools
 
 class Client:
-    newid = itertools.count().next
+    newid = itertools.count()
     def __init__(self, registration, deviceId) -> None:
-        self._id = Client.newid()
+        self._id = next(Client.newid)
         self._registration = registration
         self._deviceId = deviceId
 
-    @property
-    def id(self):
+    def get_id(self):
         return self._id
 
-    @property
-    def registration(self):
+    def get_registration(self):
         return self._registration
 
-    @property
-    def deviceId(self):
+    def get_deviceId(self):
         return self._deviceId
 
-    @registration.setter
-    def registration(self, registration):
+    def set_registration(self, registration):
         self._registration = registration
 
-    @deviceId.setter
-    def deviceId(self, deviceId):
+    def set_deviceId(self, deviceId):
         self._deviceId = deviceId
 
     '''

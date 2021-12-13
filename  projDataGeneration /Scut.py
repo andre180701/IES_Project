@@ -2,9 +2,9 @@ import itertools
 from datetime import date
 
 class Scut:
-    newid = itertools.count().next
+    newid = itertools.count()
     def __init__(self, latitude, longitude, priceClass1, priceClass2, priceClass3, priceClass4, priceClass5 ) -> None:
-        self._id = Scut.newid()
+        self._id = next(Scut.newid)
         self._latitude = latitude
         self._longitude = longitude
         self._instalationDate = date.today()
@@ -14,60 +14,46 @@ class Scut:
         self._priceClass4 = priceClass4
         self._priceClass5 = priceClass5
 
-    @property
-    def id(self):
+    def get_id(self):
         return self._id
 
-    @property
-    def latitude(self):
+    def get_latitude(self):
         return self._latitude
 
-    @property
-    def longitude(self):
+    def get_longitude(self):
         return self._longitude
 
-    @property
-    def instalationDate(self):
+    def get_instalationDate(self):
         return self._instalationDate
 
-    @property
-    def priceClass1(self):
+    def get_priceClass1(self):
         return self._priceClass1
 
-    @property
-    def priceClass2(self):
+    def get_priceClass2(self):
         return self._priceClass2
 
-    @property
-    def priceClass3(self):
+    def get_priceClass3(self):
         return self._priceClass3
 
-    @property
-    def priceClass4(self):
+    def get_priceClass4(self):
         return self._priceClass4
 
-    @property
-    def priceClass5(self):
+    def get_priceClass5(self):
         return self._priceClass5
 
-    @priceClass1.setter
-    def priceClass1(self, priceClass1):
+    def set_priceClass1(self, priceClass1):
         self._priceClass1 = priceClass1
 
-    @priceClass2.setter
-    def priceClass2(self, priceClass2):
+    def set_priceClass2(self, priceClass2):
         self._priceClass2 = priceClass2
 
-    @priceClass3.setter
-    def priceClass3(self, priceClass3):
+    def set_priceClass3(self, priceClass3):
         self._priceClass3 = priceClass3
 
-    @priceClass4.setter
-    def priceClass4(self, priceClass4):
+    def set_priceClass4(self, priceClass4):
         self._priceClass4 = priceClass4
 
-    @priceClass5.setter
-    def priceClass5(self, priceClass5):
+    def set_priceClass5(self, priceClass5):
         self._priceClass5 = priceClass5
 
     '''
