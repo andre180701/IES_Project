@@ -4,19 +4,18 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Set;
 import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "payment")
+@Table(name = "Payment")
 public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
     private Person client;
 
@@ -25,11 +24,9 @@ public class Payment {
     private Date date;
 
     @OneToOne(mappedBy="payment")
-    PaymentPassage passages;
+    PaymentPassage passage;    
 
-    public payment() {
-
-    }
+    public Payment() {}
 
     public Payment(Person client, Date date) {
         this.client = client;

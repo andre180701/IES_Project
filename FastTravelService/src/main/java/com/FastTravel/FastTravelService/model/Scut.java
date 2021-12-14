@@ -3,11 +3,10 @@ package com.FastTravel.FastTravelService.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "scut")
+@Table(name = "Scut")
 public class Scut {
 
     @Id
@@ -36,11 +35,11 @@ public class Scut {
     private double price4;
 
     @Column(name = "price5", nullable = false)
-    private double price4;
+    private double price5;
 
-    public scut() { }
+    public Scut() { }
 
-    public scut(double latitude, double longitude, String instalation_date, double price1, double price2, double price3, double price4, double price5) {
+    public Scut(double latitude, double longitude, String instalation_date, double price1, double price2, double price3, double price4, double price5) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.instalation_date = instalation_date;

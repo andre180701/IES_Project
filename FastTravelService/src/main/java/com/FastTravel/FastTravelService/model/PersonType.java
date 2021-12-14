@@ -1,5 +1,5 @@
 package com.FastTravel.FastTravelService.model;
 
-public enum EnumType {
+public enum PersonType {
     ADMIN, EMPLOYEE, CLIENT
 }

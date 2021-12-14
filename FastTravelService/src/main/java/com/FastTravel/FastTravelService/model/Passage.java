@@ -6,20 +6,20 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "passage")
+@Table(name = "Passage")
 public class Passage {
 
     @EmbeddedId
     private PassageKey id;
 
     @ManyToOne
-    @MapsId("passageId")
-    @JoinColumn(name = "passage_id")
-    private PersonPassages personpassages;
+    @MapsId("person_passage_id")
+    @JoinColumn(name = "person_passage_id", referencedColumnName = "long")
+    private PersonPassages personPassages;
 
     @ManyToOne
     @MapsId("scutId")
-    @JoinColumn(name = "scut_id")
+    @JoinColumn(name = "scut_id", referencedColumnName = "long")
     private Scut scut;
 
     public Passage() {}

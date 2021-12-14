@@ -6,23 +6,21 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "transaction_has_product")
+@Table(name = "Payment_has_passage")
 public class PaymentPassage {
 
     @EmbeddedId
     private PaymentPassageKey id;
 
     @OneToOne
-    @MapsId("transactionId")
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
+    @MapsId("paymentId")    
+    @JoinColumn(name = "payment_id", referencedColumnName="long")
+    private Payment payment;
 
     @OneToOne
     @MapsId("passageId")
-    @JoinColumn(name = "passage_id")
+    @JoinColumn(name = "passage_id", referencedColumnName= "PassageKey")
     private Passage passage;
-
-
 
     public PaymentPassage() {}
 
