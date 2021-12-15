@@ -14,12 +14,12 @@ public class PaymentPassage {
 
     @OneToOne
     @MapsId("paymentId")    
-    @JoinColumn(name = "payment_id", referencedColumnName="long")
+    @JoinColumn(name = "payment_id")
     private Payment payment;
 
     @OneToOne
     @MapsId("passageId")
-    @JoinColumn(name = "passage_id", referencedColumnName= "PassageKey")
+    @JoinColumn(name = "passage_id")
     private Passage passage;
 
     public PaymentPassage() {}

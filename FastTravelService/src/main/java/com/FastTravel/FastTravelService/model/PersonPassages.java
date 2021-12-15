@@ -11,7 +11,7 @@ import java.util.Set;
 public class PersonPassages {   
 
     @Id
-    @Column(name = "personPassages_id")
+    @Column(name = "person_passage_id")
     private Long id;
 
     @OneToOne
@@ -19,7 +19,8 @@ public class PersonPassages {
     @JoinColumn(name = "personPassages_person")
     private Person person;
 
-    @OneToMany(mappedBy="PersonPassages")
+    @OneToMany(mappedBy="personPassages")
+    //@OneToMany(mappedBy="PersonPassages", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Passage> passages;
 
     public PersonPassages() {}

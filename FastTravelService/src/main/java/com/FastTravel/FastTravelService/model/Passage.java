@@ -9,17 +9,18 @@ import javax.persistence.*;
 @Table(name = "Passage")
 public class Passage {
 
-    @EmbeddedId
-    private PassageKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "passage_id")
+    private long id;
 
     @ManyToOne
-    @MapsId("person_passage_id")
-    @JoinColumn(name = "person_passage_id", referencedColumnName = "long")
+    @MapsId
+    @JoinColumn(name = "person_passage_id")
     private PersonPassages personPassages;
 
     @ManyToOne
-    @MapsId("scutId")
-    @JoinColumn(name = "scut_id", referencedColumnName = "long")
+    @JoinColumn(name = "scut_id")
     private Scut scut;
 
     public Passage() {}
