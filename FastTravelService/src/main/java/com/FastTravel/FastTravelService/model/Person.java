@@ -26,7 +26,7 @@ public class Person {
     @Enumerated(EnumType.ORDINAL)
     private PersonType type;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "Person")
     @PrimaryKeyJoinColumn
     private PersonPassages personPassages;
 
@@ -86,5 +86,6 @@ public class Person {
             return false;
         return true;
     }
+    
 
 }

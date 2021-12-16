@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "PersonPassages")
+@Table(name = "personPassages")
 public class PersonPassages {   
 
     @Id
@@ -16,7 +16,7 @@ public class PersonPassages {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "personPassages_person")
+    @JoinColumn(name = "person_passage_id")
     private Person person;
 
     @OneToMany(mappedBy="personPassages")
