@@ -50,4 +50,6 @@ public class Scut {
         this.price5 = price5;
     }
 
+    
+
 }

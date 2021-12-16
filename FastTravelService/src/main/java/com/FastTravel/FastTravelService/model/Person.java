@@ -41,5 +41,4 @@ public class Person {
         this.password = password;
         this.type = type;
     }
-
 }

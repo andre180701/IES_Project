@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "PersonPassages")
+@Table(name = "personPassages")
 public class PersonPassages {   
 
     @Id
