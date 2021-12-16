@@ -3,6 +3,7 @@ package com.FastTravel.FastTravelService.model;
 import lombok.Data;
 
 import javax.persistence.*;
+
 import java.util.Set;
 
 @Entity
@@ -16,11 +17,10 @@ public class PersonPassages {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "personPassages_person")
-    private Person person;
+    @JoinColumn(name = "person_passage_id")
+    private Person person_id;
 
     @OneToMany(mappedBy="personPassages")
-    //@OneToMany(mappedBy="PersonPassages", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Passage> passages;
 
     public PersonPassages() {}

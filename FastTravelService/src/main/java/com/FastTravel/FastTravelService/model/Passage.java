@@ -9,11 +9,12 @@ import javax.persistence.*;
 @Table(name = "Passage")
 public class Passage {
 
-    @EmbeddedId
-    private PassageKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private long id;
 
     @ManyToOne
-    @MapsId
     @JoinColumn(name = "person_passage_id")
     private PersonPassages personPassages;
 
