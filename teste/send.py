@@ -8,10 +8,6 @@ connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
 
 
-
-
-
-
 # to make sure the recipient queue exists. If we send a message to non-existing location
 channel.queue_declare(queue='hello')
 
