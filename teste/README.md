@@ -10,7 +10,7 @@
 
 
 ## Criar um ambiente para o rabbit
-    1. Crie um virtual environment:
+    1. Crie um virtual environment
     ```bash
     python3 -m venv venv
     ```
@@ -24,3 +24,5 @@
     ```bash
     pip install -r requirements.txt
     ```
+
+run rabitmq using docker compose with guest user outside localhost
