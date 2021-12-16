@@ -21,7 +21,7 @@ public class PassageController {
         return passageRepository.findAll();
     }
 
-    @DeleteMapping("/passages")
+    @PostMapping("/passages")
     public  @Valid Passage createPassage(@Valid @RequestBody Passage passage){
         return passageRepository.save(passage);
     }

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PassageRepository extends JpaRepository<Passage, Long> {
-    public Passage findByPersonPassagesIdAndScutId(long person_passage_id, Long scut_id);
+    //public Passage findByPersonPassagesIdAndScutId(long person_passage_id, Long scut_id);
 }

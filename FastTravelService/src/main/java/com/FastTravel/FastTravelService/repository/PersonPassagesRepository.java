@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonPassagesRepository extends JpaRepository<PersonPassages, Long> {
-    public PersonPassages findByPersonId(long id);
+    //public PersonPassages findByPersonId(long id);
 }

@@ -9,8 +9,10 @@ import javax.persistence.*;
 @Table(name = "Payment_has_passage")
 public class PaymentPassage {
 
-    @EmbeddedId
-    private PaymentPassageKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private long id;
 
     @OneToOne
     @MapsId("paymentId")    
