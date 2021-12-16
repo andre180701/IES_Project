@@ -9,10 +9,8 @@ import javax.persistence.*;
 @Table(name = "Passage")
 public class Passage {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "passage_id")
-    private long id;
+    @EmbeddedId
+    private PassageKey id;
 
     @ManyToOne
     @MapsId
