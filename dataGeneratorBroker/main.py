@@ -17,8 +17,9 @@ class DataGenerator:
     def generatePassage(self):
         client = random.choices(self.clients)[0]
         scut = random.choices(self.scuts)[0]
-        message = {"NEW PASSAGE:   Plate number ": client.get_registration(), "; scut: ":  scut.get_id()}
-        self.send("portinhas", message)
+        #message = {"NEW PASSAGE:   Plate number ": client.get_registration(), "; scut: ":  scut.get_id()}
+        message = {'method': 'NEW_PASSAGE', 'client_deviceId': client.get_deviceId(), 'scut': scut.get_id() }
+        self.send('portinhas', message)
 
     
     def send(self, topic=None, message=None):
