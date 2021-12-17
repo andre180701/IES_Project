@@ -34,7 +34,7 @@ def main():
         t = random.randint(0,3)
         time.sleep(t)
         message = generator.generatePassage()
-        self.send("Passage", message)
+        self.send("portinhas", message)
 
 
 if __name__ == "__main__":
