@@ -25,7 +25,6 @@ class DataGenerator:
     def send(self, topic=None, message=None):
         try:
             message = json.dumps(message)
-            print(message)
             self.channel.basic_publish(exchange='', routing_key=topic, body=message)
             print(" [x] Sent 'MESSAGE!'")
         except:
