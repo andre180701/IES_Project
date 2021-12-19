@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
     <!-- plugins:css -->
@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.addons.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
+    <link rel="stylesheet" href="../assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/css/shared/style.css">
     <!-- endinject -->
     <!-- Layout styles -->
@@ -187,13 +187,13 @@
               </li>
               -->
               <li class="nav-item">
-                <a class="nav-link" href="../pages/passages_in_scuts.html">
+                <a class="nav-link" href="/passages">
                   <i class="menu-icon typcn typcn-shopping-bag"></i>
                   <span class="menu-title">Passages in scuts</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../pages/scuts.html">
+                <a class="nav-link" href="/scuts">
                   <i class="menu-icon typcn typcn-th-large-outline"></i>
                   <span class="menu-title">Scuts</span>
                 </a>
@@ -247,89 +247,100 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Scuts</h4>
+                    <h4 class="card-title">Passages in Scuts</h4>
                     <table class="table">
                       <thead>
                         <tr>
                           <th></th>
-                          <th>ID</th>
-                          <th>Latitude</th>
-                          <th>Longitude</th>
-                          <th>Instalation Date</th>
-                          <th>Price Class 1</th>
-                          <th>Price Class 2</th>
-                          <th>Price Class 3</th>
-                          <th>Price Class 4</th>
-                          <th>Price Class 5</th>
+                          <th>Registration</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Device ID</th>
+                          <th>Scut Id</th>
+                          <th>Payment State</th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>1</td>
-                          <td>30.000</td>
-                          <td>32.000</td>
-                          <td>12-10-2001</td>
-                          <td>1.20€</td>
-                          <td>1.23€</td>
-                          <td>2.01€</td>
-                          <td>3.41€</td>
-                          <td>3.04€</td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                        <tr th:each="passage : ${passages}"  >
+                            <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                            <td th:text="${{passage.registration}}"/>
+                            <td th:text="${{passage.date}}"/>
+                            <td th:text="${{passage.time}}"/>
+                            <td th:text="${{passage.deviceId}}"/>
+                            <td th:text="${{passage.idScut}}"/>
+                            <td>
+                                <label class="badge badge-success">Completed</label>
+                              </td>
+                              <td><i class="fa fa-ellipsis-v"></i></td>  
+                            
                         </tr>
+                        <!--
                         <tr>
                           <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>2</td>
-                          <td>29.8999</td>
-                          <td>87.9000</td>
-                          <td>13-10-2001</td>
-                          <td>1.23€</td>
-                          <td>1.30€</td>
-                          <td>2.00€</td>
-                          <td>3.90€</td>
-                          <td>2.99€</td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>3</td>
-                          <td>39.6778</td>
-                          <td>10.8822</td>
-                          <td>20-10-2001</td>
-                          <td>1.27€</td>
-                          <td>1.45€</td>
-                          <td>2.08€</td>
-                          <td>3.87€</td>
-                          <td>3.02€</td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>AA-00-01</td>
+                          <td>12-10-2021</td>
+                          <td>00:23:18h</td>
+                          <td>1000</td>
                           <td>4</td>
-                          <td>45.0900</td>
-                          <td>34.9009</td>
-                          <td>13-11-2001</td>
-                          <td>1.20€</td>
-                          <td>1.33€</td>
-                          <td>2.07€</td>
-                          <td>3.73€</td>
-                          <td>3.00€</td>
+                          <td>
+                            <label class="badge badge-danger">Cancelled</label>
+                          </td>
                           <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
                         </tr>
                         <tr>
                           <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>5</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>17-12-2001</td>
-                          <td>1.22€</td>
-                          <td>1.29€</td>
-                          <td>2.00€</td>
-                          <td>3.91€</td>
-                          <td>3.01€</td>
+                          <td>BB-21-09</td>
+                          <td>15-10-2021</td>
+                          <td>23:11:09h</td>
+                          <td>1001</td>
+                          <td>1</td>
+                          <td>
+                            <label class="badge badge-warning">In progress</label>
+                          </td>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>EB-98-11</td>
+                          <td>12-11-2021</td>
+                          <td>09:08:11h</td>
+                          <td>1002</td>
+                          <td>3</td>
+                          <td>
+                            <label class="badge badge-success">Completed</label>
+                          </td>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>PI-95-55</td>
+                          <td>01-12-2021</td>
+                          <td>18:06:06h</td>
+                          <td>1003</td>
+                          <td>1</td>
+                          <td>
+                            <label class="badge badge-success">Completed</label>
+                          </td>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>DE-11-23</td>
+                          <td>20-10-2021</td>
+                          <td>10:10:10h</td>
+                          <td>1004</td>
+                          <td>2</td>
+                          <td>
+                            <label class="badge badge-warning">In progress</label>
+                          </td>
                           <td><i class="fa fa-ellipsis-v"></i></td>  
                         </tr>
+                        -->
                       </tbody>
                     </table>
                   </div>

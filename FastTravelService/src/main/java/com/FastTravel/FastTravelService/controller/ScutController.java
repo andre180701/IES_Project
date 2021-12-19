@@ -10,18 +10,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@EnableJpaRepositories(basePackageClasses = {ScutRepository.class})
-@RestController
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+//@EnableJpaRepositories(basePackageClasses = {ScutRepository.class})
+//@RestController
+@Controller
 public class ScutController{
     @Autowired
     private ScutRepository  scutRepository;
 
-    @GetMapping("/scut")
-    public List<Scut> getAllScuts(){
-        return scutRepository.findAll();
+    @GetMapping("/scuts")
+    public String getAllScuts(Model model){
+        List<Scut> scuts = scutRepository.findAll();
+        model.addAttribute("scuts", scuts);
+		return "scuts";
+
     }
 
-    @PostMapping("/scut")
+    @PostMapping("/scuts")
     public Scut createScut(@RequestBody Scut scut){
         return scutRepository.save(scut);
     }
