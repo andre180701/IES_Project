@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ./binlog.000012
 ./binlog.000013
 ./binlog.000014
@@ -17,3 +18,11 @@
 ./binlog.000028
 ./binlog.000029
 ./binlog.000030
+=======
+./binlog.000001
+./binlog.000002
+./binlog.000003
+./binlog.000004
+./binlog.000005
+./binlog.000006
+>>>>>>> 0eb133b87dda8aeae1b38bb09e8be688b06694e0
