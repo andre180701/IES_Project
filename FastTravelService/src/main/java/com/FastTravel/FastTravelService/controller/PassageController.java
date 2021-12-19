@@ -16,6 +16,7 @@ public class PassageController {
     @Autowired
     private PassageRepository passageRepository;
 
+    //@CrossOrigin(origins = "http://localhost:8000/")
     @GetMapping("/passages")
     public List<Passage> getAllPassages() {
         return passageRepository.findAll();
