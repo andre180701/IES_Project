@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "Passage")
+@Table(name = "passage")
 public class Passage {
 
     @Id
@@ -49,4 +49,77 @@ public class Passage {
         this.deviceId = deviceId;
         this.idScut = idScut;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public int getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(int deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public int getIdScut() {
+        return idScut;
+    }
+
+    public void setIdScut(int idScut) {
+        this.idScut = idScut;
+    }
+
+    public String getPaymentState() {
+        return paymentState;
+    }
+
+    public void setPaymentState(String paymentState) {
+        this.paymentState = paymentState;
+    }
+
+    public PersonPassages getPersonPassages() {
+        return personPassages;
+    }
+
+    public void setPersonPassages(PersonPassages personPassages) {
+        this.personPassages = personPassages;
+    }
+
+    public Scut getScut() {
+        return scut;
+    }
+
+    public void setScut(Scut scut) {
+        this.scut = scut;
+    }
+    
 }

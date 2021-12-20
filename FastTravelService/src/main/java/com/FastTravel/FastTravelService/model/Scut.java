@@ -1,12 +1,10 @@
 package com.FastTravel.FastTravelService.model;
 
-import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Data
-@Table(name = "Scut")
+@Table(name = "scut")
 public class Scut {
 
     @Id
@@ -19,9 +17,10 @@ public class Scut {
     @Column(name = "longitude", nullable = false)
     private double longitude;
 
-    @Column(name = "instalation_date", nullable = false)
+    /*
+    @Column(name = "instalation_date", nullable = true)
     private String instalation_date;
-
+*/
     @Column(name = "price1", nullable = false)
     private double price1;
 
@@ -39,14 +38,75 @@ public class Scut {
 
     public Scut() { }
 
-    public Scut(double latitude, double longitude, String instalation_date, double price1, double price2, double price3, double price4, double price5) {
+    //public Scut(double latitude, double longitude, String instalation_date, double price1, double price2, double price3, double price4, double price5) {
+    public Scut(double latitude, double longitude, double price1, double price2, double price3, double price4, double price5) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.instalation_date = instalation_date;
+        //this.instalation_date = instalation_date;
         this.price1 = price1;
         this.price2 = price2;
         this.price3 = price3;
         this.price4 = price4;
+        this.price5 = price5;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getPrice1() {
+        return price1;
+    }
+
+    public void setPrice1(double price1) {
+        this.price1 = price1;
+    }
+
+    public double getPrice2() {
+        return price2;
+    }
+
+    public void setPrice2(double price2) {
+        this.price2 = price2;
+    }
+
+    public double getPrice3() {
+        return price3;
+    }
+
+    public void setPrice3(double price3) {
+        this.price3 = price3;
+    }
+
+    public double getPrice4() {
+        return price4;
+    }
+
+    public void setPrice4(double price4) {
+        this.price4 = price4;
+    }
+
+    public double getPrice5() {
+        return price5;
+    }
+
+    public void setPrice5(double price5) {
         this.price5 = price5;
     }
 

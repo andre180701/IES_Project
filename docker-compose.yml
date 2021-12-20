@@ -5,14 +5,13 @@ services:
         image: mysql:8.0
         ports: 
             - "3306:3306"
-        command: --default-authentication-plugin=mysql_native_password --secure-file-priv=''
-        environment:
+        environment:  
             MYSQL_DATABASE: fastTravelDB
             MYSQL_USER: admin
             MYSQL_ROOT_PASSWORD: admin
             MYSQL_PASSWORD: admin 
         volumes:
-            - ./dataBase:/var/lib/mysql
+            - datafiles:/var/lib/mysql
             #prof disse para nao fazer assim, usar uma pasta da nossa home nao no nosso repositorio do projeto
         networks:
             - default
@@ -21,13 +20,14 @@ services:
     fasttravelservice:
       depends_on:
         - dataBase
+        #- messageBroker
       build: ./FastTravelService
       restart: on-failure
       ports:
         - 6868:8000
       environment:
         SPRING_APPLICATION_JSON: '{
-          "spring.datasource.url"  : "jdbc:mysql://dataBase:3306/fastTravelDB?useSSL=false",
+          "spring.datasource.url"  : "jdbc:mysql://dataBase:3306/fastTravelDB?useSSL=true",
           "spring.datasource.username" : "admin",
           "spring.datasource.password" : "admin",
           "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8Dialect",
@@ -48,3 +48,20 @@ services:
       networks:
           - default
       restart: always  
+
+#    messageBroker:
+#      image: rabbitmq:management
+#      ports: 
+#        - 14682:15672
+#        - 5963:5672 
+
+
+
+
+          #"spring.rabbitmq.username" : "user1",
+          #"spring.rabbitmq.password" : "user1",
+          #"spring.rabbitmq.host" : "messageBroker",
+          #"spring.rabbitmq.port" : 5672
+
+volumes:
+  datafiles:

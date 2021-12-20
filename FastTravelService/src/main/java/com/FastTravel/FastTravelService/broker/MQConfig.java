@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MQConfig {
+	/*
     public static final String EXCHANGE_NAME = "";
     public static final String QUEUE = "portinhas";
     public static final String ROUTING_KEY = "portinhas";
@@ -43,9 +44,9 @@ public class MQConfig {
 		return rabbitTemplate;
 	}
     */
-
+/*
     @Bean
     public MQConsumer receiver() {
         return new MQConsumer();
-    }
+    } */
 }
