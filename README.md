@@ -19,35 +19,6 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 
 ## Correr FastTravel
 
-### Compilar a geração de dados e rabbit 
-    1.0. Entrar no diretorio dataGeneratorBroker
-    1. Crie um virtual environment
-    ```bash
-    python3 -m venv venv
-    ```
-
-    2. Active o virtual environment (precisa de repetir este passo sempre que começar uma nossa sessão/terminal):
-    ```bash
-    source venv/bin/activate
-    ```
-
-    3. Instale os requisitos:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-    4. caso o docker de erro para eliminar 
-        docker rm -f $(docker ps -aq)
-
-    5. Executar o ficheiro .yml
-    docker-compose up -d
-
-    6. Enviar as mensagens
-    python3 main.py
-
-    7. Ver a interface do rabbitMQ 
-    http://localhost:15672
-
 ### Compilar FastTravelService
 
 1. Ao compilar o FastTravelService, irá eliminar a pasta target caso exista, e gera-lo de novo com base no código do FastTravelService, contendo este um ficheiro jar. 
@@ -74,18 +45,17 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     sudo docker-compose up
     ```
 
-### Executar FastTravelService
+2. Caso o docker de erro para eliminar 
+    docker rm -f $(docker ps -aq)
 
-1. Para correr o FastTravelService basta correr o seguinte comando no diretório ./FastTravelService:
-    ```
-    ./mvnw spring-boot:run
-
-    ```
-2. Observar os resultados Website
+3. Observar os resultados Website
     http://localhost:6868/
 
-
-
+### Compilar a geração de dados e rabbit 
+1. Entrar no diretorio dataGeneratorBroker
+2. Ver o Readme do diretorio
+3. Ver a interface do rabbitMQ 
+    http://localhost:15672
 
 ## Papéis 
 
@@ -93,5 +63,3 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 * **Product Owner**: [Marta Fradique](https://github.com/MartaFradique), nº 98629
 * **Architect**: [André Freixo](https://github.com/andre180701), nº 98495
 * **DevOps Master**: [Luís Martins](https://github.com/luisccmartins), nº 98521
-
-Ansefr2019!

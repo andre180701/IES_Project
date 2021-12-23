@@ -49,19 +49,6 @@ services:
         - '5672:5672'
         # HTTP management UI
         - '15672:15672'
-
-
-#    messageBroker:
-#      image: rabbitmq:management
-#      ports: 
-#        - 14682:15672
-#        - 5963:5672 
-
-
-          #"spring.rabbitmq.username" : "user1",
-          #"spring.rabbitmq.password" : "user1",
-          #"spring.rabbitmq.host" : "messageBroker",
-          #"spring.rabbitmq.port" : 5672
-
+        
 volumes:
   datafiles:
