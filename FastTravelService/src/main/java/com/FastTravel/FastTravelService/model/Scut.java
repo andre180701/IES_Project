@@ -17,10 +17,9 @@ public class Scut {
     @Column(name = "longitude", nullable = false)
     private double longitude;
 
-    /*
-    @Column(name = "instalation_date", nullable = true)
-    private String instalation_date;
-*/
+    @Column(name = "instalationDate", nullable = true)
+    private String instalationDate;
+
     @Column(name = "price1", nullable = false)
     private double price1;
 
@@ -38,16 +37,24 @@ public class Scut {
 
     public Scut() { }
 
-    //public Scut(double latitude, double longitude, String instalation_date, double price1, double price2, double price3, double price4, double price5) {
-    public Scut(double latitude, double longitude, double price1, double price2, double price3, double price4, double price5) {
+    public Scut(double latitude, double longitude, String instalationDate, double price1, double price2, double price3, double price4, double price5) {
+    //public Scut(double latitude, double longitude, double price1, double price2, double price3, double price4, double price5) {
         this.latitude = latitude;
         this.longitude = longitude;
-        //this.instalation_date = instalation_date;
+        this.instalationDate = instalationDate;
         this.price1 = price1;
         this.price2 = price2;
         this.price3 = price3;
         this.price4 = price4;
         this.price5 = price5;
+    }
+
+    public String getInstalationDate() {
+        return instalationDate;
+    }
+
+    public void setInstalationDate(String instalationDate) {
+        this.instalationDate = instalationDate;
     }
 
     public long getId() {

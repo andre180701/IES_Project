@@ -5,7 +5,7 @@ services:
         image: mysql:8.0
         ports: 
             - "3306:3306"
-        environment:  
+        environment:
             MYSQL_DATABASE: fastTravelDB
             MYSQL_USER: admin
             MYSQL_ROOT_PASSWORD: admin
@@ -20,7 +20,7 @@ services:
     fasttravelservice:
       depends_on:
         - dataBase
-        #- messageBroker
+        - messageBroker
       build: ./FastTravelService
       restart: on-failure
       ports:
@@ -32,30 +32,30 @@ services:
           "spring.datasource.password" : "admin",
           "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8Dialect",
           "spring.jpa.hibernate.ddl-auto" : "update",
-          "server.port": 8000
+          "server.port": 8000,
+          "spring.rabbitmq.username" : "user1",
+          "spring.rabbitmq.password" : "user1",
+          "spring.rabbitmq.host" : "messageBroker",
+          "spring.rabbitmq.port" : 5672
         }'
 
-    projFastTravel:
-      depends_on:
-        - fasttravelservice
-      image: nginx
+    messageBroker:
+      image: rabbitmq:3.8-management-alpine
+      environment:
+          - RABBITMQ_DEFAULT_USER=user1
+          - RABBITMQ_DEFAULT_PASS=user1
       ports: 
-          - "8000:80"
-      volumes:
-          - ./projFastTravel:/usr/nginx/html/
-      links:
-          - dataBase
-      networks:
-          - default
-      restart: always  
+        # AMQP protocol port
+        - '5672:5672'
+        # HTTP management UI
+        - '15672:15672'
+
 
 #    messageBroker:
 #      image: rabbitmq:management
 #      ports: 
 #        - 14682:15672
 #        - 5963:5672 
-
-
 
 
           #"spring.rabbitmq.username" : "user1",

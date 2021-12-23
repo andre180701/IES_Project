@@ -265,6 +265,21 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <tr th:each="scut : ${scuts}"  >
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td th:text="${{scut.id}}"/>
+                          <td th:text="${{scut.latitude}}"/>
+                          <td th:text="${{scut.longitude}}"/>
+                          <td th:text="${{scut.instalationDate}}"/>
+                          <td th:text="${{scut.price1}}"/>
+                          <td th:text="${{scut.price2}}"/>
+                          <td th:text="${{scut.price3}}"/>
+                          <td th:text="${{scut.price4}}"/>
+                          <td th:text="${{scut.price5}}"/>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <!--
                         <tr>
                           <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
                           <td>1</td>
@@ -330,6 +345,7 @@
                           <td>3.01€</td>
                           <td><i class="fa fa-ellipsis-v"></i></td>  
                         </tr>
+                        -->
                       </tbody>
                     </table>
                   </div>

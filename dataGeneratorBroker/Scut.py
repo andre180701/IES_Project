@@ -3,11 +3,11 @@ from datetime import date
 
 class Scut:
     newid = itertools.count()
-    def __init__(self, latitude, longitude, priceClass1, priceClass2, priceClass3, priceClass4, priceClass5 ) -> None:
+    def __init__(self, latitude, longitude, priceClass1, priceClass2, priceClass3, priceClass4, priceClass5, instalationDate) -> None:
         self._id = next(Scut.newid)
         self._latitude = latitude
         self._longitude = longitude
-        self._instalationDate = date.today()
+        self._instalationDate = instalationDate
         self._priceClass1 = priceClass1
         self._priceClass2 = priceClass2
         self._priceClass3 = priceClass3

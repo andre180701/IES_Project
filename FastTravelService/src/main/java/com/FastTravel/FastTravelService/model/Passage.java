@@ -24,10 +24,10 @@ public class Passage {
     private String time;
 
     @Column(name = "deviceId", nullable = false)
-    private int deviceId;
+    private long deviceId;
 
     @Column(name = "idScut", nullable = false)
-    private int idScut;
+    private long idScut;
 
     @Column(name = "paymentState", nullable = false)
     private String paymentState;
@@ -42,12 +42,13 @@ public class Passage {
 
     public Passage() {}
 
-    public Passage(String registration, String date, String time, int deviceId, int idScut){
+    public Passage(String registration, String date, String time, long deviceId, long idScut){
         this.registration = registration;
         this.date = date;
         this.time = time;
         this.deviceId = deviceId;
         this.idScut = idScut;
+        this.paymentState = "Completed";
     }
 
     public long getId() {
@@ -82,7 +83,7 @@ public class Passage {
         this.time = time;
     }
 
-    public int getDeviceId() {
+    public long getDeviceId() {
         return deviceId;
     }
 
@@ -90,7 +91,7 @@ public class Passage {
         this.deviceId = deviceId;
     }
 
-    public int getIdScut() {
+    public long getIdScut() {
         return idScut;
     }
 

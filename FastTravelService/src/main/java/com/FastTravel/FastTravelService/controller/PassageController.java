@@ -24,9 +24,7 @@ public class PassageController {
     public String getAllPassages( Model model) {
         List<Passage> passages = passageRepository.findAll();
 
-        //Passagem para testar quando a base de dados esta vazia
-        Passage passage = new Passage("BB-00-01", "12-10-2021", "00:23:18h", 1, 1);
-        passages.add(passage);
+        
         
 		model.addAttribute("passages", passages);
 		return "passages";
