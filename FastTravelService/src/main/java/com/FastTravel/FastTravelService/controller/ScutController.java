@@ -26,7 +26,7 @@ public class ScutController{
     public String getAllScuts(Model model){
         List<Scut> scuts = scutRepository.findAll();
         model.addAttribute("scuts", scuts);
-		return "scuts";
+		return "admin/scuts";
 
     }
 
