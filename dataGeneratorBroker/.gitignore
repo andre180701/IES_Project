@@ -1,5 +1,5 @@
-dataBase/
-.m2/
+venv/
+
 
 ### VS Code ###
 .vscode/
