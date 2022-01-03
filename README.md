@@ -3,7 +3,7 @@
 Sistema de portagens electrónicas de monitorização de portagens e automatização de pagamentos.
 
 ## Sobre o Projeto 
-a
+
 O sistema tem como objetivo gerir os pórticos em autoestradas e outras vias, para tal, tem que monitorar os automóveis que transitam na via destinada ao Fast Travel. Conferir também, se os mesmos têm o identificador, o trajeto percorrido e o custo da viagem, retirar o correspondente montante da conta bancária associada ao cliente, e assim, agilizar o processo de viagem com pagamentos instantâneos.
 
 ## Backlog
@@ -27,7 +27,7 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     mvn clean package -DskipTests
     ```
 
-### Compilar o docker que une a base de dados e o FastTravelService
+### Compilar o docker
 
 1. Antes de compilar o docker é necessario ter o ficheiro jar do FastTravelService pretendido (para obte-lo basta executar os passos vistos anteriormmente)
 2. Para compilar o docker basta correr o seguinte comando no diretório raiz do projeto:
@@ -35,7 +35,7 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     sudo docker-compose build
     ```
 
-### Executar o docker que une a base de dados e o FastTravelService
+### Executar o docker 
 
 1. Para correr o docker basta correr o seguinte comando no diretório raiz do projeto:
     ```
@@ -45,7 +45,7 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     sudo docker-compose up
     ```
 
-2. Caso o docker de erro para eliminar 
+2. Para eliminar docker:
     docker rm -f $(docker ps -aq)
 
 3. Observar os resultados Website
