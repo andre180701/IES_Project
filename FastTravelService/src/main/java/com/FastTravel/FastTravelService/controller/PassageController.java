@@ -27,7 +27,7 @@ public class PassageController {
         
         
 		model.addAttribute("passages", passages);
-		return "passages";
+		return "admin/passages";
     }   
 
     @PostMapping("/passages")

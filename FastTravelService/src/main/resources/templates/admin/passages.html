@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/ionicons/dist/css/ionicons.css">
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/ionicons/dist/css/ionicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.addons.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../assets/css/shared/style.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../assets/css/shared/style.css">
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../assets/css/demo_1/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-            <a class="navbar-brand brand-logo" href="../index.html">
-              <img src="../assets/images/logo_FastTravel.png" alt="logo" /> </a>
+            <a class="navbar-brand brand-logo" href="/dashboard">
+              <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center">
   
@@ -52,7 +52,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                      <img src="../assets/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
+                      <img src="../../assets/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
                     </div>
                     <div class="preview-item-content flex-grow py-2">
                       <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
@@ -61,7 +61,7 @@
                   </a>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                      <img src="../assets/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
+                      <img src="../../assets/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
                     </div>
                     <div class="preview-item-content flex-grow py-2">
                       <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
@@ -70,7 +70,7 @@
                   </a>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
-                      <img src="../assets/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
+                      <img src="../../assets/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
                     </div>
                     <div class="preview-item-content flex-grow py-2">
                       <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
@@ -120,10 +120,10 @@
               </li>
               <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <img class="img-xs rounded-circle" src="../assets/images/faces/face8.jpg" alt="Profile image"> </a>
+                  <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                   <div class="dropdown-header text-center">
-                    <img class="img-md rounded-circle" src="../assets/images/faces/face8.jpg" alt="Profile image">
+                    <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
                     <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
                     <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                   </div>
@@ -148,7 +148,7 @@
               <li class="nav-item nav-profile">
                 <a href="#" class="nav-link">
                   <div class="profile-image">
-                    <img class="img-xs rounded-circle" src="../assets/images/faces/face8.jpg" alt="profile image">
+                    <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="profile image">
                     <div class="dot-indicator bg-success"></div>
                   </div>
                   <div class="text-wrapper">
@@ -159,7 +159,7 @@
               </li>
               <li class="nav-item nav-category">Main Menu</li>
               <li class="nav-item">
-                <a class="nav-link" href="../index.html">
+                <a class="nav-link" href="/dashboard">
                   <i class="menu-icon typcn typcn-document-text"></i>
                   <span class="menu-title">Dashboard</span>
                 </a>
@@ -247,102 +247,97 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Scuts</h4>
+                    <h4 class="card-title">Passages in Scuts</h4>
                     <table class="table">
                       <thead>
                         <tr>
                           <th></th>
-                          <th>ID</th>
-                          <th>Latitude</th>
-                          <th>Longitude</th>
-                          <th>Instalation Date</th>
-                          <th>Price Class 1</th>
-                          <th>Price Class 2</th>
-                          <th>Price Class 3</th>
-                          <th>Price Class 4</th>
-                          <th>Price Class 5</th>
+                          <th>Registration</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Device ID</th>
+                          <th>Scut Id</th>
+                          <th>Payment State</th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr th:each="scut : ${scuts}"  >
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td th:text="${{scut.id}}"/>
-                          <td th:text="${{scut.latitude}}"/>
-                          <td th:text="${{scut.longitude}}"/>
-                          <td th:text="${{scut.instalationDate}}"/>
-                          <td th:text="${{scut.price1}}"/>
-                          <td th:text="${{scut.price2}}"/>
-                          <td th:text="${{scut.price3}}"/>
-                          <td th:text="${{scut.price4}}"/>
-                          <td th:text="${{scut.price5}}"/>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                          
+                        <tr th:each="passage : ${passages}"  >
+                            <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                            <td th:text="${{passage.registration}}"/>
+                            <td th:text="${{passage.date}}"/>
+                            <td th:text="${{passage.time}}"/>
+                            <td th:text="${{passage.deviceId}}"/>
+                            <td th:text="${{passage.idScut}}"/>
+                            <td>
+                                <label class="badge badge-success">Completed</label>
+                              </td>
+                              <td><i class="fa fa-ellipsis-v"></i></td>  
+                            
                         </tr>
                         <!--
                         <tr>
                           <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>1</td>
-                          <td>30.000</td>
-                          <td>32.000</td>
-                          <td>12-10-2001</td>
-                          <td>1.20€</td>
-                          <td>1.23€</td>
-                          <td>2.01€</td>
-                          <td>3.41€</td>
-                          <td>3.04€</td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>2</td>
-                          <td>29.8999</td>
-                          <td>87.9000</td>
-                          <td>13-10-2001</td>
-                          <td>1.23€</td>
-                          <td>1.30€</td>
-                          <td>2.00€</td>
-                          <td>3.90€</td>
-                          <td>2.99€</td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>3</td>
-                          <td>39.6778</td>
-                          <td>10.8822</td>
-                          <td>20-10-2001</td>
-                          <td>1.27€</td>
-                          <td>1.45€</td>
-                          <td>2.08€</td>
-                          <td>3.87€</td>
-                          <td>3.02€</td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>AA-00-01</td>
+                          <td>12-10-2021</td>
+                          <td>00:23:18h</td>
+                          <td>1000</td>
                           <td>4</td>
-                          <td>45.0900</td>
-                          <td>34.9009</td>
-                          <td>13-11-2001</td>
-                          <td>1.20€</td>
-                          <td>1.33€</td>
-                          <td>2.07€</td>
-                          <td>3.73€</td>
-                          <td>3.00€</td>
+                          <td>
+                            <label class="badge badge-danger">Cancelled</label>
+                          </td>
                           <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
                         </tr>
                         <tr>
                           <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>5</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>17-12-2001</td>
-                          <td>1.22€</td>
-                          <td>1.29€</td>
-                          <td>2.00€</td>
-                          <td>3.91€</td>
-                          <td>3.01€</td>
+                          <td>BB-21-09</td>
+                          <td>15-10-2021</td>
+                          <td>23:11:09h</td>
+                          <td>1001</td>
+                          <td>1</td>
+                          <td>
+                            <label class="badge badge-warning">In progress</label>
+                          </td>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>EB-98-11</td>
+                          <td>12-11-2021</td>
+                          <td>09:08:11h</td>
+                          <td>1002</td>
+                          <td>3</td>
+                          <td>
+                            <label class="badge badge-success">Completed</label>
+                          </td>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>PI-95-55</td>
+                          <td>01-12-2021</td>
+                          <td>18:06:06h</td>
+                          <td>1003</td>
+                          <td>1</td>
+                          <td>
+                            <label class="badge badge-success">Completed</label>
+                          </td>
+                          <td><i class="fa fa-ellipsis-v"></i></td>  
+                          
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                          <td>DE-11-23</td>
+                          <td>20-10-2021</td>
+                          <td>10:10:10h</td>
+                          <td>1004</td>
+                          <td>2</td>
+                          <td>
+                            <label class="badge badge-warning">In progress</label>
+                          </td>
                           <td><i class="fa fa-ellipsis-v"></i></td>  
                         </tr>
                         -->
@@ -362,17 +357,17 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../assets/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/js/vendor.bundle.addons.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page-->
     <!-- End plugin js for this page-->
     <!-- inject:js -->
-    <script src="../assets/js/shared/off-canvas.js"></script>
-    <script src="../assets/js/shared/misc.js"></script>
+    <script src="../../assets/js/shared/off-canvas.js"></script>
+    <script src="../../assets/js/shared/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="../assets/js/shared/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../assets/js/shared/jquery.cookie.js" type="text/javascript"></script>
     <!-- End custom js for this page-->
   </body>
 </html>
