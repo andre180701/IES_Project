@@ -1,4 +1,4 @@
-package com.FastTravel.FastTravelService.controller;
+package com.FastTravel.FastTravelService.controller.admin;
 
 
 import com.FastTravel.FastTravelService.model.Passage;
