@@ -6,8 +6,10 @@ import org.json.simple.JSONValue;
  
 import java.util.HashMap;
 import java.util.Map;
-import com.FastTravel.FastTravelService.controller.PassageController;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.FastTravel.FastTravelService.controller.admin.PassageController;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.repository.PassageRepository;
 

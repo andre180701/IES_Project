@@ -1,4 +1,4 @@
-package com.FastTravel.FastTravelService.controller;
+package com.FastTravel.FastTravelService.controller.admin;
 
 import com.FastTravel.FastTravelService.repository.*;
 import com.FastTravel.FastTravelService.model.*;
@@ -26,7 +26,7 @@ public class ScutController{
     public String getAllScuts(Model model){
         List<Scut> scuts = scutRepository.findAll();
         model.addAttribute("scuts", scuts);
-		return "scuts";
+		return "admin/scuts";
 
     }
 

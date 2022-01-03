@@ -1,4 +1,4 @@
-package com.FastTravel.FastTravelService.controller;
+package com.FastTravel.FastTravelService.controller.admin;
 
 
 import com.FastTravel.FastTravelService.model.Passage;
@@ -27,7 +27,7 @@ public class PassageController {
         
         
 		model.addAttribute("passages", passages);
-		return "passages";
+		return "admin/passages";
     }   
 
     @PostMapping("/passages")
