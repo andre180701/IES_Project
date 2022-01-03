@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class Vehicles_identifiersController {
+public class VehiclesIdentifiersController {
 
-    @GetMapping("/vehicles_identifiers")
-    public String getAllVehicles_identifiers( Model model) {
-		return "client/vehicles_identifiers.html";
-    }  
-    
+    @GetMapping("/vehiclesIdentifiers")
+    public String getVehiclesIdentifiers( Model model) {
+		return "client/vehiclesIdentifiers";
+    }    
 }
