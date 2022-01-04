@@ -1,14 +1,14 @@
-package com.FastTravel.FastTravelService.controller.client;
+package com.FastTravel.FastTravelService.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class AskIdentifierController {
+public class RegisterController {
 
-    @GetMapping("client/askIdentifier")
+    @GetMapping("/register")
     public String getAskIdentifier( Model model) {
-		return "client/askIdentifier";
+		return "register";
     }    
 }

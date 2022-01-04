@@ -22,7 +22,7 @@ public class ScutController{
     @Autowired
     private ScutRepository  scutRepository;
 
-    @GetMapping("/scuts")
+    @GetMapping("admin/scuts")
     public String getAllScuts(Model model){
         List<Scut> scuts = scutRepository.findAll();
         model.addAttribute("scuts", scuts);
@@ -30,7 +30,7 @@ public class ScutController{
 
     }
 
-    @PostMapping("/scuts")
+    @PostMapping("admin/scuts")
     public Scut createScut(@RequestBody Scut scut){
         return scutRepository.save(scut);
     }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class VehiclesIdentifiersController {
 
-    @GetMapping("/vehiclesIdentifiers")
+    @GetMapping("client/vehiclesIdentifiers")
     public String getVehiclesIdentifiers( Model model) {
 		return "client/vehiclesIdentifiers";
     }    
