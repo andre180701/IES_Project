@@ -49,6 +49,21 @@ services:
         - '5672:5672'
         # HTTP management UI
         - '15672:15672'
-        
+      #healthcheck:
+        #test: ["CMD", "nc", "-vz", "localhost", "15672"]
+        #interval: 30s
+        #timeout: 10s
+        #retries: 4
+
+    generator:
+      build: ./dataGeneratorBroker
+      container_name: data_generator
+      restart: unless-stopped
+      image: python-generator
+      depends_on:
+        - messageBroker
+        #messageBroker:
+          #condition: service_healthy
+
 volumes:
   datafiles:

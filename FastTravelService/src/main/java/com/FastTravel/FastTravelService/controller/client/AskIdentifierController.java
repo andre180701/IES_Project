@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class AskIdentifierController {
 
-    @GetMapping("/askIdentifierController")
-    public String getAskIdentifierController( Model model) {
+    @GetMapping("/askIdentifier")
+    public String getAskIdentifier( Model model) {
 		return "client/askIdentifier";
     }    
 }
