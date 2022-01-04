@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class DashboardController {
-    @GetMapping("/dashboard")
+    @GetMapping("admin/dashboard")
     public String getDashboard( Model model) {
 		return "admin/dashboard";
     }   
