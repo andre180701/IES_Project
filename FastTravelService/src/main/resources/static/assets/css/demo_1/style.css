@@ -258,7 +258,7 @@
     -webkit-transition: width 0.25s ease, background 0.25s ease;
     -moz-transition: width 0.25s ease, background 0.25s ease;
     -ms-transition: width 0.25s ease, background 0.25s ease;
-    background: #1c45ef;
+    background: #4B4E6D;
     width: 270px;
     height: 63px; }
     .navbar.default-layout .navbar-brand-wrapper .navbar-brand {
@@ -379,7 +379,7 @@
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 63px);
-  background: linear-gradient(to top, #315399, #315399);
+  background: linear-gradient(to top, #4B4E6D, #4B4E6D);
   font-family: "roboto", sans-serif;
   padding: 0;
   width: 270px;
