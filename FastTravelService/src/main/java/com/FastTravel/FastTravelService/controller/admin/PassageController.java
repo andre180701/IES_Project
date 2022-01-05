@@ -23,9 +23,6 @@ public class PassageController {
     @GetMapping("admin/passages")
     public String getAllPassages( Model model) {
         List<Passage> passages = passageRepository.findAll();
-
-        
-        
 		model.addAttribute("passages", passages);
 		return "admin/passages";
     }   

@@ -45,10 +45,15 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     sudo docker-compose up
     ```
 
-2. Para eliminar docker:
+2. Para eliminar a base de dados:
+    ```
+    sudo docker-compose down -v
+    ```
+
+3. Para eliminar docker:
     docker rm -f $(docker ps -aq)
 
-3. Observar os resultados Website
+4. Observar os resultados Website
     http://localhost:6868/
 
 ### Compilar a geração de dados e rabbit 
@@ -56,6 +61,16 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 2. Ver o Readme do diretorio
 3. Ver a interface do rabbitMQ 
     http://localhost:15672
+
+### Observar a base de dados
+1. Colocar o docker a correr como explicado anteriormente
+2. Executar na linha de comandos:
+    > docker exec -it  ies_project_dataBase_1 bash
+    > mysql --user admin --password fastTravelDB
+3. Irá ser pedido a password, que é:
+    ```
+    admin
+    ```
 
 ## Papéis 
 

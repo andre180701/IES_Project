@@ -1,8 +1,9 @@
 package com.FastTravel.FastTravelService.model;
 
 import lombok.Data;
-
+import java.sql.Date;
 import javax.persistence.*;
+import java.sql.Time;
 
 @Entity
 @Data
@@ -11,108 +12,70 @@ public class Passage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "passageId", nullable = false)
     private long id;
 
-    @Column(name = "registration", nullable = false)
-    private String registration;
-
     @Column(name = "date", nullable = false)
-    private String date;
+    private Date date;
 
     @Column(name = "time", nullable = false)
-    private String time;
-
-    @Column(name = "deviceId", nullable = false)
-    private long deviceId;
-
-    @Column(name = "idScut", nullable = false)
-    private long idScut;
+    private Time time;
 
     @Column(name = "paymentState", nullable = false)
-    private String paymentState;
+    private PaymentState paymentState;
 
     @ManyToOne
-    @JoinColumn(name = "person_passage_id")
-    private PersonPassages personPassages;
+    @JoinColumn(name = "identifierId", nullable = false)
+    private Identifier identifier;
 
     @ManyToOne
-    @JoinColumn(name = "scut_id")
+    @JoinColumn(name = "scutId", nullable = false)
     private Scut scut;
 
     public Passage() {}
 
-    public Passage(String registration, String date, String time, long deviceId, long idScut){
-        this.registration = registration;
+    public Passage(Date date, Time time, Identifier identifier, Scut scut) {
         this.date = date;
         this.time = time;
-        this.deviceId = deviceId;
-        this.idScut = idScut;
-        this.paymentState = "Completed";
+        this.identifier = identifier;
+        this.scut = scut;
+        this.paymentState = PaymentState.UNPAID;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(String registration) {
-        this.registration = registration;
-    }
-
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
-    public long getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(int deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public long getIdScut() {
-        return idScut;
-    }
-
-    public void setIdScut(int idScut) {
-        this.idScut = idScut;
-    }
-
-    public String getPaymentState() {
+    public PaymentState getPaymentState() {
         return paymentState;
     }
 
-    public void setPaymentState(String paymentState) {
+    public void setPaymentState(PaymentState paymentState) {
         this.paymentState = paymentState;
     }
 
-    public PersonPassages getPersonPassages() {
-        return personPassages;
+    public Identifier getIdentifier() {
+        return identifier;
     }
 
-    public void setPersonPassages(PersonPassages personPassages) {
-        this.personPassages = personPassages;
+    public void setIdentifier(Identifier identifier) {
+        this.identifier = identifier;
     }
 
     public Scut getScut() {
@@ -122,5 +85,5 @@ public class Passage {
     public void setScut(Scut scut) {
         this.scut = scut;
     }
-    
+
 }

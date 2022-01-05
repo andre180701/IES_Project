@@ -32,16 +32,16 @@ public class MQConsumer {
   //      PassageController pc = new PassageController();
         if (method.equals("NEW_PASSAGE")) {
             //Passage p = new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), Integer.parseInt((String) jo.get("client_deviceId") ),  Integer.parseInt((String) jo.get("scut") ) );
-            Passage p = new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), (Long) jo.get("client_deviceId"), (Long) jo.get("scut"));
+            //Passage p = new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), (Long) jo.get("client_deviceId"), (Long) jo.get("scut"));
             //Passage p = new Passage("QQ", "12-12", "9:00", 1, 1);
-            passageRepository.save(p);
-            System.out.println("-----------------------");
-            System.out.println( p.getRegistration());
-            System.out.println( p.getDate());
-            System.out.println( p.getTime());
-            System.out.println( p.getDeviceId());
-            System.out.println( p.getIdScut());
-            System.out.println("-----------------------");
+            //passageRepository.save(p);
+            //System.out.println("-----------------------");
+            //System.out.println( p.getRegistration());
+            //System.out.println( p.getDate());
+            //System.out.println( p.getTime());
+            //System.out.println( p.getDeviceId());
+            //System.out.println( p.getIdScut());
+            //System.out.println("-----------------------");
 //            pc.createPassage(new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), Integer.parseInt((String) jo.get("client_deviceId") ),  Integer.parseInt((String) jo.get("scut") ) ));
         }
 
