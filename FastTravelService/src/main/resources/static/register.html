@@ -16,25 +16,24 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="assets/css/shared/style.css">
-    <link rel="stylesheet" href="assets/css/mbm/styles_mbm.css">
     <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/demo_1/style.css">
+    <!-- End Layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
-      
       <div class="container-fluid page-body-wrapper full-page-wrapper">
-        
-        <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="content-wrapper d-flex align-items-center auth register-bg-1 theme-one">
           <div class="row w-100">
             <div class="col-lg-4 mx-auto">
-              <h3 style="text-align: center;">Login as admin: </h3>
+              <h2 class="text-center mb-4">Register</h2>
               <div class="auto-form-wrapper">
                 <form action="#">
                   <div class="form-group">
-                    <label class="label">Username</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="text" class="form-control" placeholder="First Name">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -43,9 +42,8 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="label">Password</label>
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="*********">
+                      <input type="text" class="form-control" placeholder="Last Name">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -54,27 +52,55 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary submit-btn btn-block"  style="line-height: 1.15;
-                    font-size: 16px;font-weight: 600; background-color: #F9FBB2; border: none; color: #111111">Login</button>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="NIF">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Email">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="password" class="form-control" placeholder="Confirm Password">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="mdi mdi-check-circle-outline"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary submit-btn btn-block" style="line-height: 1.15;
+                    font-size: 16px;font-weight: 600; background-color: #F9FBB2; border: none; color: #111111">Register</button>
+                  </div>
                   <div class="text-block text-center my-3">
-                    <span class="text-small font-weight-semibold">Not a member ?</span>
-                    <a href="register.html" class="text-black text-small">Create new account</a>
+                    <span class="text-small font-weight-semibold">Already have and account ?</span>
+                    <a href="login.html" class="text-black text-small">Login</a>
                   </div>
                 </form>
               </div>
-              <ul class="auth-footer">
-                <li>
-                  <a href="#">Conditions</a>
-                </li>
-                <li>
-                  <a href="#">Help</a>
-                </li>
-                <li>
-                  <a href="#">Terms</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
