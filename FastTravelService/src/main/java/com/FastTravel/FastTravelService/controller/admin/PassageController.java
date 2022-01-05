@@ -20,7 +20,7 @@ public class PassageController {
     private PassageRepository passageRepository;
 
     //@CrossOrigin(origins = "http://localhost:8000/")
-    @GetMapping("/passages")
+    @GetMapping("admin/passages")
     public String getAllPassages( Model model) {
         List<Passage> passages = passageRepository.findAll();
 
@@ -30,7 +30,7 @@ public class PassageController {
 		return "admin/passages";
     }   
 
-    @PostMapping("/passages")
+    @PostMapping("admin/passages")
     public  @Valid Passage createPassage(@Valid @RequestBody Passage passage){
         return passageRepository.save(passage);
     }
