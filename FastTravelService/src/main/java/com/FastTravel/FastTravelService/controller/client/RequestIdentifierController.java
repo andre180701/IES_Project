@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class AskIdentifierController {
+public class RequestIdentifierController {
 
-    @GetMapping("client/askIdentifier")
-    public String getAskIdentifier( Model model) {
-		return "client/askIdentifier";
+    @GetMapping("client/requestIdentifier")
+    public String getRequestIdentifier( Model model) {
+		return "client/requestIdentifier";
     }    
 }
