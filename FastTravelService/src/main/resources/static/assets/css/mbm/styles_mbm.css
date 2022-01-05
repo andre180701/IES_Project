@@ -7,6 +7,11 @@
     line-height: 1; 
     text-align: center;
     font-size: 30px;
+    padding-bottom: 20px;
+
+}
+p.text_mbm{
+    padding-bottom: 50px;
 
 }
 .edit_icon{
