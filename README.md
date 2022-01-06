@@ -72,6 +72,10 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     admin
     ```
 
+### Remover docker images
+> docker volume rm $(docker volume ls | awk '{print $2}')
+> docker rmi -f $(docker images -aq)
+
 ## Papéis 
 
 * **Team Manager**: [Eva Bartolomeu](https://github.com/eva-pomposo), nº 98513

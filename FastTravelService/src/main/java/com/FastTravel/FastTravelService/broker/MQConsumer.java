@@ -1,61 +1,55 @@
 package com.FastTravel.FastTravelService.broker;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.json.simple.JSONObject;  
-import org.json.simple.JSONValue;  
- 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.FastTravel.FastTravelService.controller.admin.PassageController;
+import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.model.Passage;
-import com.FastTravel.FastTravelService.repository.PassageRepository;
+import com.FastTravel.FastTravelService.model.Scut;
+import com.FastTravel.FastTravelService.service.IdentifierService;
+import com.FastTravel.FastTravelService.service.PassageService;
+import com.FastTravel.FastTravelService.service.ScutService;
+
+import org.json.simple.JSONObject;  
+import org.json.simple.JSONValue;  
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class MQConsumer {
     @Autowired
-    private PassageRepository passageRepository;
+    private PassageService passageService;
+
+    @Autowired
+    private IdentifierService identifierService;
+
+    @Autowired
+    private ScutService scutService;
 
     @RabbitListener(queues = MQConfig.QUEUE)
     public void listen(String input) {
-        Map<String, String> methodMap = new HashMap<String, String>();
-        Map<String, Long> scutMap = new HashMap<String, Long>();
-        Map<String, Long> client_deviceIdMap = new HashMap<String, Long>();
-
         Object obj=JSONValue.parse(input);  
         JSONObject jo = (JSONObject) obj; 
         
         String method = (String) jo.get("method");  
-        //methodMap.put("method: ", method);
 
-  //      PassageController pc = new PassageController();
         if (method.equals("NEW_PASSAGE")) {
-            //Passage p = new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), Integer.parseInt((String) jo.get("client_deviceId") ),  Integer.parseInt((String) jo.get("scut") ) );
-            //Passage p = new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), (Long) jo.get("client_deviceId"), (Long) jo.get("scut"));
-            //Passage p = new Passage("QQ", "12-12", "9:00", 1, 1);
-            //passageRepository.save(p);
-            //System.out.println("-----------------------");
-            //System.out.println( p.getRegistration());
-            //System.out.println( p.getDate());
-            //System.out.println( p.getTime());
-            //System.out.println( p.getDeviceId());
-            //System.out.println( p.getIdScut());
-            //System.out.println("-----------------------");
-//            pc.createPassage(new Passage((String) jo.get("registration"), (String) jo.get("date"), (String) jo.get("time"), Integer.parseInt((String) jo.get("client_deviceId") ),  Integer.parseInt((String) jo.get("scut") ) ));
+            SimpleDateFormat sdf = new SimpleDateFormat((String) jo.get("time"));   
+            Date date = Date.valueOf((String) jo.get("date")); 
+            Time time = null;
+            try {
+                time = new Time(sdf.parse((String) jo.get("time")).getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Identifier identifier = identifierService.getIdentifierById(Long.parseLong((String) jo.get("identifier")));
+            Scut scut = scutService.getScutById(Long.parseLong((String) jo.get("scut")));
+            Passage passage = new Passage(date, time, identifier, scut);
+            System.out.println("PASSAGE CRIADA: " + passage);
+            passageService.savePassage(passage);
+
         }
-
-
-        //long client_deviceId = (long) jo.get("client_deviceId");  
-        //client_deviceIdMap.put("client_deviceI: ", client_deviceId);
-
-
-        //long scut = (Long) jo.get("scut"); 
-        //scutMap.put("scut: ", scut);
- 
-
-        
-
     }
 
 }

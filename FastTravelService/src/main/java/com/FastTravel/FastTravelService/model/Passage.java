@@ -86,4 +86,9 @@ public class Passage {
         this.scut = scut;
     }
 
+    @Override
+    public String toString() {
+        return "Passage [date=" + date + ", id=" + id + ", identifier=" + identifier + ", paymentState=" + paymentState
+                + ", scut=" + scut + ", time=" + time + "]";
+    }
 }
