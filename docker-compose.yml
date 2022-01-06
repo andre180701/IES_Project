@@ -55,13 +55,13 @@ services:
         #timeout: 10s
         #retries: 4
 
-    generator:
-      build: ./dataGeneratorBroker
-      container_name: data_generator
-      restart: unless-stopped
-      image: python-generator
-      depends_on:
-        - messageBroker
+    #generator:
+      #build: ./dataGeneratorBroker
+      #container_name: data_generator
+      #restart: unless-stopped
+      #image: python-generator
+      #depends_on:
+        #- messageBroker
         #messageBroker:
           #condition: service_healthy
 
