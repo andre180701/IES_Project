@@ -39,7 +39,7 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 
 1. Para correr o docker basta correr o seguinte comando no diretório raiz do projeto:
     ```
-    sudo docker-compose down
+    sudo docker-compose down -v
     ```
     ```
     sudo docker-compose up

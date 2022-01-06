@@ -14,8 +14,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;  
 import java.sql.Date;
 import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class MQConsumer {
     @Autowired
@@ -35,14 +33,9 @@ public class MQConsumer {
         String method = (String) jo.get("method");  
 
         if (method.equals("NEW_PASSAGE")) {
-            SimpleDateFormat sdf = new SimpleDateFormat((String) jo.get("time"));   
+            System.out.println("OLAAAA ENTREI NO CONSUMER");
             Date date = Date.valueOf((String) jo.get("date")); 
-            Time time = null;
-            try {
-                time = new Time(sdf.parse((String) jo.get("time")).getTime());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            Time time = Time.valueOf((String) jo.get("time"));
             Identifier identifier = identifierService.getIdentifierById(Long.parseLong((String) jo.get("identifier")));
             Scut scut = scutService.getScutById(Long.parseLong((String) jo.get("scut")));
             Passage passage = new Passage(date, time, identifier, scut);

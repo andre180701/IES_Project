@@ -12,7 +12,7 @@ class DataGenerator:
         self.channel.queue_declare(queue='portinhas', durable=True)
 
     def generatePassage(self):
-        message = {'method': 'NEW_PASSAGE', 'identifier': random.randint(1, 2), 'scut': random.randint(1, 3), 'date': datetime.now().strftime("%d/%m/%Y"), 'time': datetime.now().strftime("%H:%M:%S")}
+        message = {'method': 'NEW_PASSAGE', 'identifier': random.randint(1, 2), 'scut': random.randint(1, 3), 'date': datetime.now().strftime("%Y-%m-%d"), 'time': datetime.now().strftime("%H:%M:%S")}
         self.send('portinhas', message)
         
     def send(self, topic=None, message=None):
