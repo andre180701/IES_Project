@@ -20,7 +20,7 @@ public class Client {
     private String password;
 
     @Column(name = "nif", unique = true, nullable = false)
-    private String nif;
+    private int nif;
 
     @Column(name = "firstName", nullable = false)
     private String first_name;
@@ -34,7 +34,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(String email, String password, String nif, String first_name, String last_name) {
+    public Client(String email, String password, int nif, String first_name, String last_name) {
         this.email = email;
         this.password = password;
         this.nif = nif;
@@ -62,11 +62,11 @@ public class Client {
         this.password = password;
     }
 
-    public String getNif() {
+    public int getNif() {
         return nif;
     }
 
-    public void setNif(String nif) {
+    public void setNif(int nif) {
         this.nif = nif;
     }
 
