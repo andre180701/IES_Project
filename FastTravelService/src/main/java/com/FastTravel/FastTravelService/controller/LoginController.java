@@ -31,8 +31,10 @@ public class LoginController {
     } 
 
     public String getLogin(String email, String password) throws ResourceNotFoundException {
-      List<Client> clientExists= clientRepository.findAll();
-      
+      //List<Client> clientExists= clientRepository.findAll();
+      Client clientExists = ClientRepository.findByEmail(email);
+
+
       return "";
   }
 
