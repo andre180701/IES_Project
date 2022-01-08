@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -33,11 +33,11 @@
                 <img src="../assets/images/dashboard/cross.png" class="edit_icon">
               </a>
               <div class="auto-form-wrapper">
-                <form action="client/home">
+                <form action="#"  th:action="@{/login/check}" th:object="${inputLogin}" method="post">
                   <div class="form-group">
                     <label class="label">Email</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Email">
+                      <input th:field="*{email}" type="text" class="form-control" placeholder="Email">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -48,7 +48,7 @@
                   <div class="form-group">
                     <label class="label">Password</label>
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="*********">
+                      <input th:field="*{password}" type="password" class="form-control" placeholder="*********">
                       <div class="input-group-append">
                         <span class="input-group-text">
                           <i class="mdi mdi-check-circle-outline"></i>
@@ -58,7 +58,7 @@
                   </div>
                   <div class="form-group">
                     <a class="nav-link" href="client/home">
-                    <button class="btn btn-primary submit-btn btn-block" style="
+                    <button type="submit" class="btn btn-primary submit-btn btn-block" style="
                     font-size: 16px;font-weight: 600; background-color: #F96E46; border: none; color: #111111">Login</button></a>
                   </div>
                   
@@ -67,6 +67,7 @@
                     <a href="register" class="text-black text-small">Create new account</a>
                   </div>
                 </form>
+                <p style="color:#FF0000; text-align: center;" th:text="${error}" />
               </div>
               <ul class="auth-footer">
                 <li>
