@@ -36,10 +36,11 @@ public class MQConsumer {
             System.out.println("OLAAAA ENTREI NO CONSUMER");
             Date date = Date.valueOf((String) jo.get("date")); 
             Time time = Time.valueOf((String) jo.get("time"));
-            Identifier identifier = identifierService.getIdentifierById(Long.parseLong((String) jo.get("identifier")));
-            Scut scut = scutService.getScutById(Long.parseLong((String) jo.get("scut")));
+            Long id_long = Long.parseLong(String.valueOf(jo.get("identifier")));
+            Identifier identifier = identifierService.getIdentifierById(id_long);
+            Long scut_long = Long.parseLong(String.valueOf(jo.get("scut")));
+            Scut scut = scutService.getScutById(scut_long);
             Passage passage = new Passage(date, time, identifier, scut);
-            System.out.println("PASSAGE CRIADA: " + passage);
             passageService.savePassage(passage);
 
         }
