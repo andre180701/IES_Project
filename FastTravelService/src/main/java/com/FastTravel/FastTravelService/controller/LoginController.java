@@ -48,7 +48,6 @@ public class LoginController {
 
     
     if(client != null && client.getPassword().equals(password)) {
-      System.out.println("{\"state\": true, \"firstName\": \"" + client.getFirst_name() +"\", \"lastName\": \"" + client.getLast_name() + "\" }");
       session.setAttribute("email", email);
       session.setAttribute("firstName", client.getFirst_name());
       session.setAttribute("lastName", client.getLast_name());
