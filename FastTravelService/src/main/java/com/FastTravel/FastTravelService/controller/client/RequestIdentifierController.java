@@ -10,6 +10,8 @@ import org.springframework.beans.factory.ObjectFactory;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.FastTravel.FastTravelService.controller.CreditCardController;
+import com.FastTravel.FastTravelService.controller.IdentifierController;
 import com.FastTravel.FastTravelService.inputsForms.InputRequestIdentifier;
 import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.CreditCard;
@@ -27,14 +29,20 @@ public class RequestIdentifierController {
   @Autowired
   ObjectFactory<HttpSession> httpSessionFactory;
 
-  @Autowired
-  private IdentifierService  identifierService;
+  //@Autowired
+  //private IdentifierService  identifierService;
 
   @Autowired
   private ClientService clientService;
 
   @Autowired
   private CreditCardService creditCardService;
+
+  @Autowired
+  private IdentifierController identifierController;
+
+  @Autowired
+  private CreditCardController creditCardController;
 
   @ModelAttribute("inputRequestIdentifier")
   public InputRequestIdentifier getGreetingObject() {
@@ -61,33 +69,16 @@ public class RequestIdentifierController {
       if (result.hasErrors()) {
         return "client/requestIdentifier";
       }  
-      if(inputRequestIdentifier.getCardNumber() != null){
-        System.out.println(inputRequestIdentifier.getCardNumber());
-      }
-      if(inputRequestIdentifier.getCardName() != null){
-        System.out.println(inputRequestIdentifier.getCardName());
-      }
-      if (inputRequestIdentifier.getCardExpirationDate() != null){
-        System.out.println(inputRequestIdentifier.getCardExpirationDate());
-      }
-      if(inputRequestIdentifier.getCardCountry() != null){
-        System.out.println(inputRequestIdentifier.getCardCountry());
-      }
-      if (inputRequestIdentifier.getCardCvv() != null) {
-        System.out.println(inputRequestIdentifier.getCardCvv());
-      }
 
       //Preguica de validar os inputs, mas é necessario dps fazer,...
       //Faz sentido criar um cartao de credito quando alguem faz um pedido ou devia verificar se existe na base de dados???
       CreditCard creditCard = new CreditCard(Integer.parseInt(inputRequestIdentifier.getCardNumber()), inputRequestIdentifier.getCardName(),  Date.valueOf(inputRequestIdentifier.getCardExpirationDate()), inputRequestIdentifier.getCardCountry(), Integer.parseInt(inputRequestIdentifier.getCardCvv()));
-      System.out.println(creditCard);
       Identifier identifier = new Identifier(inputRequestIdentifier.getRegistration(), Integer.parseInt(inputRequestIdentifier.getVehicleClass()), client, creditCard );
-      System.out.println(identifier);
 
-      creditCardService.saveCreditCard(creditCard);
-      identifierService.saveIdentifier(identifier);
-      System.out.println("Lista de identificadores na base de dados:");
-      (identifierService.getIdentifiers()).forEach(System.out::println);
+      //creditCardService.saveCreditCard(creditCard);   assim n é RESTFUL
+      creditCardController.addCreditCard(creditCard);
+      //identifierService.saveIdentifier(identifier);   assim n é RESTFUL
+      identifierController.addIdentifier(identifier);
 
       model.addAttribute("msg", "Identifier requested successfully! You can already see it in the \"Vehicles and identifiers\" tab.");
       model.addAttribute("firstName", session.getAttribute("firstName"));
