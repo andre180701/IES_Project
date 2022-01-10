@@ -214,7 +214,7 @@
                           <label class="label">Class:</label>
                           <div class="input-group">
                             <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5."> 
-                            <td th:if="${#fields.hasErrors('class')}" th:errors="*{class}">Class ranges between 1 and 5</td>
+                            <td th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5.</td>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -288,7 +288,7 @@
                             <label class="label">Card number:</label>
                             <div class="input-group">
                               <input th:field="*{cardNumber}" type="text" class="form-control" placeholder="Card number">
-                              <td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 13 and 19</td>
+                              <!--<td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 13 and 19</td>-->
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>

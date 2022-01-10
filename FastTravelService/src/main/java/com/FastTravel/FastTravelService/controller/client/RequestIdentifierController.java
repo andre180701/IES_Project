@@ -60,7 +60,7 @@ public class RequestIdentifierController {
   }
 
   @PostMapping("/client/requestIdentifier/check")
-    public String requestIdentifierSubmit(@Valid @ModelAttribute InputRequestIdentifier inputRequestIdentifier, Model model, BindingResult result) {
+    public String requestIdentifierSubmit(@Valid @ModelAttribute InputRequestIdentifier inputRequestIdentifier,BindingResult result, Model model) {
       HttpSession session = httpSessionFactory.getObject();
       String email = (String) session.getAttribute("email");
       Client client = clientService.getClientByEmail(email);

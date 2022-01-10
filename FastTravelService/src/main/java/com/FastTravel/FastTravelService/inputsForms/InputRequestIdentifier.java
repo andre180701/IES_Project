@@ -1,9 +1,17 @@
 package com.FastTravel.FastTravelService.inputsForms;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class InputRequestIdentifier {
     String registration;
+    
+    @NotNull
+    @Min(value=1, message= "Class ranges between 1 and 5.") 
+    @Max(value=5, message= "Class ranges between 1 and 5.")
     String vehicleClass;
+
     String address;
     String locality;
     String zipCode;
