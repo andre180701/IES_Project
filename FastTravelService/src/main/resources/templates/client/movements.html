@@ -266,14 +266,14 @@
                       <tbody>
                         <tr th:each="passage : ${passages}"  >
                           <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td th:text="${{passage.identifierId.registration}}"/>
-                          <td th:text="${{passage.identifierId.identifierId}}"/>
+                          <td th:text="${{passage.identifier.registration}}"/>
+                          <td th:text="${{passage.identifier.id}}"/>
                           <td th:text="${{passage.date}}"/>
                           <td th:text="${{passage.time}}"/>
-                          <td th:text="${{passage.scutId.longitude}}"/>
-                          <td th:text="${{passage.scutId.latitude}}"/>
-                          <td th:text="${{passage.scutId.description}}"/>
-                          <td th:text="${{passage.scutId.price1}}"/>
+                          <td th:text="${{passage.scut.longitude}}"/>
+                          <td th:text="${{passage.scut.latitude}}"/>
+                          <td th:text="${{passage.scut.description}}"/>
+                          <td th:text="${{passage.scut.price1}}"/>
                           <td th:text="${{passage.paymentState}}"/>
                           <td>
                               <label class="badge badge-success">Completed</label>

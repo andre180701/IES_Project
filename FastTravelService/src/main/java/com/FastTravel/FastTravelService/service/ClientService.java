@@ -38,9 +38,15 @@ public class ClientService{
         return clientRepository.findByEmail(email);
     }
 
-    /* Ainda n acabei
+    
     public Client updateClient(Client client) {
         Client existingClient = clientRepository.findById(client.getId()).orElse(null);
+        client.setEmail(existingClient.getEmail());
+        client.setFirst_name(existingClient.getFirst_name());
+        client.setIdentifiers(existingClient.getIdentifiers());
+        client.setLast_name(existingClient.getLast_name());
+        client.setNif(existingClient.getNif());
+        client.setPassword(existingClient.getPassword());
         return clientRepository.save(existingClient);
-    }*/
+    }
 }

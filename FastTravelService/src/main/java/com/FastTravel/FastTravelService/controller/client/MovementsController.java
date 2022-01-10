@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.FastTravel.FastTravelService.model.Client;
-import com.FastTravel.FastTravelService.model.Movements;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.service.ClientService;
@@ -54,7 +53,7 @@ public class MovementsController {
           }
         }
       }
-
+      System.out.println("Lista de passagens" + passages_client);
       model.addAttribute("passages", passages_client);
       return "client/movements";
       
