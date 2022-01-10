@@ -202,7 +202,8 @@
                         <div class="form-group">
                           <label class="label">Registration:</label>
                           <div class="input-group">
-                            <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB88LX">
+                            <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB-88-LX">
+                            <td th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration Error</td>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -212,7 +213,8 @@
                         <div class="form-group">
                           <label class="label">Class:</label>
                           <div class="input-group">
-                            <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5.">
+                            <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5."> 
+                            <td th:if="${#fields.hasErrors('class')}" th:errors="*{class}">Class ranges between 1 and 5</td>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -286,6 +288,7 @@
                             <label class="label">Card number:</label>
                             <div class="input-group">
                               <input th:field="*{cardNumber}" type="text" class="form-control" placeholder="Card number">
+                              <td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 13 and 19</td>
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>

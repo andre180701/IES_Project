@@ -2,6 +2,10 @@ package com.FastTravel.FastTravelService.model;
 
 import lombok.Data;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 import java.util.Set;
 
 @Entity
@@ -17,6 +21,8 @@ public class Identifier {
     private String registration;
 
     @Column(name = "classe", nullable = false)
+    @Min(value=1, message= "Class ranges between 1 and 5.") 
+    @Max(value=5, message= "Class ranges between 1 and 5.")
     private int classe;
 
     @Column(name = "state", nullable = false)
@@ -29,6 +35,7 @@ public class Identifier {
 
     @ManyToOne
     @JoinColumn(name = "creditCardID", nullable = false)
+    @Size(min=13, max=19, message="The number of digits varies between 13 and 19")
     private CreditCard creditCard;
 
     @OneToMany(mappedBy="identifier")
