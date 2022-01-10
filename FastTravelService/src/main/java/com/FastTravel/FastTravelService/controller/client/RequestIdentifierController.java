@@ -1,12 +1,14 @@
 package com.FastTravel.FastTravelService.controller.client;
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.ObjectFactory;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import com.FastTravel.FastTravelService.inputsForms.InputRequestIdentifier;
 import com.FastTravel.FastTravelService.model.Client;
@@ -50,12 +52,15 @@ public class RequestIdentifierController {
   }
 
   @PostMapping("/client/requestIdentifier/check")
-    public String requestIdentifierSubmit(@ModelAttribute InputRequestIdentifier inputRequestIdentifier, Model model) {
+    public String requestIdentifierSubmit(@Valid @ModelAttribute InputRequestIdentifier inputRequestIdentifier, Model model, BindingResult result) {
       HttpSession session = httpSessionFactory.getObject();
       String email = (String) session.getAttribute("email");
       Client client = clientService.getClientByEmail(email);
       System.out.println(client);
 
+      if (result.hasErrors()) {
+        return "client/requestIdentifier";
+      }  
       if(inputRequestIdentifier.getCardNumber() != null){
         System.out.println(inputRequestIdentifier.getCardNumber());
       }
