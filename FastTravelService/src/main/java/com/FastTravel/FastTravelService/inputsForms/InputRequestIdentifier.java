@@ -1,30 +1,28 @@
 package com.FastTravel.FastTravelService.inputsForms;
 
-import java.sql.Date;
 
 public class InputRequestIdentifier {
     String registration;
-    int vehicleClass;
+    String vehicleClass;
     String address;
     String locality;
     String zipCode;
-    int contact;
+    String contact;
     String cardName;
     String cardCountry;
-    int cardNumber;
-    Date cardExpirationDate;
-    int cardCvv;
-    
+    String cardNumber;
+    String cardExpirationDate;
+    String cardCvv;
     public String getRegistration() {
         return registration;
     }
     public void setRegistration(String registration) {
         this.registration = registration;
     }
-    public int getVehicleClass() {
+    public String getVehicleClass() {
         return vehicleClass;
     }
-    public void setVehicleClass(int vehicleClass) {
+    public void setVehicleClass(String vehicleClass) {
         this.vehicleClass = vehicleClass;
     }
     public String getAddress() {
@@ -45,10 +43,10 @@ public class InputRequestIdentifier {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-    public int getContact() {
+    public String getContact() {
         return contact;
     }
-    public void setContact(int contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
     public String getCardName() {
@@ -63,25 +61,23 @@ public class InputRequestIdentifier {
     public void setCardCountry(String cardCountry) {
         this.cardCountry = cardCountry;
     }
-    public int getCardNumber() {
+    public String getCardNumber() {
         return cardNumber;
     }
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
-    public Date getCardExpirationDate() {
+    public String getCardExpirationDate() {
         return cardExpirationDate;
     }
-    public void setCardExpirationDate(Date cardExpirationDate) {
+    public void setCardExpirationDate(String cardExpirationDate) {
         this.cardExpirationDate = cardExpirationDate;
     }
-    public int getCardCvv() {
+    public String getCardCvv() {
         return cardCvv;
     }
-    public void setCardCvv(int cardCvv) {
+    public void setCardCvv(String cardCvv) {
         this.cardCvv = cardCvv;
     }
-    
-
 
 }
