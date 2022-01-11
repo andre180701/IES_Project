@@ -13,17 +13,27 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.ObjectFactory;
+import javax.servlet.http.HttpSession;  
 
 
 //@EnableJpaRepositories(basePackageClasses = {ScutRepository.class})
 //@RestController
 @Controller
-public class ScutController{
+public class ScutsController{
+    @Autowired
+    ObjectFactory<HttpSession> httpSessionFactory;
+
     @Autowired
     private ScutRepository  scutRepository;
 
     @GetMapping("admin/scuts")
     public String getAllScuts(Model model){
+        HttpSession session = httpSessionFactory.getObject();
+
+        model.addAttribute("firstName", session.getAttribute("firstName"));
+        model.addAttribute("lastName", session.getAttribute("lastName"));
+        model.addAttribute("email", session.getAttribute("email"));
         List<Scut> scuts = scutRepository.findAll();
         model.addAttribute("scuts", scuts);
 		return "admin/scuts";
