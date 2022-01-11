@@ -33,6 +33,10 @@ public class AdminService {
         return "admin removed !! " + id;
     }
 
+    public Admin getAdminByEmail(String email) {
+        return adminRepository.findByEmail(email);
+    }
+
     public Admin updateAdmin(Admin admin) {
         Admin existingAdmin = adminRepository.findById(admin.getId()).orElse(null);
         existingAdmin.setEmail(admin.getEmail());

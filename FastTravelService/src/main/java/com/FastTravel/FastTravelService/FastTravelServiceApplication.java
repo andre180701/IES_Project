@@ -34,6 +34,8 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	private IdentifierRepository identifierRepository;
 	@Autowired
 	private ScutRepository scutRepository;
+	@Autowired
+	private AdminRepository adminRepository;
 
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
@@ -45,6 +47,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		scutRepository.save(new Scut(70.0987, 56.9987, "Peso Regua N/S", Date.valueOf("2001-11-6"), 1.70, 2.30, 3.09, 2.25, 2.70));
 		scutRepository.save(new Scut(51.4679, 51.3333, "Vila Real S O/E", Date.valueOf("2001-12-17"), 1.75, 3.27, 2.75, 2.25, 2.56));
 		scutRepository.save(new Scut(60.8901, 45.6709, "Campea O/E", Date.valueOf("2001-5-20"), 1.70, 2.56, 3.98, 2.28, 2.61));
+		adminRepository.save(new Admin("filipef@ua.pt", "filipeF2", "Filipe", "Augusto"));
 	}
 	
 	/*
