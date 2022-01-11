@@ -25,7 +25,7 @@ public class InputRequestIdentifier {
     String zipCode;
 
     @NotNull
-    @Size(min=9, max=9, message="The cellphone number must have 9 digits.")
+    @Size(min=9, max=9, message="The cellphone number must have 9 digits")
     @Min(value=100000000, message= "The mininimum value is 100000000") 
     @Max(value=999999999, message= "The mininimum value is 999999999")
     String contact;

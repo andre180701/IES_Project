@@ -202,8 +202,8 @@
                         <div class="form-group">
                           <label class="label">Registration:</label>
                           <div class="input-group">
-                            <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB-88-LX">
-                            <td th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration should use the portuguese license plate pattern; Ex: AB-12-CD</td>
+                            <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB-88-LX" h:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration should use the portuguese license plate pattern; Ex: AB-12-CD>
+                            <!-- <td th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration should use the portuguese license plate pattern; Ex: AB-12-CD</td> -->
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -213,8 +213,8 @@
                         <div class="form-group">
                           <label class="label">Class:</label>
                           <div class="input-group">
-                            <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5."> 
-                            <td th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5.</td>
+                            <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5." th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5> 
+                            <!-- <td th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5</td> -->
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -245,7 +245,7 @@
                         <div class="form-group">
                           <label class="label">Zip-Code:</label>
                           <div class="input-group">
-                            <input th:field="*{zipCode}"  type="text" class="form-control" placeholder="Ex: 1234-123">
+                            <input th:field="*{zipCode}"  type="text" class="form-control" placeholder="Ex: 1234-123" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Zip-code should use the portuguese zip-code pattern; Ex: 1234-123>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -255,7 +255,7 @@
                         <div class="form-group">
                           <label class="label">Contact:</label>
                           <div class="input-group">
-                            <input th:field="*{contact}" type="text" class="form-control" placeholder="Ex: 912345678">
+                            <input th:field="*{contact}" type="text" class="form-control" placeholder="Ex: 912345678" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}">The cellphone number must have 9 digits>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
@@ -287,7 +287,7 @@
                           <div class="form-group">
                             <label class="label">Card number:</label>
                             <div class="input-group">
-                              <input th:field="*{cardNumber}" type="text" class="form-control" placeholder="Card number">
+                              <input th:field="*{cardNumber}" type="text" class="form-control" placeholder="Card number" th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 8 and 10>
                               <!--<td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 13 and 19</td>-->
                               <div class="input-group-append">
                                 <span class="input-group-text">
@@ -298,7 +298,7 @@
                           <div class="form-group">
                             <label class="label">Expiration date:</label>
                             <div class="input-group">
-                              <input th:field="*{cardExpirationDate}" type="text" class="form-control" placeholder="Ex: 12/2022">
+                              <input th:field="*{cardExpirationDate}" type="text" class="form-control" placeholder="Ex: 12/2022" th:if="${#fields.hasErrors('cardExpirationDate')}" th:errors="*{cardExpirationDate}">Expiration date must use the following pattern month/year; Ex: 12/2022>
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
@@ -308,7 +308,7 @@
                           <div class="form-group">
                             <label class="label">CVV:</label>
                             <div class="input-group">
-                              <input th:field="*{cardCvv}" type="password" class="form-control" placeholder="CVV">
+                              <input th:field="*{cardCvv}" type="password" class="form-control" placeholder="CVV" th:if="${#fields.hasErrors('cardCvv')}" th:errors="*{cardCvv}">CVV must have 3 digits>
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
