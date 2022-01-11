@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.FastTravel.FastTravelService.model.*;
 import com.FastTravel.FastTravelService.repository.*;
+import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.service.CreditCardService;
 import com.FastTravel.FastTravelService.service.IdentifierService;
@@ -29,6 +30,8 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	private CreditCardService creditCardService;
 	@Autowired
 	private ClientRepository clientRepository;
+	@Autowired
+	private AdminService adminService;
 	@Autowired
 	private ScutService scutService;
 	@Autowired
@@ -114,8 +117,8 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		for (Scut scut : scutService.getScuts()) {
 			if (scut1.getLatitude() == scut.getLatitude() && scut1.getLongitude() == scut.getLongitude() ){
 				flag = false;
+			}
 		}
-	}
 		if (flag == true){
 			scutRepository.save(scut1);
 		}
@@ -125,8 +128,8 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		for (Scut scut : scutService.getScuts()) {
 			if (scut2.getLatitude() == scut.getLatitude() && scut2.getLongitude() == scut.getLongitude() ){
 				flag = false;
+			}
 		}
-	}
 		if (flag == true){
 			scutRepository.save(scut2);
 		}
@@ -135,12 +138,21 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		for (Scut scut : scutService.getScuts()) {
 			if (scut3.getLatitude() == scut.getLatitude() && scut3.getLongitude() == scut.getLongitude() ){
 				flag = false;
+			}
 		}
-	}
 		if (flag == true){
 			scutRepository.save(scut3);
 		}
-		
+		flag = true;
+		Admin admin1 = new Admin("andrefreixo18@ua.pt", "andrefreixo!", "André", "Freixo");
+		for (Admin admin : adminService.getAdmins()) {
+			if (admin1.getEmail().equals(admin.getEmail())){
+				flag = false;
+			}
+		}
+		if (flag == true){
+			adminRepository.save(admin1);
+		}
 		
 	}
 }
