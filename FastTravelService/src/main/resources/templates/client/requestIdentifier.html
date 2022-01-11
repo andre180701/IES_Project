@@ -203,7 +203,7 @@
                           <label class="label">Registration:</label>
                           <div class="input-group">
                             <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB-88-LX">
-                            <td th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration Error</td>
+                            <td th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration should use the portuguese license plate pattern; Ex: AB-12-CD</td>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
