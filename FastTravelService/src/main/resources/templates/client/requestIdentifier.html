@@ -204,23 +204,24 @@
                           <label class="label">Registration:</label>
                           <div class="input-group">
                             <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB-88-LX">
-                            <td th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration Error</td>
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration should use the portuguese license plate pattern; Ex: AB-12-CD</p>
                         </div>
                         <div class="form-group">
                           <label class="label">Class:</label>
                           <div class="input-group">
                             <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5."> 
-                            <td th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5.</td>
+                            
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5</p>
                         </div>
                         <h3 class="text-center mb-4">Shipping data</h3>
                         <div class="form-group">
@@ -232,6 +233,7 @@
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
                         </div>
                         <div class="form-group">
                           <label class="label">Locality:</label>
@@ -242,6 +244,7 @@
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                         </div>
                         <div class="form-group">
                           <label class="label">Zip-Code:</label>
@@ -252,6 +255,7 @@
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Zip-code should use the portuguese zip-code pattern; Ex: 1234-123</p>
                         </div>
                         <div class="form-group">
                           <label class="label">Contact:</label>
@@ -262,6 +266,7 @@
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}">The cellphone number must have 9 digits</p>
                         </div>
                         <h3 class="text-center mb-4">Payment data</h3>
                         <h6 class="text-center mb-4">Note: Credit or debit card only</h6>
@@ -274,6 +279,7 @@
                                 </span>
                               </div>
                             </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                           </div>
                           <div class="form-group">
                             <label class="label">Country:</label>
@@ -284,6 +290,7 @@
                                 </span>
                               </div>
                             </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                           </div>
                           <div class="form-group">
                             <label class="label">Card number:</label>
@@ -295,6 +302,7 @@
                                 </span>
                               </div>
                             </div>
+                            <p style="color:#FF0000;" th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 8 and 10</p>
                           </div>
                           <div class="form-group">
                             <label class="label">Expiration date:</label>
@@ -305,6 +313,7 @@
                                 </span>
                               </div>
                             </div>
+                            <p style="color:#FF0000;" th:if="${#fields.hasErrors('cardExpirationDate')}" th:errors="*{cardExpirationDate}">Expiration date must use the following pattern month/year; Ex: 12/2022</p>
                           </div>
                           <div class="form-group">
                             <label class="label">CVV:</label>
@@ -315,6 +324,7 @@
                                 </span>
                               </div>
                             </div>
+                            <p style="color:#FF0000;" th:if="${#fields.hasErrors('cardCvv')}" th:errors="*{cardCvv}">CVV must have 3 digits</p>
                           </div>
                         <div class="form-group">
                           <button  type="submit" class="btn btn-primary submit-btn btn-block" style="

@@ -37,7 +37,7 @@ public class Identifier {
 
     @ManyToOne
     @JoinColumn(name = "creditCardID", nullable = false)
-    //@Size(min=13, max=19, message="The number of digits varies between 13 and 19")
+    //@Size(min=8, max=10, message="The number of digits varies between 8 and 10")
     private CreditCard creditCard;
 
     @OneToMany(mappedBy="identifier")
