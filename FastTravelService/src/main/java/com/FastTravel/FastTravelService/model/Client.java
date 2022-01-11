@@ -94,6 +94,12 @@ public class Client {
         this.identifiers = identifiers;
     }
 
+    @Override
+    public String toString() {
+        return "Client [email=" + email + ", first_name=" + first_name + ", id=" + id + ", last_name=" + last_name
+                + ", nif=" + nif + ", password=" + password + "]";
+    }
+
     
 }
 
