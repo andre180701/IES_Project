@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.FastTravel.FastTravelService.inputsForms.InputLogin;
 import com.FastTravel.FastTravelService.model.Client;
-import com.FastTravel.FastTravelService.model.InputLogin;
 import com.FastTravel.FastTravelService.service.ClientService;
 
 import org.springframework.beans.factory.ObjectFactory;

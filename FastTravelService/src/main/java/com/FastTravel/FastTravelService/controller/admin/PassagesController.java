@@ -15,7 +15,7 @@ import java.util.*;
 
 @Controller
 //@EnableJpaRepositories(basePackageClasses = {PassageRepository.class})
-public class PassageController {
+public class PassagesController {
     @Autowired
     private PassageRepository passageRepository;
 

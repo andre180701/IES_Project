@@ -34,14 +34,14 @@ public class CreditCardService{
     }
 
     public CreditCard updateCreditCard(CreditCard creditCard){
-        CreditCard existingCreditCard = CreditCardRepository.findById(creditCard.getId()).orElse(null);
+        CreditCard existingCreditCard = creditCardRepository.findById(creditCard.getId()).orElse(null);
         creditCard.setCvv(existingCreditCard.getCvv());
         creditCard.setExpirationDate(existingCreditCard.getExpirationDate());
         creditCard.setIdentifiers(existingCreditCard.getIdentifiers());
         creditCard.setName(existingCreditCard.getName());
         creditCard.setNumber(existingCreditCard.getNumber());
         creditCard.setPais(existingCreditCard.getPais());
-        return CreditCardRepository.save(existingCreditCard);
+        return creditCardRepository.save(existingCreditCard);
 
     }
 }
