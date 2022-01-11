@@ -7,29 +7,30 @@ import java.util.List;
 import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.repository.CreditCardRepository;
 
-public class CreditCardService {
+@Service
+public class CreditCardService{
     @Autowired
-    private CreditCardRepository CreditCardRepository;
-
-    public CreditCard saveCreditCard(CreditCard CreditCard){
-        return CreditCardRepository.save(CreditCard);
+    private CreditCardRepository creditCardRepository;
+    
+    public CreditCard saveCreditCard(CreditCard creditCard){
+        return creditCardRepository.save(creditCard);
     }
 
-    public List<CreditCard> saveCreditCards(List<CreditCard> CreditCards) {
-        return CreditCardRepository.saveAll(CreditCards);
+    public List<CreditCard> saveCreditCards(List<CreditCard> creditCards) {
+        return creditCardRepository.saveAll(creditCards);
     }
 
     public List<CreditCard> getCreditCards(){
-        return CreditCardRepository.findAll();
+        return creditCardRepository.findAll();
     }
 
     public CreditCard getCreditCardById(Long id) {
-        return CreditCardRepository.findById(id).orElse(null);
+        return creditCardRepository.findById(id).orElse(null);
     }
 
     public String deleteCreditCard(Long id) {
-        CreditCardRepository.deleteById(id);
-        return "CreditCard removed !! " + id;
+        creditCardRepository.deleteById(id);
+        return "creditCard removed !! " + id;
     }
 
     public CreditCard updateCreditCard(CreditCard creditCard){
@@ -43,5 +44,4 @@ public class CreditCardService {
         return CreditCardRepository.save(existingCreditCard);
 
     }
-    
 }

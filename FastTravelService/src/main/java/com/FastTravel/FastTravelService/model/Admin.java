@@ -2,15 +2,14 @@ package com.FastTravel.FastTravelService.model;
 
 import lombok.Data;
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "client")
-public class Client {
+@Table(name = "admin")
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "clientId", nullable = false)
+    @Column(name = "adminId", nullable = false)
     private long id;
 
     @Column(name = "email", unique = true, nullable = false)
@@ -19,25 +18,19 @@ public class Client {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "nif", unique = true, nullable = false)
-    private int nif;
-
     @Column(name = "firstName", nullable = false)
     private String first_name;
 
     @Column(name = "lastName", nullable = false)
     private String last_name;
 
-    @OneToMany(mappedBy="client")
-    Set<Identifier> identifiers;
 
-    public Client() {
+    public Admin() {
     }
 
-    public Client(String email, String password, int nif, String first_name, String last_name) {
+    public Admin(String email, String password, String first_name, String last_name) {
         this.email = email;
         this.password = password;
-        this.nif = nif;
         this.first_name = first_name;
         this.last_name = last_name;
     }
@@ -62,14 +55,6 @@ public class Client {
         this.password = password;
     }
 
-    public int getNif() {
-        return nif;
-    }
-
-    public void setNif(int nif) {
-        this.nif = nif;
-    }
-
     public String getFirst_name() {
         return first_name;
     }
@@ -86,19 +71,7 @@ public class Client {
         this.last_name = last_name;
     }
 
-    public Set<Identifier> getIdentifiers() {
-        return identifiers;
-    }
-
-    public void setIdentifiers(Set<Identifier> identifiers) {
-        this.identifiers = identifiers;
-    }
-
-    @Override
-    public String toString() {
-        return "Client [email=" + email + ", first_name=" + first_name + ", id=" + id + ", last_name=" + last_name
-                + ", nif=" + nif + ", password=" + password + "]";
-    }
+    
 
     
 }
