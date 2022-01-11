@@ -95,6 +95,14 @@ public class CreditCard {
         this.cvv = cvv;
     }
 
+    @Override
+    public String toString() {
+        return "CreditCard [cvv=" + cvv + ", expirationDate=" + expirationDate + ", id=" + id + ", name=" + name
+                + ", number=" + number + ", pais=" + pais + "]";
+    }
+
+    
+
 }
 
 

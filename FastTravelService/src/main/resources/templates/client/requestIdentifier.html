@@ -197,123 +197,137 @@
                     <p class="text-center">
                       To get an identifier you will have to pay a monthly fee of 0.30€.                    </p>
                     <div class="auto-form-wrapper">
-                      <form action="#" style="background-color: #ffffff">
+                      <p style="color:#FF0000; text-align: center;" th:text="${msg}" />
+                      <form action="#" th:action="@{/client/requestIdentifier/check}" th:object="${inputRequestIdentifier}" method="post" style="background-color: #ffffff">
                         <h3 class="text-center mb-4">Vehicle Data</h3>
                         <div class="form-group">
                           <label class="label">Registration:</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Ex: AB88LX">
+                            <input th:field="*{registration}" type="text" class="form-control" placeholder="Ex: AB-88-LX">
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('registration')}" th:errors="*{registration}">Registration should use the portuguese license plate pattern; Ex: AB-12-CD</p>
                         </div>
                         <div class="form-group">
                           <label class="label">Class:</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Class ranges between 1 and 5.">
+                            <input th:field="*{vehicleClass}" type="text" class="form-control" placeholder="Class ranges between 1 and 5."> 
+                            
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('vehicleClass')}" th:errors="*{vehicleClass}">Class ranges between 1 and 5</p>
                         </div>
                         <h3 class="text-center mb-4">Shipping data</h3>
                         <div class="form-group">
                           <label class="label">Address:</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Address">
+                            <input th:field="*{address}" type="text" class="form-control" placeholder="Address">
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
                         </div>
                         <div class="form-group">
                           <label class="label">Locality:</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Locality">
+                            <input th:field="*{locality}" type="text" class="form-control" placeholder="Locality">
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                         </div>
                         <div class="form-group">
                           <label class="label">Zip-Code:</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Ex: 1234-123">
+                            <input th:field="*{zipCode}"  type="text" class="form-control" placeholder="Ex: 1234-123">
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">Zip-code should use the portuguese zip-code pattern; Ex: 1234-123</p>
                         </div>
                         <div class="form-group">
                           <label class="label">Contact:</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Ex: 912345678">
+                            <input th:field="*{contact}" type="text" class="form-control" placeholder="Ex: 912345678">
                             <div class="input-group-append">
                               <span class="input-group-text">
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}">The cellphone number must have 9 digits</p>
                         </div>
                         <h3 class="text-center mb-4">Payment data</h3>
                         <h6 class="text-center mb-4">Note: Credit or debit card only</h6>
                           <div class="form-group">
                             <label class="label">Cardholder's full name:</label>
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Full name">
+                              <input th:field="*{cardName}" type="text" class="form-control" placeholder="Full name">
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
                               </div>
                             </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                           </div>
                           <div class="form-group">
                             <label class="label">Country:</label>
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="country">
+                              <input th:field="*{cardCountry}" type="text" class="form-control" placeholder="country">
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
                               </div>
                             </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                           </div>
                           <div class="form-group">
                             <label class="label">Card number:</label>
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Card number">
+                              <input th:field="*{cardNumber}" type="text" class="form-control" placeholder="Card number">
+                              <!--<td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 13 and 19</td>-->
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
                               </div>
                             </div>
+                            <p style="color:#FF0000;" th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">The number of digits varies between 8 and 10</p>
                           </div>
                           <div class="form-group">
                             <label class="label">Expiration date:</label>
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Ex: 12/2022">
+                              <input th:field="*{cardExpirationDate}" type="text" class="form-control" placeholder="Ex: 12/2022">
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
                               </div>
                             </div>
+                            <p style="color:#FF0000;" th:if="${#fields.hasErrors('cardExpirationDate')}" th:errors="*{cardExpirationDate}">Expiration date must use the following pattern month/year; Ex: 12/2022</p>
                           </div>
                           <div class="form-group">
                             <label class="label">CVV:</label>
                             <div class="input-group">
-                              <input type="password" class="form-control" placeholder="CVV">
+                              <input th:field="*{cardCvv}" type="password" class="form-control" placeholder="CVV">
                               <div class="input-group-append">
                                 <span class="input-group-text">
                                 </span>
                               </div>
                             </div>
+                            <p style="color:#FF0000;" th:if="${#fields.hasErrors('cardCvv')}" th:errors="*{cardCvv}">CVV must have 3 digits</p>
                           </div>
                         <div class="form-group">
-                          <button class="btn btn-primary submit-btn btn-block" style="
+                          <button  type="submit" class="btn btn-primary submit-btn btn-block" style="
                           font-size: 16px;font-weight: 600; background-color: #F9FBB2; border: none; color: #111111">Next</button>
                         </div>
                       </form>
