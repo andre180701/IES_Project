@@ -232,6 +232,7 @@
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
                         </div>
                         <div class="form-group">
                           <label class="label">Locality:</label>
@@ -242,6 +243,7 @@
                               </span>
                             </div>
                           </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                         </div>
                         <div class="form-group">
                           <label class="label">Zip-Code:</label>
@@ -276,6 +278,7 @@
                                 </span>
                               </div>
                             </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                           </div>
                           <div class="form-group">
                             <label class="label">Country:</label>
@@ -286,6 +289,7 @@
                                 </span>
                               </div>
                             </div>
+                          <p style="color:#FF0000;" th:if="${#fields.hasErrors('locality')}" th:errors="*{locality}"></p>
                           </div>
                           <div class="form-group">
                             <label class="label">Card number:</label>

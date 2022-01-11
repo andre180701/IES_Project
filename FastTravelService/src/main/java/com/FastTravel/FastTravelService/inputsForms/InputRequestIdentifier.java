@@ -13,11 +13,14 @@ public class InputRequestIdentifier {
     String registration;
     
     @NotNull
-    @Min(value=1, message= "Class ranges between 1 and 5") 
-    @Max(value=5, message= "Class ranges between 1 and 5")
+    @Min(value=1, message= "Class must be greater than or equal to 1") 
+    @Max(value=5, message= "Class must be less than or equal to 5")
     String vehicleClass;
 
+    @NotNull(message= "Address mustn't be empty")
     String address;
+
+    @NotNull(message= "Locality mustn't be empty")
     String locality;
 
     @NotNull
@@ -27,9 +30,13 @@ public class InputRequestIdentifier {
     @NotNull
     @Size(min=9, max=9, message="The cellphone number must have 9 digits")
     @Min(value=100000000, message= "The mininimum value is 100000000") 
-    @Max(value=999999999, message= "The mininimum value is 999999999")
+    @Max(value=999999999, message= "The maximium value is 999999999")
     String contact;
+
+    @NotNull(message= "CardName mustn't be empty")
     String cardName;
+
+    @NotNull(message= "CardCountry mustn't be empty")
     String cardCountry;
     
     @NotNull
