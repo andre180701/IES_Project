@@ -21,34 +21,50 @@ public class VehiclesIdentifiersController {
   private ClientService clientService;
 
   @Autowired
+  private IdentifierService id;
+
+  @Autowired
   ObjectFactory<HttpSession> httpSessionFactory;
 
 
     @GetMapping("client/vehiclesIdentifiers")
     public String getVehiclesIdentifiers( Model model) {
+      System.out.println("Entrei no get da pagina veiculos e identificadores");
       HttpSession session = httpSessionFactory.getObject();
 
-      /*model.addAttribute("firstName", session.getAttribute("firstName"));
+      model.addAttribute("firstName", session.getAttribute("firstName"));
       model.addAttribute("lastName", session.getAttribute("lastName"));
       model.addAttribute("email", session.getAttribute("email"));
-      */
+      System.out.println("INICIAL");
+
       String email = (String) session.getAttribute("email");
+      System.out.println("Email teste");
+      System.out.println(email);
+
       Client client = clientService.getClientByEmail(email);
+      System.out.println("Cliente autenticado teste");
+      System.out.println(client);
 
-      IdentifierService id = new IdentifierService();
-      //List<IdentifierByUser> idByUser = new ArrayList<IdentifierByUser>();
-      List<Identifier> list = new ArrayList<Identifier>();
+      //ArrayList<IdentifierByUser> idByUser = new ArrayList<IdentifierByUser>();
+      List<Identifier> list2 = new ArrayList<Identifier>();
+      List<Identifier> list3 = id.getIdentifiers();
 
-      list = id.getIdentifiers();
-      for(int i=0; i<list.size(); i++){
-        Identifier var = list.get(i);
-        if(client.getId() != var.getClient().getId()){
-          list.remove(i);
+      
+      for(Identifier val : list3){
+        System.out.println("Lista de identificadores ");
+        
+        System.out.println(val);
+        System.out.println("Id do cliente autenticado " + client.getId());
+        System.out.println("Id do cliente da lista " + val.getClient().getId());
+        if(client.getId() == val.getClient().getId()){
+          list2.add(val);
+          System.out.println("Identificador do cliente teste");
+          System.out.println(val);
           
         }
-
+       
       }
-      model.addAttribute("identifiers", list);
+      model.addAttribute("identifiers", list2);
 		  return "client/vehiclesIdentifiers";
     }    
 }

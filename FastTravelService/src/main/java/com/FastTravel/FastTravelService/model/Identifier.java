@@ -97,4 +97,10 @@ public class Identifier {
         this.passages = passages;
     }
 
+    @Override
+    public String toString() {
+        return "Identifier [classe=" + classe + ", client=" + client + ", creditCard=" + creditCard + ", id=" + id
+                + ", registration=" + registration + ", state=" + state + "]";
+    }
+
 }
