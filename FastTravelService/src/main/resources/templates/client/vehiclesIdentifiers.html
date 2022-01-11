@@ -235,52 +235,22 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td></td>
-                          <td>AA-02-31</td>
-                          <td>1</td>
-                          <td>3</td>
-                          <td>123456</td>
-                          <td>Active</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-fw" style="float: right;">Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>BG-10-89</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>554332</td>
-                          <td>Active</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-fw" style="float: right;">Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>CC-12-66</td>
-                          <td>3</td>
-                          <td>5</td>
-                          <td>102334</td>
-                          <td>Inactive</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-fw" style="float: right;">Edit</button></td> 
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>VV-33-44</td>
-                          <td>4</td>
-                          <td>4</td>
-                          <td>678954</td>
-                          <td>Active</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-fw" style="float: right;">Edit</button></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>17-12-2001</td>
-                          <td>5</td>
-                          <td>3</td>
-                          <td>734774</td>
-                          <td>Inactive</td>
-                          <td><button type="button" class="btn btn-inverse-danger btn-fw" style="float: right;">Edit</button></td> 
+                        <tr th:each="identifier : ${identifiers}"  >
+                            <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+                            <td th:text="${{identifier.registration}}"/>
+                            <td th:text="${{identifier.id}}"/>
+                            <td th:text="${{identifier.classe}}"/>
+                            <td th:text="${{identifier.creditCard.number}}"/>
+                            <td th:text="${{identifier.state}}"/>
+                            <!--<td>
+                                <label class="badge badge-success">Completed</label>
+                              </td>-->
+                            <td><i class="fa fa-ellipsis-v"></i></td>  
+                            
                         </tr>
                       </tbody>
+                      
+                      
                     </table>
                   </div>
                 </div>
