@@ -17,8 +17,6 @@ import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.service.ClientService;
-import com.FastTravel.FastTravelService.service.CreditCardService;
-import com.FastTravel.FastTravelService.service.IdentifierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,14 +27,8 @@ public class RequestIdentifierController {
   @Autowired
   ObjectFactory<HttpSession> httpSessionFactory;
 
-  //@Autowired
-  //private IdentifierService  identifierService;
-
   @Autowired
   private ClientService clientService;
-
-  @Autowired
-  private CreditCardService creditCardService;
 
   @Autowired
   private IdentifierController identifierController;

@@ -12,9 +12,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;  
 import org.springframework.beans.factory.annotation.Autowired;
 import com.FastTravel.FastTravelService.service.ClientService;
-import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.Identifier;
+import com.FastTravel.FastTravelService.controller.IdentifierController;
+
 
 @Controller
 public class VehiclesIdentifiersController {
@@ -23,10 +24,10 @@ public class VehiclesIdentifiersController {
   private ClientService clientService;
 
   @Autowired
-  private IdentifierService identifierService;
+  ObjectFactory<HttpSession> httpSessionFactory;
 
   @Autowired
-  ObjectFactory<HttpSession> httpSessionFactory;
+  private IdentifierController identifierController;
 
 
     @GetMapping("client/vehiclesIdentifiers")
@@ -42,7 +43,7 @@ public class VehiclesIdentifiersController {
       Client client = clientService.getClientByEmail(email);
 
       List<Identifier> identifiersClient = new ArrayList<Identifier>();
-      List<Identifier> identifiers = identifierService.getIdentifiers();
+      List<Identifier> identifiers = identifierController.findAllIdentifiers();
 
       for(Identifier val : identifiers){
         if(client.getId() == val.getClient().getId()){
