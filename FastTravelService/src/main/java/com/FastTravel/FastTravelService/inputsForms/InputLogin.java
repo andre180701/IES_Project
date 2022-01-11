@@ -1,4 +1,4 @@
-package com.FastTravel.FastTravelService.model;
+package com.FastTravel.FastTravelService.inputsForms;
 
 public class InputLogin {
     private String email;

@@ -33,11 +33,15 @@ public class IdentifierService{
         return "identifier removed !! " + id;
     }
 
-    /* Ainda n acabei
+    
     public Identifier updateIdentifier(Identifier identifier) {
         Identifier existingIdentifier = identifierRepository.findById(identifier.getId()).orElse(null);
+        identifier.setClasse(existingIdentifier.getClasse());
+        identifier.setClient(existingIdentifier.getClient());
+        identifier.setCreditCard(existingIdentifier.getCreditCard());
+        identifier.setPassages(existingIdentifier.getPassages());
+        identifier.setRegistration(existingIdentifier.getRegistration());
+        identifier.setState(existingIdentifier.getState());
         return identifierRepository.save(existingIdentifier);
-    }*/
-    
-
+    }
 }
