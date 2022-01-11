@@ -32,9 +32,19 @@ public class ScutService {
         return "scut removed !! " + id;
     }
 
-    /* Ainda n acabei tive preguiça
+    
     public Scut updateScut(Scut scut) {
         Scut existingScut = scutRepository.findById(scut.getId()).orElse(null);
+        scut.setDescription(existingScut.getDescription());
+        scut.setInstalationDate(existingScut.getInstalationDate());
+        scut.setLatitude(existingScut.getLatitude());
+        scut.setLongitude(existingScut.getLongitude());
+        scut.setPassages(existingScut.getPassages());
+        scut.setPrice1(existingScut.getPrice1());
+        scut.setPrice2(existingScut.getPrice2());
+        scut.setPrice3(existingScut.getPrice3());
+        scut.setPrice4(existingScut.getPrice4());
+        scut.setPrice5(existingScut.getPrice5());
         return scutRepository.save(existingScut);
-    }*/
+    }
 }

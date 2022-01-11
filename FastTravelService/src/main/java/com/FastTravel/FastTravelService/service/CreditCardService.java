@@ -33,9 +33,15 @@ public class CreditCardService{
         return "creditCard removed !! " + id;
     }
 
-    /* Ainda n acabei
-    public CreditCard updateCreditCard(CreditCard creditCard) {
-        CreditCard existingCreditCard = creditCardRepository.findById(creditCard.getId()).orElse(null);
-        return creditCardRepository.save(existingCreditCard);
-    }*/
+    public CreditCard updateCreditCard(CreditCard creditCard){
+        CreditCard existingCreditCard = CreditCardRepository.findById(creditCard.getId()).orElse(null);
+        creditCard.setCvv(existingCreditCard.getCvv());
+        creditCard.setExpirationDate(existingCreditCard.getExpirationDate());
+        creditCard.setIdentifiers(existingCreditCard.getIdentifiers());
+        creditCard.setName(existingCreditCard.getName());
+        creditCard.setNumber(existingCreditCard.getNumber());
+        creditCard.setPais(existingCreditCard.getPais());
+        return CreditCardRepository.save(existingCreditCard);
+
+    }
 }
