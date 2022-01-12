@@ -34,11 +34,11 @@ public class CreditCardController {
         return creditCardService.getCreditCardById(id);
     }
 
-    /*
+    
     @PutMapping("/update")
     public CreditCard updateCreditCard(@RequestBody CreditCard creditCard) {
         return creditCardService.updateCreditCard(creditCard);
-    }*/
+    }
 
     @DeleteMapping("/deleteCreditCard/{id}")
     public String deleteCreditCard(@PathVariable Long id) {

@@ -32,11 +32,11 @@ public class IdentifierController {
         return identifierService.getIdentifierById(id);
     }
 
-    /*
+    
     @PutMapping("/update")
     public Identifier updateIdentifier(@RequestBody Identifier identifier) {
         return identifierService.updateIdentifier(identifier);
-    }*/
+    }
 
     @DeleteMapping("/deleteIdentifier/{id}")
     public String deleteIdentifier(@PathVariable Long id) {
