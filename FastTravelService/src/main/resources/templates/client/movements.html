@@ -195,6 +195,8 @@
                     <br>
                     <div class = "w3-container">
                       <p>Filter by:</p>
+
+                     
                 <form action="#" th:action="@{/client/filter}" th:object="${filterForms}" method="post">
                       <table class="table">
                         <thead>
@@ -208,7 +210,7 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td style="border: none;"><input type="text" th:field="*{resgistration}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{registration}"/></td>
                             <td style="border: none;"><input type="text" th:field="*{identifier}"></td>
                             <td style="border: none;"><input type="text" th:field="*{date}"></td>
                             <td style="border: none;"><input type="text" th:field="*{hour}"></td>
@@ -229,9 +231,10 @@
                             <td style="border: none;"> </td>
                             
                           </tr>
+                           
+                          <tr>
                             <td style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw">Filter</button></td>
                             <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
-                          <tr>
 
                           </tr>
                         </tbody>
