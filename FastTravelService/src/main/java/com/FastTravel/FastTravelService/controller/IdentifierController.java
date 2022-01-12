@@ -33,7 +33,7 @@ public class IdentifierController {
     }
 
     
-    @PutMapping("/update")
+    @PutMapping("/update/identifier")
     public Identifier updateIdentifier(@RequestBody Identifier identifier) {
         return identifierService.updateIdentifier(identifier);
     }

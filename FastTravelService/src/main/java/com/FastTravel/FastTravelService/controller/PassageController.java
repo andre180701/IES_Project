@@ -33,7 +33,7 @@ public class PassageController {
     }
 
     
-    @PutMapping("/update")
+    @PutMapping("/update/passage")
     public Passage updatePassage(@RequestBody Passage passage) {
         return passageService.updatePassage(passage);
     }

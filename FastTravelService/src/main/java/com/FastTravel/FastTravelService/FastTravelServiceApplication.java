@@ -60,13 +60,6 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
 		
-		for (int i = 0; i < clientService.getClients().size(); i++){
-			if (!Pedro.getEmail().equals(clientService.getClients().get(i).getEmail()) || !(Pedro.getNif() == clientService.getClients().get(i).getNif())){
-				System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
-				clientRepository.save(Pedro);
-			}
-		}
-		
 		Boolean flag = true;
 		for (Client client : clientService.getClients()) {
 			if (Pedro.getEmail().equals(client.getEmail()) && Pedro.getNif() == client.getNif()){
@@ -88,30 +81,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		if (flag == true){
 			creditCardRepository.save(cartaoPedro);
 		}
-		/*
-		Identifier identifier1 = new Identifier("AA-BB-18", 3, Pedro, cartaoPedro);
-
-		flag = true;
-		for (Identifier identifier : identifierService.getIdentifiers()){
-			if (identifier1.getRegistration().equals(identifier.getRegistration())){
-				flag = false;
-			}
-		}
-		if (flag == true){
-			identifierRepository.save(identifier1);
-		}
-		/*		
-		Identifier identifier2 = new Identifier("CC-18-VV", 1, Pedro, cartaoPedro);
-		flag = true;
-		for (Identifier identifier : identifierService.getIdentifiers()){
-			if (identifier2.getRegistration().equals(identifier.getRegistration())){
-				flag = false;
-			}
-		}
-		if (flag == true){
-			identifierRepository.save(identifier2);
-		}
-		*/
+		
 		flag = true;
 		Scut scut1 = new Scut(70.0987, 56.9987, "Peso Regua N/S", Date.valueOf("2001-11-6"), 1.70, 2.30, 3.09, 2.25, 2.70);
 		for (Scut scut : scutService.getScuts()) {

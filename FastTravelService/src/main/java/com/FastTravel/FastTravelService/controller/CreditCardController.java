@@ -35,7 +35,7 @@ public class CreditCardController {
     }
 
     
-    @PutMapping("/update")
+    @PutMapping("/update/creditCard")
     public CreditCard updateCreditCard(@RequestBody CreditCard creditCard) {
         return creditCardService.updateCreditCard(creditCard);
     }

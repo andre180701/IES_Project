@@ -35,7 +35,7 @@ public class ScutController {
     }
 
     
-    @PutMapping("/update")
+    @PutMapping("/update/scut")
     public Scut updateScut(@RequestBody Scut scut) {
         return scutService.updateScut(scut);
     }

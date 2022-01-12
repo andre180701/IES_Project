@@ -35,7 +35,7 @@ public class ClientController {
     }
 
     
-    @PutMapping("/update")
+    @PutMapping("/update/client")
     public Client updateClient(@RequestBody Client client) {
         return clientService.updateClient(client);
     }

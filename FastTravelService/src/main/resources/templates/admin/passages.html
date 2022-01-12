@@ -248,100 +248,100 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Passages in Scuts</h4>
+                    <br>
+                    <div class = "w3-container">
+                      <p>Filter by:</p>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="border: none;">Email</th>
+                            <th style="border: none;">Registration</th>
+                            <th style="border: none;">Identifier</th>
+                            <th style="border: none;">Date</th>
+                            <th style="border: none;">Hour</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                          </tr>
+                          <tr>
+                            <th style="border: none;">Scut's Latitude</th>
+                            <th style="border: none;">Scut's Longitude</th>
+                            <th style="border: none;">Scut's Description</th>
+                            <th style="border: none;">Price</th>
+                            <th style="border: none;">Payment State</th>
+                            <th style="border: none;"> </th>
+                          </tr>
+                          <tr>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"> </td>
+                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
+                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <table class="table">
                       <thead>
                         <tr>
                           <th></th>
+                          <th>Email</th>
                           <th>Registration</th>
+                          <th>Identifier</th>
                           <th>Date</th>
-                          <th>Time</th>
-                          <th>Device ID</th>
-                          <th>Scut Id</th>
+                          <th>Hour</th>
+                          <th colspan= "3">Scut</th>
+                          <th>Price</th>
                           <th>Payment State</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th>Latitude</th>
+                          <th>Longitude</th>
+                          <th>Description</th>
+                          <th></th>
+                          <th></th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr th:each="passage : ${passages}"  >
-                            <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                            <td th:text="${{passage.registration}}"/>
-                            <td th:text="${{passage.date}}"/>
-                            <td th:text="${{passage.time}}"/>
-                            <td th:text="${{passage.deviceId}}"/>
-                            <td th:text="${{passage.idScut}}"/>
-                            
-                            <td>
-                                <label class="badge badge-success">Completed</label>
-                              </td>
-                              <td><i class="fa fa-ellipsis-v"></i></td>  
-                            
-                        </tr>
-                        <!--
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>AA-00-01</td>
-                          <td>12-10-2021</td>
-                          <td>00:23:18h</td>
-                          <td>1000</td>
-                          <td>4</td>
-                          <td>
-                            <label class="badge badge-danger">Cancelled</label>
-                          </td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                          
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>BB-21-09</td>
-                          <td>15-10-2021</td>
-                          <td>23:11:09h</td>
-                          <td>1001</td>
-                          <td>1</td>
-                          <td>
-                            <label class="badge badge-warning">In progress</label>
-                          </td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                          
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>EB-98-11</td>
-                          <td>12-11-2021</td>
-                          <td>09:08:11h</td>
-                          <td>1002</td>
-                          <td>3</td>
-                          <td>
-                            <label class="badge badge-success">Completed</label>
-                          </td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                          
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>PI-95-55</td>
-                          <td>01-12-2021</td>
-                          <td>18:06:06h</td>
-                          <td>1003</td>
-                          <td>1</td>
-                          <td>
-                            <label class="badge badge-success">Completed</label>
-                          </td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                          
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
-                          <td>DE-11-23</td>
-                          <td>20-10-2021</td>
-                          <td>10:10:10h</td>
-                          <td>1004</td>
-                          <td>2</td>
-                          <td>
-                            <label class="badge badge-warning">In progress</label>
-                          </td>
-                          <td><i class="fa fa-ellipsis-v"></i></td>  
-                        </tr>
-                        -->
+                          <!--<td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>-->
+                          <td></td>
+                          <td th:text="${{passage.identifier.client.email}}"/>
+                          <td th:text="${{passage.identifier.registration}}"/>
+                          <td th:text="${{passage.identifier.id}}"/>
+                          <td th:text="${{passage.date}}"/>
+                          <td th:text="${{passage.time}}"/>
+                          <td th:text="${{passage.scut.longitude}}"/>
+                          <td th:text="${{passage.scut.latitude}}"/>
+                          <td th:text="${{passage.scut.description}}"/>
+                          <td th:text="${{passage.scut.price1}}"/>
+                          <td th:text="${{passage.paymentState}}"/>
+                          <td></td>
+                          <!--<td>
+                              <label class="badge badge-success">Completed</label>
+                            </td>
+                            <td><i class="fa fa-ellipsis-v"></i></td>  -->
+                      </tr>
                       </tbody>
                     </table>
                   </div>
