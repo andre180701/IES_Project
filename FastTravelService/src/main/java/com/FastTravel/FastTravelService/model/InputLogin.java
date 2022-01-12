@@ -15,5 +15,9 @@ public class InputLogin {
     public void setPassword(String password) {
         this.password = password;
     }
+    @Override
+    public String toString() {
+        return "InputLogin [email=" + email + ", password=" + password + "]";
+    }
     
 }
