@@ -88,9 +88,8 @@ public class MovementsController {
       }
     }
     
-    System.out.println("lista de todas nao vazia");
-    System.out.println(passages_client.size());
-    if(!filterForms.getRegistration().equals(null)){
+    System.out.println(passages_client2.size());
+    if(filterForms.getRegistration() != ""){
       for(Passage pc : passages_client){
         if(!pc.getIdentifier().getRegistration().equals(filterForms.getRegistration())){
           passages_client2.remove(pc); 
@@ -98,26 +97,18 @@ public class MovementsController {
       }
     }
 
-    // if(filterForms.getIdentifier() != ""){
-    //   for(Passage pc : passages_client){
-    //     System.out.println("matricula inserida");
-    //     System.out.println(filterForms.getIdentifier());
-    //     System.out.println("matriculas da geraçao de dados");
-    //     System.out.println(pc.getIdentifier().getId());
-    //     if(pc.getIdentifier().getId() != (Long.parseLong(String.valueOf(filterForms.getIdentifier())))){
-    //       System.out.println("ELAH ENTROU");
-    //       if(passages_client2.contains(pc)){
-    //         System.out.println("A remover");
-    //         System.out.println(pc);
-
-    //         passages_client2.remove(pc); 
-
-    //       }
-    //     }
-    //   }
-    // }
+    if(filterForms.getIdentifier() != ""){
+      for(Passage pc : passages_client){
+        System.out.println(filterForms.getIdentifier());
+        System.out.println(pc.getIdentifier().getId());
+        if(pc.getIdentifier().getId() != (Long.parseLong(String.valueOf(filterForms.getIdentifier())))){
+          if(passages_client2.contains(pc)){
+            passages_client2.remove(pc);
+          }
+        }
+      }
+    }
     if(filterForms.getDate() != ""){
-      System.out.println("ENTROU EM NAO ESTAR VAZIO da DATA");
       for(Passage pc : passages_client){
         if(!pc.getDate().equals(Date.valueOf(filterForms.getDate())) ){
           if(passages_client2.contains(pc)){
@@ -131,20 +122,76 @@ public class MovementsController {
       
     }
     if(filterForms.getHour() != ""){
-      System.out.println("ENTROU EM NAO ESTAR VAZIO da Hora");
       for(Passage pc : passages_client){
         if(!pc.getTime().equals(Time.valueOf(filterForms.getHour()))){
-          System.out.println("VALOR DIFERENTE SUPOSTAMNETE");
           System.out.println(pc.getTime());
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc);
-            System.out.println("entrou no de remover");
+            
 
 
           }
         }
       }
     }
+    if(filterForms.getScutslatitude() != ""){
+      for(Passage pc : passages_client){
+        System.out.println(filterForms.getScutslatitude());
+        System.out.println(pc.getScut().getLatitude());
+        if(pc.getScut().getLatitude() != Double.parseDouble(filterForms.getScutslatitude()) ){
+          
+          
+          if(passages_client2.contains(pc)){
+            passages_client2.remove(pc); 
+
+          }
+          
+        }
+      }
+      
+    }
+    if(filterForms.getScutslongitude() != ""){
+      for(Passage pc : passages_client){
+        System.out.println(filterForms.getScutslongitude());
+        System.out.println(pc.getScut().getLongitude());
+        if(pc.getScut().getLongitude() != Double.parseDouble(filterForms.getScutslongitude()) ){
+          
+          
+          if(passages_client2.contains(pc)){
+            passages_client2.remove(pc); 
+
+          }
+          
+        }
+      }
+      
+    }
+    if(filterForms.getScutsdescription() != ""){
+      for(Passage pc : passages_client){
+        System.out.println(filterForms.getScutsdescription());
+        System.out.println(pc.getScut().getDescription());
+        if(!pc.getScut().getDescription().equals(filterForms.getScutsdescription()) ){
+          if(passages_client2.contains(pc)){
+            passages_client2.remove(pc); 
+          }
+        }
+      } 
+    }
+    if(filterForms.getPaymentstate() != ""){
+      for(Passage pc : passages_client){
+        System.out.println(filterForms.getPaymentstate());
+        System.out.println(pc.getScut().getDescription());
+        if(!pc.getPaymentState().toString().equals(filterForms.getPaymentstate())){
+          if(passages_client2.contains(pc)){
+            passages_client2.remove(pc); 
+          }
+        }
+      } 
+    }
+    
+    
+
+ 
     
 
 
@@ -193,7 +240,7 @@ public class MovementsController {
 
     // }
     System.out.println("Tamanho lista final");
-    System.out.println(passages_client.size());
+    System.out.println(passages_client2.size());
 
     model.addAttribute("passages", passages_client2);
     return "client/movements";

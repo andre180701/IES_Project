@@ -205,7 +205,7 @@
                             <th style="border: none;">Identifier</th>
                             <th style="border: none;">Date</th>
                             <th style="border: none;">Hour</th>
-                            <th style="border: none;">Scut's Latitude</th>
+                            <th style="border: none;">Scut's Longitude</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -217,7 +217,7 @@
                             <td style="border: none;"><input type="text" th:field="*{scutslatitude}"></td>
                           </tr>
                           <tr>
-                            <th style="border: none;">Scut's Longitude</th>
+                            <th style="border: none;">Scut's Latitude</th>
                             <th style="border: none;">Scut's Description</th>
                             <th style="border: none;">Price</th>
                             <th style="border: none;">Payment State</th>
@@ -264,8 +264,8 @@
                           <th></th>
                           <th></th>
                           <th></th>
-                          <th>Latitude</th>
                           <th>Longitude</th>
+                          <th>Latitude</th>
                           <th>Description</th>
                           <th></th>
                           <th></th>
@@ -280,8 +280,8 @@
                           <td th:text="${{passage.identifier.id}}"/>
                           <td th:text="${{passage.date}}"/>
                           <td th:text="${{passage.time}}"/>
-                          <td th:text="${{passage.scut.longitude}}"/>
                           <td th:text="${{passage.scut.latitude}}"/>
+                          <td th:text="${{passage.scut.longitude}}"/>
                           <td th:text="${{passage.scut.description}}"/>
                           <td th:text="${{passage.scut.price1}}"/>
                           <td th:text="${{passage.paymentState}}"/>
