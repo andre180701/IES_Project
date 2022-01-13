@@ -116,5 +116,12 @@ public class InputRequestIdentifier {
     public void setCardCvv(String cardCvv) {
         this.cardCvv = cardCvv;
     }
+    @Override
+    public String toString() {
+        return "InputRequestIdentifier [address=" + address + ", cardCountry=" + cardCountry + ", cardCvv=" + cardCvv
+                + ", cardExpirationDate=" + cardExpirationDate + ", cardName=" + cardName + ", cardNumber=" + cardNumber
+                + ", contact=" + contact + ", locality=" + locality + ", registration=" + registration
+                + ", vehicleClass=" + vehicleClass + ", zipCode=" + zipCode + "]";
+    }
 
 }
