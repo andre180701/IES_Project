@@ -112,6 +112,4 @@ public class Identifier {
                 + ", registration=" + registration + ", state=" + state + "]";
     }
 
-    
-
 }

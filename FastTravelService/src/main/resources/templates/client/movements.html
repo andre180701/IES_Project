@@ -189,71 +189,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr th:each="passage : ${passages}"  >
+                          <!--<td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>-->
                           <td></td>
-                          <td>AA-02-31</td>
-                          <td>1</td>
-                          <td>02-01-2022</td>
-                          <td>00:05:13</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>Nao sei o que escrever aqui</td>
-                          <td>1.20</td>
-                          <td>Paid</td>
+                          <td th:text="${{passage.identifier.registration}}"/>
+                          <td th:text="${{passage.identifier.id}}"/>
+                          <td th:text="${{passage.date}}"/>
+                          <td th:text="${{passage.time}}"/>
+                          <td th:text="${{passage.scut.longitude}}"/>
+                          <td th:text="${{passage.scut.latitude}}"/>
+                          <td th:text="${{passage.scut.description}}"/>
+                          <td th:text="${{passage.scut.price1}}"/>
+                          <td th:text="${{passage.paymentState}}"/>
                           <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>BG-10-89</td>
-                          <td>2</td>
-                          <td>03-01-2022</td>
-                          <td>00:05:13</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>Nao sei o que escrever aqui</td>
-                          <td>1.20</td>
-                          <td>Paid</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>CC-12-66</td>
-                          <td>3</td>
-                          <td>02-12-2021</td>
-                          <td>00:05:13</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>Nao sei o que escrever aqui</td>
-                          <td>1.20</td>
-                          <td>Paid</td>
-                          <td></td> 
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>VV-33-44</td>
-                          <td>4</td>
-                          <td>12-09-2021</td>
-                          <td>00:05:13</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>Nao sei o que escrever aqui</td>
-                          <td>1.20</td>
-                          <td>Paid</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>17-12-2001</td>
-                          <td>5</td>
-                          <td>04-01-2022</td>
-                          <td>00:05:13</td>
-                          <td>34.7667</td>
-                          <td>78.0000</td>
-                          <td>Nao sei o que escrever aqui</td>
-                          <td>1.20</td>
-                          <td>Paid</td>
-                          <td></td> 
-                        </tr>
+                          <!--<td>
+                              <label class="badge badge-success">Completed</label>
+                            </td>
+                            <td><i class="fa fa-ellipsis-v"></i></td>  -->
+                      </tr>
                       </tbody>
                     </table>
                   </div>

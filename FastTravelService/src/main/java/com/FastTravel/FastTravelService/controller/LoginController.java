@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.FastTravel.FastTravelService.inputsForms.InputLogin;
+import com.FastTravel.FastTravelService.model.Admin;
 import com.FastTravel.FastTravelService.model.Client;
-import com.FastTravel.FastTravelService.model.InputLogin;
+import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
 
 import org.springframework.beans.factory.ObjectFactory;
@@ -19,6 +22,9 @@ public class LoginController {
 
   @Autowired
   private ClientService clientService;
+
+  @Autowired
+  private AdminService adminService;
 
   @Autowired
   ObjectFactory<HttpSession> httpSessionFactory;
@@ -56,6 +62,19 @@ public class LoginController {
       model.addAttribute("email", email);
       return "client/home";
     }
+
+    Admin admin = adminService.getAdminByEmail(email);
+    
+    if(admin != null && admin.getPassword().equals(password)) {
+      session.setAttribute("email", email);
+      session.setAttribute("firstName", admin.getFirst_name());
+      session.setAttribute("lastName", admin.getLast_name());
+      model.addAttribute("firstName", admin.getFirst_name());
+      model.addAttribute("lastName", admin.getLast_name());
+      model.addAttribute("email", email);
+      return "admin/dashboard";
+    }
+
 
     model.addAttribute("error", "Email and/or password incorrect!");
     return "login";

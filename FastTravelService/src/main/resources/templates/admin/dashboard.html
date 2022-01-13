@@ -17,7 +17,7 @@
     <div class="container-scroller">
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-          <a class="navbar-brand brand-logo" href="dashboard">
+          <a class="navbar-brand brand-logo" href="/admin/dashboard">
             <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -52,8 +52,8 @@
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
-                  <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                  <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                  <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
+                  <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
                 </div>
                 <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
                 <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
@@ -78,26 +78,26 @@
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Allen Moreno</p>
+                  <p class="profile-name" th:text="${firstName} + ' ' + ${lastName}"/>
                   <p class="designation">Admin</p>
                 </div>
               </a>
             </li>
             <li class="nav-item nav-category">Main Menu</li>
             <li class="nav-item">
-              <a class="nav-link" href="dashboard">
+              <a class="nav-link" href="/admin/dashboard">
                 <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="passages">
+              <a class="nav-link" href="/admin/passages">
                 <i class="menu-icon typcn typcn-shopping-bag"></i>
                 <span class="menu-title">Passages in scuts</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="scuts">
+              <a class="nav-link" href="/admin/scuts">
                 <i class="menu-icon typcn typcn-th-large-outline"></i>
                 <span class="menu-title">Scuts</span>
               </a>
