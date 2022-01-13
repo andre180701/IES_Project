@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 public class InputRequestIdentifier {
     
     @NotNull
-    @Pattern(regexp="[A-Z0-9]{2}]" + "-" + "[A-Z0-9]{2}]" + "-" + "[A-Z0-9]{2}]", message="Registration should use the portuguese license plate pattern; Ex: AB-12-CD")
+    @Pattern(regexp="[A-Z0-9]{2}" + "-" + "[A-Z0-9]{2}" + "-" + "[A-Z0-9]{2}]", message="Registration should use the portuguese license plate pattern; Ex: AB-12-CD")
     String registration;
     
     @NotNull
@@ -24,7 +24,7 @@ public class InputRequestIdentifier {
     String locality;
 
     @NotNull
-    @Pattern(regexp="[0-9]{4}]" + "-" + "[0-9]{3}]", message="Zip-code should use the portuguese zip-code pattern; Ex: 1234-123")
+    @Pattern(regexp="[0-9]{4}" + "-" + "[0-9]{3}", message="Zip-code should use the portuguese zip-code pattern; Ex: 1234-123")
     String zipCode;
 
     @NotNull
@@ -44,7 +44,7 @@ public class InputRequestIdentifier {
     String cardNumber;
 
     @NotNull
-    @Pattern(regexp="[0-9]{4}]" + "-" + "[0-9]{2}]"+ "-" + "[0-9]{2}]", message="Expiration date must use the following pattern month/year; Ex: 12/2022")
+    @Pattern(regexp="[0-9]{4}" + "-" + "[0-9]{2}"+ "-" + "[0-9]{2}", message="Expiration date must use the following pattern year/month/day; Ex: 2022/12/12")
     String cardExpirationDate;
     
     @NotNull
