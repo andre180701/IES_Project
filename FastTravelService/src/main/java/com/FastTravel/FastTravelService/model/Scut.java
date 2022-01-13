@@ -144,6 +144,14 @@ public class Scut {
         this.passages = passages;
     }
 
+    @Override
+    public String toString() {
+        return "Scut [description=" + description + ", id=" + id + ", instalationDate=" + instalationDate
+                + ", latitude=" + latitude + ", longitude=" + longitude + ", passages=" + passages + ", price1="
+                + price1 + ", price2=" + price2 + ", price3=" + price3 + ", price4=" + price4 + ", price5=" + price5
+                + "]";
+    }
+
 
 }
 
