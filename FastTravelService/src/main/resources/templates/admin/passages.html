@@ -125,7 +125,7 @@
                   <div class="dropdown-header text-center">
                     <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
                     <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
-                    <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
+                    <p id="email" class="font-weight-light text-muted mb-0" th:text="${email}"/>
                   </div>
                   <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
                   <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
@@ -371,10 +371,35 @@
     <script src="../../assets/js/shared/jquery.cookie.js" type="text/javascript"></script>
     <!-- End custom js for this page-->
     <script>
+      'use strict';
+
       function myFunction() {
         alert("Page is loaded");
+
+        var stompClient = null;
+        var email = document.getElementById("email").textContent;
+        alert(email);
+
+        if (email) {
+          alert("Entrei no if");
+          var socket = new SockJS('/websocketApp');
+          stompClient = Stomp.over(socket);
+          stompClient.connect({}, function connectionSuccess() {
+            alert("Entrei na connection Success");
+            console.log("Entrei na connection Success");
+            stompClient.subscribe('/topic/passage', onMessageReceived);
+            stompClient.send("/app/chat.newUser", {}, JSON.stringify({
+              sender: email,
+              type: 'newUser'
+            }))
+          });
+        }
       }
-      </script>
+
+      function onMessageReceived(payload) {
+        alert("Entrei no onMessageReceived");
+      }
+    </script>
       
   </body>
 </html>
