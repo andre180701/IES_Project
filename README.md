@@ -72,6 +72,11 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     admin
     ```
 
+### Correr o Projeto na VM:
+1. fazer ping par o nome da VM
+2. copiar o endereço que aparece nesse ping
+3. no browser perquisar po (endereco):6868/
+
 ### Remover docker images
 > docker volume rm $(docker volume ls | awk '{print $2}')
 > docker rmi -f $(docker images -aq)

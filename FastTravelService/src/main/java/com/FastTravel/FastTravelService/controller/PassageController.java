@@ -32,11 +32,11 @@ public class PassageController {
         return passageService.getPassageById(id);
     }
 
-    /*
-    @PutMapping("/update")
+    
+    @PutMapping("/update/passage")
     public Passage updatePassage(@RequestBody Passage passage) {
         return passageService.updatePassage(passage);
-    }*/
+    }
 
     @DeleteMapping("/deletePassage/{id}")
     public String deletePassage(@PathVariable Long id) {

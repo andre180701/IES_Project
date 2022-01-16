@@ -32,6 +32,7 @@ public class Passage {
     @JoinColumn(name = "scutId", nullable = false)
     private Scut scut;
 
+    
     public Passage() {}
 
     public Passage(Date date, Time time, Identifier identifier, Scut scut) {
@@ -40,6 +41,21 @@ public class Passage {
         this.identifier = identifier;
         this.scut = scut;
         this.paymentState = PaymentState.UNPAID;
+    }
+
+    public double getPrice(){
+        switch (this.identifier.getClasse()) {
+            case 1:
+                return this.scut.getPrice1();
+            case 2:
+                return this.scut.getPrice2();
+            case 3:
+                return this.scut.getPrice3();
+            case 4:
+                return this.scut.getPrice4();
+            default:
+                return this.scut.getPrice5();
+        }
     }
 
     public long getId() {
