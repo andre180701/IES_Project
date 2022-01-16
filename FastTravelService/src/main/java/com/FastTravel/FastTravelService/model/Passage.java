@@ -41,7 +41,6 @@ public class Passage {
         this.identifier = identifier;
         this.scut = scut;
         this.paymentState = PaymentState.UNPAID;
-        this.price = this.price;
         switch (this.identifier.getClasse()) {
             case 1:
                 this.price = this.scut.getPrice1();
