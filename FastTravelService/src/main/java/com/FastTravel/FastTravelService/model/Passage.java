@@ -32,7 +32,7 @@ public class Passage {
     @JoinColumn(name = "scutId", nullable = false)
     private Scut scut;
 
-    private double price;
+    
     public Passage() {}
 
     public Passage(Date date, Time time, Identifier identifier, Scut scut) {
@@ -41,22 +41,20 @@ public class Passage {
         this.identifier = identifier;
         this.scut = scut;
         this.paymentState = PaymentState.UNPAID;
+    }
+
+    public double getPrice(){
         switch (this.identifier.getClasse()) {
             case 1:
-                this.price = this.scut.getPrice1();
-                break;
+                return this.scut.getPrice1();
             case 2:
-                this.price = this.scut.getPrice2();
-                break;
+                return this.scut.getPrice2();
             case 3:
-                this.price = this.scut.getPrice3();
-                break;
+                return this.scut.getPrice3();
             case 4:
-                this.price = this.scut.getPrice4();
-                break;
+                return this.scut.getPrice4();
             default:
-                this.price = this.scut.getPrice5();
-                break;
+                return this.scut.getPrice5();
         }
     }
 
