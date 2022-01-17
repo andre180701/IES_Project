@@ -8,6 +8,13 @@ public class Message {
     private String date;
     private String time;
 
+    public Message(String method, String identifier, String scut, String date, String time) {
+        this.method = method;
+        this.identifier = identifier;
+        this.scut = scut;
+        this.date = date;
+        this.time = time;
+    }
     public String getMethod() {
         return method;
     }
@@ -38,5 +45,11 @@ public class Message {
     public void setTime(String time) {
         this.time = time;
     }
+    @Override
+    public String toString() {
+        return "Message [date=" + date + ", identifier=" + identifier + ", method=" + method + ", scut=" + scut
+                + ", time=" + time + "]";
+    }
 
+    
 }

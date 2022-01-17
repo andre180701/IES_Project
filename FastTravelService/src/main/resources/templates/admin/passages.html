@@ -27,6 +27,8 @@
       }
       
       function connect() {
+          console.log("Connect funciona!");
+          alert("Connect funciona!");
           var socket = new SockJS('/chat');
           stompClient = Stomp.over(socket);  
           stompClient.connect({}, function(frame) {
@@ -47,6 +49,7 @@
       }
       
       function showMessageOutput(messageOutput) {
+          console.log("FDS");
           var response = document.getElementById('response');
           var p = document.createElement('p');
           p.style.wordWrap = 'break-word';
