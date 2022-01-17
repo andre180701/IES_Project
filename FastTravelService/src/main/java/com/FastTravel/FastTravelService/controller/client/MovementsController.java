@@ -88,26 +88,26 @@ public class MovementsController {
       }
     }
     
-    if(filterForms.getRegistration() != ""){
+    if(filterForms.getRegistration().strip() != ""){
       for(Passage pc : passages_client){
-        if(!pc.getIdentifier().getRegistration().equals(filterForms.getRegistration())){
+        if(!pc.getIdentifier().getRegistration().equals(filterForms.getRegistration().strip())){
           passages_client2.remove(pc); 
         }
       }
     }
 
-    if(filterForms.getIdentifier() != ""){
+    if(filterForms.getIdentifier().strip() != ""){
       for(Passage pc : passages_client){
-        if(pc.getIdentifier().getId() != (Long.parseLong(String.valueOf(filterForms.getIdentifier())))){
+        if(pc.getIdentifier().getId() != (Long.parseLong(String.valueOf(filterForms.getIdentifier().strip())))){
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc);
           }
         }
       }
     }
-    if(filterForms.getDate() != ""){
+    if(filterForms.getDate().strip() != ""){
       for(Passage pc : passages_client){
-        if(!pc.getDate().equals(Date.valueOf(filterForms.getDate())) ){
+        if(!pc.getDate().equals(Date.valueOf(filterForms.getDate().strip())) ){
           if(passages_client2.contains(pc)){
             
             passages_client2.remove(pc); 
@@ -118,9 +118,9 @@ public class MovementsController {
       }
       
     }
-    if(filterForms.getHour() != ""){
+    if(filterForms.getHour().strip() != ""){
       for(Passage pc : passages_client){
-        if(!pc.getTime().equals(Time.valueOf(filterForms.getHour()))){
+        if(!pc.getTime().equals(Time.valueOf(filterForms.getHour().strip()))){
          
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc);
@@ -131,9 +131,9 @@ public class MovementsController {
         }
       }
     }
-    if(filterForms.getScutslatitude() != ""){
+    if(filterForms.getScutslatitude().strip() != ""){
       for(Passage pc : passages_client){
-        if(pc.getScut().getLatitude() != Double.parseDouble(filterForms.getScutslatitude()) ){
+        if(pc.getScut().getLatitude() != Double.parseDouble(filterForms.getScutslatitude().strip()) ){
           
           
           if(passages_client2.contains(pc)){
@@ -145,9 +145,9 @@ public class MovementsController {
       }
       
     }
-    if(filterForms.getScutslongitude() != ""){
+    if(filterForms.getScutslongitude().strip() != ""){
       for(Passage pc : passages_client){
-        if(pc.getScut().getLongitude() != Double.parseDouble(filterForms.getScutslongitude()) ){
+        if(pc.getScut().getLongitude() != Double.parseDouble(filterForms.getScutslongitude().strip()) ){
           
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc); 
@@ -158,18 +158,18 @@ public class MovementsController {
       }
       
     }
-    if(filterForms.getScutsdescription() != ""){
+    if(filterForms.getScutsdescription().strip() != ""){
       for(Passage pc : passages_client){
-        if(!pc.getScut().getDescription().equals(filterForms.getScutsdescription()) ){
+        if(!pc.getScut().getDescription().equals(filterForms.getScutsdescription().strip()) ){
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc); 
           }
         }
       } 
     }
-    if(filterForms.getPaymentstate() != ""){
+    if(filterForms.getPaymentstate().strip() != ""){
       for(Passage pc : passages_client){
-        if(!pc.getPaymentState().toString().equals(filterForms.getPaymentstate())){
+        if(!pc.getPaymentState().toString().equals(filterForms.getPaymentstate().strip())){
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc); 
           }
@@ -178,7 +178,7 @@ public class MovementsController {
     }
 
 
-    if(filterForms.getPrice() != ""){
+    if(filterForms.getPrice().strip() != ""){
 
       for(Passage pc : passages_client){
 
@@ -202,7 +202,7 @@ public class MovementsController {
             break;
         }
        
-        if(priceClasse != Double.parseDouble(filterForms.getPrice())){
+        if(priceClasse != Double.parseDouble(filterForms.getPrice().strip())){
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc); 
           }
