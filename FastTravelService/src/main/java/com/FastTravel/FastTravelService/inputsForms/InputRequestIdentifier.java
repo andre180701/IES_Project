@@ -44,7 +44,7 @@ public class InputRequestIdentifier {
     String cardNumber;
 
     @NotNull
-    @Pattern(regexp="[0-9]{4}" + "-" + "[0-9]{2}"+ "-" + "[0-9]{2}", message="Expiration date must use the following pattern year/month/day; Ex: 2022/12/12")
+    @Pattern(regexp="[0-9]{4}" + "-" + "[0-9]{2}"+ "-" + "[0-9]{2}", message="Expiration date must use the following pattern year-month-day; Ex: 2022-12-12")
     String cardExpirationDate;
     
     @NotNull
