@@ -42,7 +42,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	private ScutRepository scutRepository;
 	@Autowired
 	private AdminRepository adminRepository;
-	/*
+	
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
 		CreditCard cartaoPedro = new CreditCard(1234567890, "Pedro Figueiredo", Date.valueOf("2023-10-1"), "Portugal", 123);
@@ -56,7 +56,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		adminRepository.save(new Admin("filipef@ua.pt", "filipeF2", "Filipe", "Augusto"));
 	}
 	
-	*/
+	/*
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
 		
@@ -125,6 +125,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		}
 		
 	}
+	*/
 }
 
 

@@ -120,6 +120,9 @@
                     <br>
                     <div class = "w3-container">
                       <p>Filter by:</p>
+
+                     
+                <form action="#" th:action="@{/client/filter}" th:object="${filterForms}" method="post">
                       <table class="table">
                         <thead>
                           <tr>
@@ -127,35 +130,42 @@
                             <th style="border: none;">Identifier</th>
                             <th style="border: none;">Date</th>
                             <th style="border: none;">Hour</th>
-                            <th style="border: none;">Scut's Latitude</th>
+                            <th style="border: none;">Scut's Longitude</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text" th:field="*{registration}"/></td>
+                            <td style="border: none;"><input type="text" th:field="*{identifier}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{date}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{hour}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{scutslatitude}"></td>
                           </tr>
                           <tr>
-                            <th style="border: none;">Scut's Longitude</th>
+                            <th style="border: none;">Scut's Latitude</th>
                             <th style="border: none;">Scut's Description</th>
                             <th style="border: none;">Price</th>
                             <th style="border: none;">Payment State</th>
                             <th style="border: none;"> </th>
                           </tr>
                           <tr>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text" th:field="*{scutslongitude}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{scutsdescription}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{price}"></td>
+                            <td style="border: none;"><input type="text" th:field="*{paymentstate}"></td>
                             <td style="border: none;"> </td>
-                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
-                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
+                            
+                          </tr>
+                           
+                          <tr >
+                            <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                            <td align="center" style="border: none;"> <button type="button" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
+                          
+
                           </tr>
                         </tbody>
                       </table>
+                    </form>
                     </div>
                     <br>
                     <br>
@@ -180,8 +190,8 @@
                           <th></th>
                           <th></th>
                           <th></th>
-                          <th>Latitude</th>
                           <th>Longitude</th>
+                          <th>Latitude</th>
                           <th>Description</th>
                           <th></th>
                           <th></th>
@@ -196,8 +206,8 @@
                           <td th:text="${{passage.identifier.id}}"/>
                           <td th:text="${{passage.date}}"/>
                           <td th:text="${{passage.time}}"/>
-                          <td th:text="${{passage.scut.longitude}}"/>
                           <td th:text="${{passage.scut.latitude}}"/>
+                          <td th:text="${{passage.scut.longitude}}"/>
                           <td th:text="${{passage.scut.description}}"/>
                           <td th:text="${{passage.getPrice()}}"/>
                           <td th:text="${{passage.paymentState}}"/>
