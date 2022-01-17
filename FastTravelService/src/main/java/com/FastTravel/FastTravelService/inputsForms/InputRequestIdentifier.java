@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 public class InputRequestIdentifier {
     
     @NotNull
-    @Pattern(regexp="[A-Z0-9]{2}" + "-" + "[A-Z0-9]{2}" + "-" + "[A-Z0-9]{2}]", message="Registration should use the portuguese license plate pattern; Ex: AB-12-CD")
+    @Pattern(regexp="[A-Z0-9]{2}" + "-" + "[A-Z0-9]{2}" + "-" + "[A-Z0-9]{2}", message="Registration should use the portuguese license plate pattern; Ex: AB-12-CD")
     String registration;
     
     @NotNull
@@ -17,10 +17,12 @@ public class InputRequestIdentifier {
     @Max(value=5, message= "Class must be less than or equal to 5")
     String vehicleClass;
 
-    @NotNull(message= "Address mustn't be empty")
+    @NotNull
+    @Size(min=1, max=50, message="Address must not be empty and has a limit of 50 characters")
     String address;
 
-    @NotNull(message= "Locality mustn't be empty")
+    @NotNull
+    @Size(min=1, max=50, message="Locality must not be empty and has a limit of 50 characters")
     String locality;
 
     @NotNull
@@ -33,10 +35,12 @@ public class InputRequestIdentifier {
     @Max(value=999999999, message= "The maximium value is 999999999")
     String contact;
 
-    @NotNull(message= "CardName mustn't be empty")
+    @NotNull
+    @Size(min=1, max=50, message="CardName must not be empty and has a limit of 50 characters")
     String cardName;
 
-    @NotNull(message= "CardCountry mustn't be empty")
+    @NotNull
+    @Size(min=1, max=50, message="CardCountry must not be empty and has a limit of 50 characters")
     String cardCountry;
     
     @NotNull
@@ -44,7 +48,7 @@ public class InputRequestIdentifier {
     String cardNumber;
 
     @NotNull
-    @Pattern(regexp="[0-9]{4}" + "-" + "[0-9]{2}"+ "-" + "[0-9]{2}", message="Expiration date must use the following pattern year-month-day; Ex: 2022-12-12")
+    @Pattern(regexp="[0-9]{4}" + "-" + "[0-9]{1,2}"+ "-" + "[0-9]{1,2}", message="Expiration date must use the following pattern year-month-day; Ex: 2022-12-12")
     String cardExpirationDate;
     
     @NotNull
