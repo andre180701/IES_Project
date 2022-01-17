@@ -1,5 +1,6 @@
 package com.FastTravel.FastTravelService;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,11 @@ import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.service.CreditCardService;
 import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.service.ScutService;
+
+import java.math.BigInteger; 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException;
 
 import java.sql.Date;
 
@@ -43,8 +49,29 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	@Autowired
 	private AdminRepository adminRepository;
 	
-	public void run(String... args) throws Exception {
-		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
+	public static byte[] getSHA(String input) throws NoSuchAlgorithmException
+    { 
+        MessageDigest md = MessageDigest.getInstance("SHA-256"); 
+        return md.digest(input.getBytes(StandardCharsets.UTF_8)); 
+    }
+    
+    public static String toHexString(byte[] hash)
+    {
+        BigInteger number = new BigInteger(1, hash); 
+        StringBuilder hexString = new StringBuilder(number.toString(16)); 
+  
+        while (hexString.length() < 32) 
+        { 
+            hexString.insert(0, '0'); 
+        } 
+  
+        return hexString.toString(); 
+    }
+
+
+	public void run(String... args) throws Exception { 
+		String clientpassword =  "pedroFigs!";
+		Client Pedro = new Client("pedrofigs@ua.pt", toHexString(getSHA(clientpassword)), 237789, "Pedro", "Figueiredo");
 		CreditCard cartaoPedro = new CreditCard(1234567890, "Pedro Figueiredo", Date.valueOf("2023-10-1"), "Portugal", 123);
 		clientRepository.save(Pedro);
 		creditCardRepository.save(cartaoPedro);
