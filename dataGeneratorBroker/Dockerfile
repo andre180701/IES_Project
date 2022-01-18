@@ -10,3 +10,4 @@ ADD Scut.py /
 ADD main.py /
 
 CMD ["python3", "main.py" ]
+

@@ -65,5 +65,33 @@ services:
         #messageBroker:
           #condition: service_healthy
 
+    #generator:
+    #   build:
+    #        context: .
+    #        dockerfile: Dockerfile-service3
+    #        args:
+    #            - NODE_ENV=local
+    #  build: ./dataGeneratorBroker/
+    #  restart: on-failure
+    #  environment:
+    #    FINANCE_RABBITMQ_HOST: rabbitmq
+    #  depends_on:
+    #    rabbitmq:
+    #      condition: service_healthy
+    #  links: 
+    #      - rabbitmq
+
+          
+    data_gen:
+      build: ./dataGeneratorBroker/
+      restart: on-failure
+      environment:
+        FINANCE_RABBITMQ_HOST: rabbitmq
+      depends_on:
+        rabbitmq:
+          condition: service_healthy
+      links: 
+          - rabbitmq
+
 volumes:
   datafiles:
