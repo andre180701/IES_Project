@@ -8,7 +8,6 @@ import com.FastTravel.FastTravelService.repository.*;
 import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.service.CreditCardService;
-import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.service.ScutService;
 
 import java.sql.Date;
@@ -25,8 +24,6 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	@Autowired
 	private ClientService clientService;
 	@Autowired
-	private IdentifierService identifierService;
-	@Autowired
 	private CreditCardService creditCardService;
 	@Autowired
 	private ClientRepository clientRepository;
@@ -36,8 +33,6 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	private ScutService scutService;
 	@Autowired
 	private CreditCardRepository creditCardRepository;
-	@Autowired
-	private IdentifierRepository identifierRepository;
 	@Autowired
 	private ScutRepository scutRepository;
 	@Autowired

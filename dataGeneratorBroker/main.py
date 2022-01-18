@@ -8,7 +8,6 @@ from datetime import datetime
 conn =  mysql.connector.connect(username="admin", password="admin", db="fastTravelDB")
 cursor = conn.cursor()
 
-
 class DataGenerator:
     def __init__(self):
         self.credentials = pika.PlainCredentials('user1','user1')
