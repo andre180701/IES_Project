@@ -17,6 +17,7 @@ class DataGenerator:
         self.channel.queue_declare(queue='portinhas', durable=True)
 
     def generatePassage(self):
+
         identifier_ids = []
         scut_ids = []
         cursor.execute("select identifier_id from identifier;")
@@ -25,9 +26,9 @@ class DataGenerator:
         cursor.execute("select scut_id from scut;")
         for i in cursor.fetchall():
             scut_ids.append(i)
-        
-        message = {'method': 'NEW_PASSAGE', 'identifier': random.choice(identifier_ids)[0], 'scut': random.choice(scut_ids)[0], 'date': datetime.now().strftime("%Y-%m-%d"), 'time': datetime.now().strftime("%H:%M:%S")}
-        self.send('portinhas', message)
+        if identifier_ids != [] and scut_ids != []:
+            message = {'method': 'NEW_PASSAGE', 'identifier': random.choice(identifier_ids)[0], 'scut': random.choice(scut_ids)[0], 'date': datetime.now().strftime("%Y-%m-%d"), 'time': datetime.now().strftime("%H:%M:%S")}
+            self.send('portinhas', message)
     
     def generteIdentifier(self):
         clients = []
@@ -41,14 +42,17 @@ class DataGenerator:
             credit_cards.append(i)
         cursor.execute("select registration from identifier;")
         for i in cursor.fetchall():
-            identifiers_reg.append(i)
-        message = {'method': 'NEW_IDENTIFIER', 'registration': "AA-BB-18", 'classe': random.randint(1, 6), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
-        message2 = {'method': 'NEW_IDENTIFIER', 'registration': "CC-18-VV", 'classe': random.randint(1, 6), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
-        if "AA-BB-18" not in identifiers_reg:
-            self.send('portinhas', message)
-        
-        if "CC-18-VV" not in identifiers_reg:
-            self.send('portinhas', message2)
+            for c in i:
+                if c != "":
+                    identifiers_reg.append(c)
+        if clients != [] and credit_cards != []:
+            message = {'method': 'NEW_IDENTIFIER', 'registration': "AA-BB-18", 'classe': random.randint(1, 6), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
+            message2 = {'method': 'NEW_IDENTIFIER', 'registration': "CC-18-VV", 'classe': random.randint(1, 6), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
+            if "AA-BB-18" not in identifiers_reg:
+                self.send('portinhas', message)
+            
+            if "CC-18-VV" not in identifiers_reg:
+                self.send('portinhas', message2)
         
         
     def send(self, topic=None, message=None):
