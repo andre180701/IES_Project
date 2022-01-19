@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/ionicons/dist/css/ionicons.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../assets/css/mbm/styles_mbm.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <link rel="stylesheet" href="../../assets/vendors/icheck/skins/all.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+          <a class="navbar-brand brand-logo" href="/client/home">
+            <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+
+          
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count">7</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+                <a class="dropdown-item py-3">
+                  <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
+                  <span class="badge badge-pill badge-primary float-right">View all</span>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <i class="mdi mdi-email-outline"></i>
+                <span class="count bg-success">3</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
+                  <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
+                  <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
+                </div>
+                <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
+                <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
+                <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
+                <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
+                <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item nav-profile">
+                <a href="#" class="nav-link">
+                    <div class="profile-image">
+                    <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="profile image">
+                    <div class="dot-indicator bg-success"></div>
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="profile-name" th:text="${firstName} + ' ' + ${lastName}" />
+                        <p class="designation">Client</p>
+                    </div>
+                </a>
+                </li>
+                <li class="nav-item nav-category">Main Menu</li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/client/home">
+                    <i class="menu-icon typcn typcn-document-text"></i>
+                    <span class="menu-title">Home</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/client/vehiclesIdentifiers">
+                    <i class="menu-icon typcn typcn-shopping-bag"></i>
+                    <span class="menu-title">Vehicles and Identifiers</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/client/requestIdentifier">
+                    <i class="menu-icon typcn typcn-th-large-outline"></i>
+                    <span class="menu-title">Request Identifiers</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/client/movements">
+                    <i class="menu-icon typcn typcn-th-large-outline"></i>
+                    <span class="menu-title">Movements</span>
+                  </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+             
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="title_mbm">Edit Your Identifier</h4>
+                    <form class="form-sample">
+                      <p class="para_mbm">Vehicle Data</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Registration</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Identifier</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Class</label>
+                                <div class="col-sm-9">
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+                            
+                        </div>
+
+                    <p class="para_mbm">User Data</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Address</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Locality</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Zip Code</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Contact</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    <p class="para_mbm">Payment Data</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Cardholder's full name</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Country</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Card number</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Expiration date</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Card number</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">CVV</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row" style= " margin-top: 25px;">
+                            <div class="col-md-6">
+                            <div class="form-group row" style= "text-align: center; float: right; margin: 0 15px;">
+                                <a href="/client/editIdentifiers" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Edit</a>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group row" style= "text-align: center;">
+                                <a href="/client/editIdentifiers" class="btn btn-danger btn-fw" style="background-color: #F8F1FF; border: none; color: #111111">Exit</a>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        
+
+                      
+                        
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../assets/js/shared/off-canvas.js"></script>
+    <script src="../../assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="../../assets/js/shared/jquery.cookie.js" type="text/javascript"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>
