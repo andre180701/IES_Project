@@ -30,31 +30,6 @@ class DataGenerator:
             message = {'method': 'NEW_PASSAGE', 'identifier': random.choice(identifier_ids)[0], 'scut': random.choice(scut_ids)[0], 'date': datetime.now().strftime("%Y-%m-%d"), 'time': datetime.now().strftime("%H:%M:%S")}
             self.send('portinhas', message)
     
-    def generteIdentifier(self):
-        clients = []
-        credit_cards = []
-        identifiers_reg = []
-        cursor.execute("select client_id from client;")
-        for i in cursor.fetchall():
-            clients.append(i)
-        cursor.execute("select credit_card_id from credit_card;")
-        for i in cursor.fetchall():
-            credit_cards.append(i)
-        cursor.execute("select registration from identifier;")
-        for i in cursor.fetchall():
-            for c in i:
-                if c != "":
-                    identifiers_reg.append(c)
-        if clients != [] and credit_cards != []:
-            message = {'method': 'NEW_IDENTIFIER', 'registration': "AA-BB-18", 'classe': random.randint(1, 5), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
-            message2 = {'method': 'NEW_IDENTIFIER', 'registration': "CC-18-VV", 'classe': random.randint(1, 5), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
-            if "AA-BB-18" not in identifiers_reg:
-                self.send('portinhas', message)
-            
-            if "CC-18-VV" not in identifiers_reg:
-                self.send('portinhas', message2)
-        
-        
     def send(self, topic=None, message=None):
         try:
             message = json.dumps(message)
@@ -67,13 +42,10 @@ class DataGenerator:
 
 def main():
     generator = DataGenerator()
-    message = generator.generteIdentifier()
     while True:
         t = random.randint(0,3)
         time.sleep(t)
         message = generator.generatePassage()
-        
-
 
 if __name__ == "__main__":
     main()

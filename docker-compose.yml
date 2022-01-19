@@ -17,9 +17,9 @@ services:
         restart: always
         healthcheck:
             test: "mysql fastTravelDB -uadmin -padmin -e 'SELECT 1;'"
-            interval: 30s
+            interval: 20s
             timeout: 10s
-            retries: 4
+            retries: 2
 
     fasttravelservice:
       depends_on:
@@ -46,9 +46,9 @@ services:
         }'
       healthcheck:
         test: "curl http://localhost:8000"
-        interval: 30s
+        interval: 20s
         timeout: 10s
-        retries: 4
+        retries: 2
 
     messageBroker:
       image: rabbitmq:3.8-management-alpine
@@ -62,9 +62,9 @@ services:
         - '15672:15672'
       healthcheck:
         test: rabbitmq-diagnostics -q status
-        interval: 30s
+        interval: 20s
         timeout: 10s
-        retries: 4
+        retries: 2
 
     generator:
       build: ./dataGeneratorBroker/
@@ -76,6 +76,8 @@ services:
           condition: service_healthy
         fasttravelservice:
           condition: service_healthy
+      links:
+        - messageBroker
 
 volumes:
   datafiles:

@@ -37,6 +37,8 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	private ScutRepository scutRepository;
 	@Autowired
 	private AdminRepository adminRepository;
+	@Autowired
+	private IdentifierRepository identifierRepository;
 
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
@@ -104,6 +106,12 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		if (flag == true){
 			adminRepository.save(admin1);
 		}
+
+		if(identifierRepository.findAll().isEmpty()){
+			System.out.print("EMPTY IDENTIFIER");
+			identifierRepository.save(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
+			identifierRepository.save(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
+		} 
 		
 	}
 	
