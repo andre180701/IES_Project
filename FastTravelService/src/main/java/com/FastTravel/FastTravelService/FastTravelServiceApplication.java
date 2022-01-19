@@ -8,7 +8,6 @@ import com.FastTravel.FastTravelService.repository.*;
 import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.service.CreditCardService;
-import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.service.ScutService;
 
 import java.sql.Date;
@@ -25,8 +24,6 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	@Autowired
 	private ClientService clientService;
 	@Autowired
-	private IdentifierService identifierService;
-	@Autowired
 	private CreditCardService creditCardService;
 	@Autowired
 	private ClientRepository clientRepository;
@@ -37,14 +34,12 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	@Autowired
 	private CreditCardRepository creditCardRepository;
 	@Autowired
-	private IdentifierRepository identifierRepository;
-	@Autowired
 	private ScutRepository scutRepository;
 	@Autowired
 	private AdminRepository adminRepository;
+	@Autowired
+	private IdentifierRepository identifierRepository;
 
-	
-	
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
 		
@@ -111,6 +106,12 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		if (flag == true){
 			adminRepository.save(admin1);
 		}
+
+		if(identifierRepository.findAll().isEmpty()){
+			System.out.print("EMPTY IDENTIFIER");
+			identifierRepository.save(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
+			identifierRepository.save(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
+		} 
 		
 	}
 	

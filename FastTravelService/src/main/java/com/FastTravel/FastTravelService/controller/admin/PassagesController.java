@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.repository.PassageRepository;
+import com.FastTravel.FastTravelService.controller.PassageController;
 
 import java.util.*;
 import org.springframework.beans.factory.ObjectFactory;
@@ -25,7 +26,7 @@ public class PassagesController {
     ObjectFactory<HttpSession> httpSessionFactory;
 
     @Autowired
-    private PassageRepository passageRepository;
+    private PassageController passageController;
 
     //@CrossOrigin(origins = "http://localhost:8000/")
     @GetMapping("admin/passages")
@@ -35,12 +36,12 @@ public class PassagesController {
         model.addAttribute("firstName", session.getAttribute("firstName"));
         model.addAttribute("lastName", session.getAttribute("lastName"));
         model.addAttribute("email", session.getAttribute("email"));
-        List<Passage> passages = passageRepository.findAll();
+        List<Passage> passages = passageController.findAllPassages();
 		model.addAttribute("passages", passages);
 		return "admin/passages";
     }   
     @PostMapping("admin/passages")
     public  @Valid Passage createPassage(@Valid @RequestBody Passage passage){
-        return passageRepository.save(passage);
+        return passageController.addPassage(passage);
     }
 }
