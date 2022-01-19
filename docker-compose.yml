@@ -12,15 +12,21 @@ services:
             MYSQL_PASSWORD: admin 
         volumes:
             - datafiles:/var/lib/mysql
-            #prof disse para nao fazer assim, usar uma pasta da nossa home nao no nosso repositorio do projeto
         networks:
             - default
         restart: always
+        healthcheck:
+            test: "mysql fastTravelDB -uadmin -padmin -e 'SELECT 1;'"
+            interval: 30s
+            timeout: 10s
+            retries: 4
 
     fasttravelservice:
       depends_on:
-        - dataBase
-        - messageBroker
+        dataBase:
+          condition: service_healthy
+        messageBroker:
+          condition: service_healthy
       build: ./FastTravelService
       restart: on-failure
       ports:
@@ -38,6 +44,11 @@ services:
           "spring.rabbitmq.host" : "messageBroker",
           "spring.rabbitmq.port" : 5672
         }'
+      healthcheck:
+        test: "curl http://localhost:8000"
+        interval: 30s
+        timeout: 10s
+        retries: 4
 
     messageBroker:
       image: rabbitmq:3.8-management-alpine
@@ -49,21 +60,22 @@ services:
         - '5672:5672'
         # HTTP management UI
         - '15672:15672'
-      #healthcheck:
-        #test: ["CMD", "nc", "-vz", "localhost", "15672"]
-        #interval: 30s
-        #timeout: 10s
-        #retries: 4
+      healthcheck:
+        test: rabbitmq-diagnostics -q status
+        interval: 30s
+        timeout: 10s
+        retries: 4
 
-    #generator:
-      #build: ./dataGeneratorBroker
-      #container_name: data_generator
-      #restart: unless-stopped
-      #image: python-generator
-      #depends_on:
-        #- messageBroker
-        #messageBroker:
-          #condition: service_healthy
+    generator:
+      build: ./dataGeneratorBroker/
+      restart: on-failure
+      depends_on:
+        dataBase:
+          condition: service_healthy
+        messageBroker:
+          condition: service_healthy
+        fasttravelservice:
+          condition: service_healthy
 
 volumes:
   datafiles:

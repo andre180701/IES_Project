@@ -5,13 +5,14 @@ import time
 import mysql.connector
 from datetime import datetime
 
-conn =  mysql.connector.connect(username="admin", password="admin", db="fastTravelDB")
+conn =  mysql.connector.connect(username="admin", password="admin",host='dataBase', db="fastTravelDB")
 cursor = conn.cursor()
+
 
 class DataGenerator:
     def __init__(self):
         self.credentials = pika.PlainCredentials('user1','user1')
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host= 'localhost', port = '5672', credentials= self.credentials))
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host= 'messageBroker', port = '5672', credentials= self.credentials))
         self.channel = self.connection.channel()
         self.channel.queue_declare(queue='portinhas', durable=True)
 
@@ -45,8 +46,8 @@ class DataGenerator:
                 if c != "":
                     identifiers_reg.append(c)
         if clients != [] and credit_cards != []:
-            message = {'method': 'NEW_IDENTIFIER', 'registration': "AA-BB-18", 'classe': random.randint(1, 6), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
-            message2 = {'method': 'NEW_IDENTIFIER', 'registration': "CC-18-VV", 'classe': random.randint(1, 6), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
+            message = {'method': 'NEW_IDENTIFIER', 'registration': "AA-BB-18", 'classe': random.randint(1, 5), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
+            message2 = {'method': 'NEW_IDENTIFIER', 'registration': "CC-18-VV", 'classe': random.randint(1, 5), 'client': random.choice(clients)[0], 'credit_card': random.choice(credit_cards)[0]}
             if "AA-BB-18" not in identifiers_reg:
                 self.send('portinhas', message)
             
