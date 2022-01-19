@@ -56,7 +56,6 @@ public class RequestIdentifierController {
       HttpSession session = httpSessionFactory.getObject();
       String email = (String) session.getAttribute("email");
       Client client = clientService.getClientByEmail(email);
-      System.out.println(client);
 
       if (result.hasErrors()) {
         return "client/requestIdentifier";

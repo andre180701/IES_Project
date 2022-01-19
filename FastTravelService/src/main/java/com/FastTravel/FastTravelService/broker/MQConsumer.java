@@ -59,7 +59,6 @@ public class MQConsumer {
             Client client = clientController.findClientById(id_client);
             CreditCard credit_card = creditCardController.findCreditCardById(id_cerdit_card);
             Identifier identifier = new Identifier(registration, classe, client, credit_card);
-            System.out.println("IDENTIFIER CARALHO" + identifier);
             identifierController.addIdentifier(identifier);
 
         }
