@@ -1,5 +1,6 @@
 package com.FastTravel.FastTravelService;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,11 @@ import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.service.CreditCardService;
 import com.FastTravel.FastTravelService.service.ScutService;
+
+import java.math.BigInteger; 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException;
 
 import java.sql.Date;
 
@@ -37,11 +43,30 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	private ScutRepository scutRepository;
 	@Autowired
 	private AdminRepository adminRepository;
-	@Autowired
+  @Autowired
 	private IdentifierRepository identifierRepository;
-
+	
+	public static byte[] getSHA(String input) throws NoSuchAlgorithmException
+    { 
+        MessageDigest md = MessageDigest.getInstance("SHA-256"); 
+        return md.digest(input.getBytes(StandardCharsets.UTF_8)); 
+    }
+    
+    public static String toHexString(byte[] hash)
+    {
+        BigInteger number = new BigInteger(1, hash); 
+        StringBuilder hexString = new StringBuilder(number.toString(16)); 
+  
+        while (hexString.length() < 32) 
+        { 
+            hexString.insert(0, '0'); 
+        } 
+  
+        return hexString.toString(); 
+    }
+  
 	public void run(String... args) throws Exception {
-		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
+		Client Pedro = new Client("pedrofigs@ua.pt", toHexString(getSHA("pedroFigs!")), 237789, "Pedro", "Figueiredo");
 		
 		Boolean flag = true;
 		for (Client client : clientService.getClients()) {
@@ -97,7 +122,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 			scutRepository.save(scut3);
 		}
 		flag = true;
-		Admin admin1 = new Admin("andrefreixo18@ua.pt", "andrefreixo!", "André", "Freixo");
+		Admin admin1 = new Admin("andrefreixo18@ua.pt", toHexString(getSHA("andrefreixo!")), "André", "Freixo");
 		for (Admin admin : adminService.getAdmins()) {
 			if (admin1.getEmail().equals(admin.getEmail())){
 				flag = false;
@@ -108,7 +133,6 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		}
 
 		if(identifierRepository.findAll().isEmpty()){
-			System.out.print("EMPTY IDENTIFIER");
 			identifierRepository.save(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
 			identifierRepository.save(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
 		} 
