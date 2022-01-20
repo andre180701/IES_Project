@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.math.BigInteger; 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest; 
+import java.security.NoSuchAlgorithmException;
 
 import com.FastTravel.FastTravelService.inputsForms.InputLogin;
 import com.FastTravel.FastTravelService.model.Admin;
@@ -39,12 +43,31 @@ public class LoginController {
     return "login";
   }
 
+  public static byte[] getSHA(String input) throws NoSuchAlgorithmException
+  { 
+      MessageDigest md = MessageDigest.getInstance("SHA-256"); 
+      return md.digest(input.getBytes(StandardCharsets.UTF_8)); 
+  }
+  
+  public static String toHexString(byte[] hash)
+  {
+      BigInteger number = new BigInteger(1, hash); 
+      StringBuilder hexString = new StringBuilder(number.toString(16)); 
+
+      while (hexString.length() < 32) 
+      { 
+          hexString.insert(0, '0'); 
+      } 
+
+      return hexString.toString(); 
+  }
+
   @PostMapping("/login/check")
-  public String greetingSubmit(@ModelAttribute InputLogin inputLogin, Model model) {
+  public String greetingSubmit(@ModelAttribute InputLogin inputLogin, Model model) throws NoSuchAlgorithmException {
     HttpSession session = httpSessionFactory.getObject();
     String email = inputLogin.getEmail();
     String password = inputLogin.getPassword();
-
+    password = toHexString(getSHA(password));
     if (email == "" || password == "") {
       model.addAttribute("error", "All fields must be filled!");
       return "login";
