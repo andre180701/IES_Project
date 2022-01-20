@@ -9,7 +9,6 @@ import com.FastTravel.FastTravelService.repository.*;
 import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.service.CreditCardService;
-import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.service.ScutService;
 
 import java.math.BigInteger; 
@@ -31,8 +30,6 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	@Autowired
 	private ClientService clientService;
 	@Autowired
-	private IdentifierService identifierService;
-	@Autowired
 	private CreditCardService creditCardService;
 	@Autowired
 	private ClientRepository clientRepository;
@@ -43,11 +40,11 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 	@Autowired
 	private CreditCardRepository creditCardRepository;
 	@Autowired
-	private IdentifierRepository identifierRepository;
-	@Autowired
 	private ScutRepository scutRepository;
 	@Autowired
 	private AdminRepository adminRepository;
+  @Autowired
+	private IdentifierRepository identifierRepository;
 	
 	public static byte[] getSHA(String input) throws NoSuchAlgorithmException
     { 
@@ -67,25 +64,9 @@ public class FastTravelServiceApplication implements CommandLineRunner{
   
         return hexString.toString(); 
     }
-
-
-	public void run(String... args) throws Exception { 
-		String clientpassword =  "pedroFigs!";
-		Client Pedro = new Client("pedrofigs@ua.pt", toHexString(getSHA(clientpassword)), 237789, "Pedro", "Figueiredo");
-		CreditCard cartaoPedro = new CreditCard(1234567890, "Pedro Figueiredo", Date.valueOf("2023-10-1"), "Portugal", 123);
-		clientRepository.save(Pedro);
-		creditCardRepository.save(cartaoPedro);
-		identifierRepository.save(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
-		identifierRepository.save(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
-		scutRepository.save(new Scut(70.0987, 56.9987, "Peso Regua N/S", Date.valueOf("2001-11-6"), 1.70, 2.30, 3.09, 2.25, 2.70));
-		scutRepository.save(new Scut(51.4679, 51.3333, "Vila Real S O/E", Date.valueOf("2001-12-17"), 1.75, 3.27, 2.75, 2.25, 2.56));
-		scutRepository.save(new Scut(60.8901, 45.6709, "Campea O/E", Date.valueOf("2001-5-20"), 1.70, 2.56, 3.98, 2.28, 2.61));
-		adminRepository.save(new Admin("filipef@ua.pt", "filipeF2", "Filipe", "Augusto"));
-	}
-	
-	/*
+  
 	public void run(String... args) throws Exception {
-		Client Pedro = new Client("pedrofigs@ua.pt", "pedroFigs!", 237789, "Pedro", "Figueiredo");
+		Client Pedro = new Client("pedrofigs@ua.pt", toHexString(getSHA("pedroFigs!")), 237789, "Pedro", "Figueiredo");
 		
 		Boolean flag = true;
 		for (Client client : clientService.getClients()) {
@@ -141,7 +122,7 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 			scutRepository.save(scut3);
 		}
 		flag = true;
-		Admin admin1 = new Admin("andrefreixo18@ua.pt", "andrefreixo!", "André", "Freixo");
+		Admin admin1 = new Admin("andrefreixo18@ua.pt", toHexString(getSHA("andrefreixo!")), "André", "Freixo");
 		for (Admin admin : adminService.getAdmins()) {
 			if (admin1.getEmail().equals(admin.getEmail())){
 				flag = false;
@@ -150,9 +131,14 @@ public class FastTravelServiceApplication implements CommandLineRunner{
 		if (flag == true){
 			adminRepository.save(admin1);
 		}
+
+		if(identifierRepository.findAll().isEmpty()){
+			identifierRepository.save(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
+			identifierRepository.save(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
+		} 
 		
 	}
-	*/
+	
 }
 
 

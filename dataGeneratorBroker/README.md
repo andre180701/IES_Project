@@ -25,3 +25,6 @@
     ```
     python3 main.py 
     ```
+
+    6. Ver a interface do rabbitMQ 
+    http://localhost:15672
