@@ -12,8 +12,54 @@
     <link rel="stylesheet" href="../../assets/css/shared/style.css">
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+   
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js" integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+      var stompClient = null;
+      
+      function setConnected(connected) {
+          document.getElementById('conversationDiv').style.visibility 
+            = connected ? 'visible' : 'hidden';
+          document.getElementById('response').innerHTML = '';
+      }
+      
+      function connect() {
+          console.log("Connect funciona!");
+          alert("Connect funciona!");
+          var socket = new SockJS('/chat');
+          stompClient = Stomp.over(socket);  
+          stompClient.connect({}, function(frame) {
+              setConnected(true);
+              console.log('Connected: ' + frame);
+              stompClient.subscribe('/topic/messages', function(messageOutput) {
+                  showMessageOutput(JSON.parse(messageOutput.body));
+              });
+          });
+      }
+      
+      function disconnect() {
+          if(stompClient != null) {
+              stompClient.disconnect();
+          }
+          setConnected(false);
+          console.log("Disconnected");
+      }
+      
+      function showMessageOutput(messageOutput) {
+          console.log("FDS");
+          var response = document.getElementById('response');
+          var p = document.createElement('p');
+          p.style.wordWrap = 'break-word';
+          p.appendChild(document.createTextNode(messageOutput.identifier + ": " 
+            + messageOutput.scut + " (PASSAGE)"));
+          response.appendChild(p);
+      }
+  </script>
   </head>
-  <body>
+  <body onload="connect()">
     <div class="container-scroller">
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -83,7 +129,7 @@
                 </a>
               </li>
               <li class="nav-item nav-category">Main Menu</li>
-              <li class="nav-item">
+              <li class="nav-item" onclick="disconnect();">
                 <a class="nav-link" href="/admin/dashboard">
                   <i class="menu-icon typcn typcn-document-text"></i>
                   <span class="menu-title">Dashboard</span>
@@ -104,6 +150,11 @@
             </ul>
           </nav>
         <div class="main-panel">
+          
+          <div id="conversationDiv">
+            <p id="response"></p>
+          </div>
+          
           <div class="content-wrapper">
             <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">

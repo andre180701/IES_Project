@@ -42,6 +42,7 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 	private ScutRepository scutRepository;
 	@Autowired
 	private AdminRepository adminRepository;
+
 	@Autowired
 	private IdentifierRepository identifierRepository;
 

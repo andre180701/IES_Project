@@ -2,6 +2,7 @@ package com.FastTravel.FastTravelService.broker;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.model.Passage;
@@ -9,6 +10,10 @@ import com.FastTravel.FastTravelService.model.Scut;
 import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.controller.*;
+import com.FastTravel.FastTravelService.modelMessages.Message;
+import com.FastTravel.FastTravelService.service.IdentifierService;
+import com.FastTravel.FastTravelService.service.PassageService;
+import com.FastTravel.FastTravelService.service.ScutService;
 
 import org.json.simple.JSONObject;  
 import org.json.simple.JSONValue;  
@@ -20,7 +25,12 @@ public class MQConsumer {
     private PassageController passageController;
 
     @Autowired
+
     private IdentifierController identifierController;
+    SimpMessagingTemplate template;
+
+    @Autowired
+    private IdentifierService identifierService;
 
     @Autowired
     private ScutController scutController;
@@ -60,6 +70,10 @@ public class MQConsumer {
             CreditCard credit_card = creditCardController.findCreditCardById(id_cerdit_card);
             Identifier identifier = new Identifier(registration, classe, client, credit_card);
             identifierController.addIdentifier(identifier);
+
+            Message message = new Message(method, String.valueOf(jo.get("identifier")), String.valueOf(jo.get("scut")), ((String) jo.get("date")), ((String) jo.get("time")));
+            System.out.println("mensagem a enviar " + message);
+            template.convertAndSend("http://localhost:6868/app/chat", message);
 
         }
     }
