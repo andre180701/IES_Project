@@ -2,6 +2,7 @@ package com.FastTravel.FastTravelService.controller.admin;
 
 import com.FastTravel.FastTravelService.repository.*;
 import com.FastTravel.FastTravelService.model.*;
+import com.FastTravel.FastTravelService.controller.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -25,7 +26,7 @@ public class ScutsController{
     ObjectFactory<HttpSession> httpSessionFactory;
 
     @Autowired
-    private ScutRepository  scutRepository;
+    private ScutController  scutController;
 
     @GetMapping("admin/scuts")
     public String getAllScuts(Model model){
@@ -34,7 +35,7 @@ public class ScutsController{
         model.addAttribute("firstName", session.getAttribute("firstName"));
         model.addAttribute("lastName", session.getAttribute("lastName"));
         model.addAttribute("email", session.getAttribute("email"));
-        List<Scut> scuts = scutRepository.findAll();
+        List<Scut> scuts = scutController.findAllScuts();
         model.addAttribute("scuts", scuts);
 		return "admin/scuts";
 
@@ -42,6 +43,6 @@ public class ScutsController{
 
     @PostMapping("admin/scuts")
     public Scut createScut(@RequestBody Scut scut){
-        return scutRepository.save(scut);
+        return scutController.addScut(scut);
     }
 }

@@ -7,6 +7,9 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.model.Scut;
+import com.FastTravel.FastTravelService.model.Client;
+import com.FastTravel.FastTravelService.model.CreditCard;
+import com.FastTravel.FastTravelService.controller.*;
 import com.FastTravel.FastTravelService.modelMessages.Message;
 import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.service.PassageService;
@@ -19,16 +22,24 @@ import java.sql.Time;
 
 public class MQConsumer {
     @Autowired
-    private PassageService passageService;
+    private PassageController passageController;
 
     @Autowired
+
+    private IdentifierController identifierController;
     SimpMessagingTemplate template;
 
     @Autowired
     private IdentifierService identifierService;
 
     @Autowired
-    private ScutService scutService;
+    private ScutController scutController;
+
+    @Autowired
+    private ClientController clientController;
+
+    @Autowired
+    private CreditCardController creditCardController;
 
     @RabbitListener(queues = MQConfig.QUEUE)
     public void listen(String input) {
@@ -42,11 +53,23 @@ public class MQConsumer {
             Date date = Date.valueOf((String) jo.get("date")); 
             Time time = Time.valueOf((String) jo.get("time"));
             Long id_long = Long.parseLong(String.valueOf(jo.get("identifier")));
-            Identifier identifier = identifierService.getIdentifierById(id_long);
+            Identifier identifier = identifierController.findIdentifierById(id_long);
             Long scut_long = Long.parseLong(String.valueOf(jo.get("scut")));
-            Scut scut = scutService.getScutById(scut_long);
+            Scut scut = scutController.findScutById(scut_long);
             Passage passage = new Passage(date, time, identifier, scut);
-            passageService.savePassage(passage);
+            passageController.addPassage(passage);
+
+        }
+        if (method.equals("NEW_IDENTIFIER")) {
+            System.out.println("OLAAAA ENTREI NO CONSUMER SOU O IDENTIFIER");
+            String registration = (String) jo.get("registration");
+            Integer classe = (int) (long) (Long.parseLong(String.valueOf(jo.get("classe"))));
+            Long id_client = Long.parseLong(String.valueOf(jo.get("client")));
+            Long id_cerdit_card = Long.parseLong(String.valueOf(jo.get("credit_card")));
+            Client client = clientController.findClientById(id_client);
+            CreditCard credit_card = creditCardController.findCreditCardById(id_cerdit_card);
+            Identifier identifier = new Identifier(registration, classe, client, credit_card);
+            identifierController.addIdentifier(identifier);
 
             Message message = new Message(method, String.valueOf(jo.get("identifier")), String.valueOf(jo.get("scut")), ((String) jo.get("date")), ((String) jo.get("time")));
             System.out.println("mensagem a enviar " + message);

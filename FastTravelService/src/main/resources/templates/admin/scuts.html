@@ -111,15 +111,107 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Scuts</h4>
+                    <h1 style="text-align:center;" >Scuts</h1>
+                    <div class = "w3-container">
+                      <br>
+                      <p>Filter by:</p>
+                      
+                      <!-- <form action="#" th:action="@{/admin/filter}" th:object="${filterForms}" method="post">
+
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="border: none;">ID</th>
+                              <th style="border: none;">Latitude</th>
+                              <th style="border: none;">Longitude</th>
+                              <th style="border: none;">Instalation Date</th>
+                              <th style="border: none;">Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="border: none;"><input type="text" th:field="*{id}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{latitude}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{longitude}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{instalationDate}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{description}"></td>
+                              <td style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                              <td style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111"Clean Filter</button></td>
+                            </tr>
+                            <tr>
+                              <th style="border: none;">Price Class 1</th>
+                              <th style="border: none;">Price Class 2</th>
+                              <th style="border: none;">Price Class 3</th>
+                              <th style="border: none;">Price Class 4</th>
+                              <th style="border: none;">Price Class 5</th>
+                              <th style="border: none;"> </th>
+                            </tr>
+                            <tr>
+                              <td style="border: none;"><input type="text" th:field="*{price1}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{price2}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{price3}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{price4}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{price5}"></td>
+                              <td style="border: none;"> </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </form> -->
+
+
+                    <form>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="border: none;"><b>ID</b></th>
+                            <th style="border: none;"><b>Latitude</b></th>
+                            <th style="border: none;"><b>Longitude</b></th>
+                            <th style="border: none;"><b>Instalation Date</b></th>
+                            <th style="border: none;"><b>Description</b></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <!-- <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
+                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td> -->
+                          </tr>
+                          <tr>
+                            <th style="border: none;"><b>Price Class 1</b></th>
+                            <th style="border: none;"><b>Price Class 2</b></th>
+                            <th style="border: none;"><b>Price Class 3</b></th>
+                            <th style="border: none;"><b>Price Class 4</b></th>
+                            <th style="border: none;"><b>Price Class 5</b></th>
+                            <th style="border: none;"> </th>
+                          </tr>
+                          <tr>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"><input type="text"></td>
+                            <td style="border: none;"> </td>
+                          </tr>
+                          <tr>
+                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
+                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </form>
                     <table class="table">
                       <thead>
                         <tr>
-                          <th></th>
                           <th>ID</th>
                           <th>Latitude</th>
                           <th>Longitude</th>
                           <th>Instalation Date</th>
+                          <th>Description</th>
                           <th>Price Class 1</th>
                           <th>Price Class 2</th>
                           <th>Price Class 3</th>
@@ -130,17 +222,17 @@
                       </thead>
                       <tbody>
                         <tr th:each="scut : ${scuts}"  >
-                          <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
                           <td th:text="${{scut.id}}"/>
                           <td th:text="${{scut.latitude}}"/>
                           <td th:text="${{scut.longitude}}"/>
                           <td th:text="${{scut.instalationDate}}"/>
+                          <td th:text="${{scut.description}}"/>
                           <td th:text="${{scut.price1}}"/>
                           <td th:text="${{scut.price2}}"/>
                           <td th:text="${{scut.price3}}"/>
                           <td th:text="${{scut.price4}}"/>
                           <td th:text="${{scut.price5}}"/>
-                          <td><i class="fa fa-ellipsis-v"></i></td>    
+                          <!-- <td><i class="fa fa-ellipsis-v"></i></td>     -->
                         </tr>
                       </tbody>
                     </table>
