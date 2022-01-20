@@ -41,12 +41,12 @@ public class ClientService{
     
     public Client updateClient(Client client) {
         Client existingClient = clientRepository.findById(client.getId()).orElse(null);
-        client.setEmail(existingClient.getEmail());
-        client.setFirst_name(existingClient.getFirst_name());
-        client.setIdentifiers(existingClient.getIdentifiers());
-        client.setLast_name(existingClient.getLast_name());
-        client.setNif(existingClient.getNif());
-        client.setPassword(existingClient.getPassword());
+        existingClient.setEmail(client.getEmail());
+        existingClient.setFirst_name(client.getFirst_name());
+        existingClient.setIdentifiers(client.getIdentifiers());
+        existingClient.setLast_name(client.getLast_name());
+        existingClient.setNif(client.getNif());
+        existingClient.setPassword(client.getPassword());
         return clientRepository.save(existingClient);
     }
 }

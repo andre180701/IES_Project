@@ -20,7 +20,7 @@ public class IdentifierService{
         try        
         {
             System.out.println("INICIO DO SLEEP");
-            Thread.sleep(1000);
+            Thread.sleep(20000);
         } 
         catch(InterruptedException ex) 
         {
@@ -31,7 +31,41 @@ public class IdentifierService{
         identifier2.setState(StateIdentifier.PAID);
         System.out.println("DEPOIS DO SET" + identifier2);
         updateIdentifier(identifier2);
+        try        
+        {
+            System.out.println("INICIO DO SLEEP");
+            Thread.sleep(20000);
+        } 
+        catch(InterruptedException ex) 
+        {
+            Thread.currentThread().interrupt();
+        }
+        identifier2.setState(StateIdentifier.SENDING);
+        updateIdentifier(identifier2);
+        try        
+        {
+            System.out.println("INICIO DO SLEEP");
+            Thread.sleep(20000);
+        } 
+        catch(InterruptedException ex) 
+        {
+            Thread.currentThread().interrupt();
+        }
+        identifier2.setState(StateIdentifier.RECEIVED);
+        updateIdentifier(identifier2);
+        try        
+        {
+            System.out.println("INICIO DO SLEEP");
+            Thread.sleep(20000);
+        } 
+        catch(InterruptedException ex) 
+        {
+            Thread.currentThread().interrupt();
+        }
+        identifier2.setState(StateIdentifier.ACTIVATE);
+        updateIdentifier(identifier2);
         return identifier2;
+        
     }
 
     public List<Identifier> saveIdentifiers(List<Identifier> identifiers) {
@@ -54,12 +88,12 @@ public class IdentifierService{
     
     public Identifier updateIdentifier(Identifier identifier) {
         Identifier existingIdentifier = identifierRepository.findById(identifier.getId()).orElse(null);
-        identifier.setClasse(existingIdentifier.getClasse());
-        identifier.setClient(existingIdentifier.getClient());
-        identifier.setCreditCard(existingIdentifier.getCreditCard());
-        identifier.setPassages(existingIdentifier.getPassages());
-        identifier.setRegistration(existingIdentifier.getRegistration());
-        identifier.setState(existingIdentifier.getState());
+        existingIdentifier.setClasse(identifier.getClasse());
+        existingIdentifier.setClient(identifier.getClient());
+        existingIdentifier.setCreditCard(identifier.getCreditCard());
+        existingIdentifier.setPassages(identifier.getPassages());
+        existingIdentifier.setRegistration(identifier.getRegistration());
+        existingIdentifier.setState(identifier.getState());
         return identifierRepository.save(existingIdentifier);
     }
 }
