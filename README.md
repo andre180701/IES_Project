@@ -19,6 +19,26 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 
 ## Correr FastTravel
 
+### Correr FasTravel na VM
+1. Executar o comando, colocando o user da sua conta da UA 
+    ```
+    ssh user@deti-engsoft-12
+    ```
+2. De seguida ira ser pedido a password da conta da UA, inserir a password da conta da UA
+3. Navegar para o diretório ./home/luisccmartins88/IES_Project
+4. Depois é só correr o docker:
+    ```
+    sudo docker-compose down -v
+    ```
+    ```
+    sudo docker-compose build
+    ```
+    ```
+    sudo docker-compose up
+    ```
+5. No browser se navegar no link: 192.168.160.221:6868/ irá conseguir ver o site a correr.
+
+### Correr FasTravel em localhost
 ### Compilar FastTravelService
 
 1. Ao compilar o FastTravelService, irá eliminar a pasta target caso exista, e gera-lo de novo com base no código do FastTravelService, contendo este um ficheiro jar. 
@@ -32,22 +52,22 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 1. Antes de compilar o docker é necessario ter o ficheiro jar do FastTravelService pretendido (para obte-lo basta executar os passos vistos anteriormmente)
 2. Para compilar o docker basta correr o seguinte comando no diretório raiz do projeto:
     ```
-    sudo docker-compose build
+    docker-compose build
     ```
 
 ### Executar o docker 
 
 1. Para correr o docker basta correr o seguinte comando no diretório raiz do projeto:
     ```
-    sudo docker-compose down
+    docker-compose down -v
     ```
     ```
-    sudo docker-compose up
+    docker-compose up
     ```
 
 2. Para eliminar a base de dados:
     ```
-    sudo docker-compose down -v
+    docker-compose down -v
     ```
 
 3. Para eliminar docker:
@@ -55,12 +75,6 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 
 4. Observar os resultados Website
     http://localhost:6868/
-
-### Compilar a geração de dados e rabbit 
-1. Entrar no diretorio dataGeneratorBroker
-2. Ver o Readme do diretorio
-3. Ver a interface do rabbitMQ 
-    http://localhost:15672
 
 ### Observar a base de dados
 1. Colocar o docker a correr como explicado anteriormente
@@ -72,14 +86,33 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     admin
     ```
 
-### Correr o Projeto na VM:
-1. fazer ping par o nome da VM
-2. copiar o endereço que aparece nesse ping
-3. no browser perquisar po (endereco):6868/
-
 ### Remover docker images
 > docker volume rm $(docker volume ls | awk '{print $2}')
 > docker rmi -f $(docker images -aq)
+
+## Iteracao 3
+1. Userstory do Login;
+2. Userstory que permite a visualização das "passages in scuts" por parte do admin;
+3. Userstory que permite a vizualização das "scuts" por parte do admin;
+4. Userstory que permite o client visualizar os seus "Vehicles and Identifiers";
+5. Userstory que permite que o client faça um "Request Identifier", que, será adicionado ao "Vehicles and Identifiers";
+6. Userstory que permite que o cliente vizualize e, também, pesquise através de filtros os "Movements";
+7. Implementação da Rest API;
+8. Deployment do IES_Project na VM.
+
+
+## Credentials to access as Client
+
+| Username           | Password   |
+| ------------------ | ---------- |
+| pedrofigs@ua.pt    | pedroFigs! |
+
+## Credentials to access as Admin
+
+| Username               | Password     |
+| ---------------------- | ------------ |
+| andrefreixo18@ua.pt    | andrefreixo! |
+
 
 ## Papéis 
 
