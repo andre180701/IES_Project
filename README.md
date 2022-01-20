@@ -91,16 +91,28 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 > docker rmi -f $(docker images -aq)
 
 ## Iteracao 3
-1. Userstory do Login
-2. Userstoy de 
+1. Userstory do Login;
+2. Userstory que permite a visualização das "passages in scuts" por parte do admin;
+3. Userstory que permite a vizualização das "scuts" por parte do admin;
+4. Userstory que permite o client visualizar os seus "Vehicles and Identifiers";
+5. Userstory que permite que o client faça um "Request Identifier", que, será adicionado ao "Vehicles and Identifiers";
+6. Userstory que permite que o cliente vizualize e, também, pesquise através de filtros os "Movements";
+7. Implementação da Rest API;
+8. Deployment do IES_Project na VM.
 
-## Credentials to access WikiBook
 
-| Username  | Password  |
-| --------- | --------- |
-| amelia    | amElinha@ |
-| antony    | love%aJax |
-| bininho   | biNo123!zx|
+## Credentials to access as Client
+
+| Username           | Password   |
+| ------------------ | ---------- |
+| pedrofigs@ua.pt    | pedroFigs! |
+
+## Credentials to access as Admin
+
+| Username               | Password     |
+| ---------------------- | ------------ |
+| andrefreixo18@ua.pt    | andrefreixo! |
+
 
 ## Papéis 
 
