@@ -151,7 +151,6 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th></th>
                           <th>Registration</th>
                           <th>Identifier</th>
                           <th>Class</th>
@@ -162,7 +161,6 @@
                       </thead>
                       <tbody>
                         <tr th:each="identifier : ${identifiers}"  >
-                            <td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
                             <td th:text="${{identifier.registration}}"/>
                             <td th:text="${{identifier.id}}"/>
                             <td th:text="${{identifier.classe}}"/>
