@@ -94,6 +94,13 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 1. Userstory do Login
 2. Userstoy de 
 
+## Credentials to access WikiBook
+
+| Username  | Password  |
+| --------- | --------- |
+| amelia    | amElinha@ |
+| antony    | love%aJax |
+| bininho   | biNo123!zx|
 
 ## Papéis 
 
