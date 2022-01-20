@@ -65,7 +65,7 @@ public class LoginController {
   @PostMapping("/login/check")
   public String greetingSubmit(@ModelAttribute InputLogin inputLogin, Model model) throws NoSuchAlgorithmException {
     HttpSession session = httpSessionFactory.getObject();
-    String email = inputLogin.getEmail();
+    String email = inputLogin.getEmail().strip();
     String password = inputLogin.getPassword();
     password = toHexString(getSHA(password));
     if (email == "" || password == "") {
