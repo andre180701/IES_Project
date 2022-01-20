@@ -46,9 +46,11 @@ services:
         }'
       healthcheck:
         test: "curl http://localhost:8000"
-        interval: 20s
+        interval: 30s
+        #interval: 20s
         timeout: 10s
-        retries: 2
+        retries: 3
+        #retries: 2
 
     messageBroker:
       image: rabbitmq:3.8-management-alpine
@@ -65,19 +67,20 @@ services:
         interval: 20s
         timeout: 10s
         retries: 2
-
-    generator:
-      build: ./dataGeneratorBroker/
-      restart: on-failure
-      depends_on:
-        dataBase:
-          condition: service_healthy
-        messageBroker:
-          condition: service_healthy
-        fasttravelservice:
-          condition: service_healthy
-      links:
-        - messageBroker
+    
+    #generator:
+      #build: ./dataGeneratorBroker/
+      #restart: on-failure
+      #depends_on:
+        #dataBase:
+         # condition: service_healthy
+        #messageBroker:
+         # condition: service_healthy
+        #fasttravelservice:
+       #   condition: service_healthy
+      #links:
+      #  - messageBroker
+    
 
 volumes:
   datafiles:

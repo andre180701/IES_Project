@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import com.FastTravel.FastTravelService.model.Identifier;
+import com.FastTravel.FastTravelService.model.PaymentState;
+import com.FastTravel.FastTravelService.model.StateIdentifier;
 import com.FastTravel.FastTravelService.repository.IdentifierRepository;
 
 @Service
@@ -13,7 +15,23 @@ public class IdentifierService{
     private IdentifierRepository identifierRepository;
     
     public Identifier saveIdentifier(Identifier identifier){
-        return identifierRepository.save(identifier);
+        Identifier identifier2 =  identifierRepository.save(identifier);
+        System.out.println("ANTES DO TRY");
+        try        
+        {
+            System.out.println("INICIO DO SLEEP");
+            Thread.sleep(1000);
+        } 
+        catch(InterruptedException ex) 
+        {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("FIM DO SLEEP");
+        System.out.println("ANTES DO SET" + identifier2);
+        identifier2.setState(StateIdentifier.PAID);
+        System.out.println("DEPOIS DO SET" + identifier2);
+        updateIdentifier(identifier2);
+        return identifier2;
     }
 
     public List<Identifier> saveIdentifiers(List<Identifier> identifiers) {

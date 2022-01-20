@@ -39,7 +39,6 @@ public class MQConsumer {
         String method = (String) jo.get("method");  
 
         if (method.equals("NEW_PASSAGE")) {
-            System.out.println("OLAAAA ENTREI NO CONSUMER");
             Date date = Date.valueOf((String) jo.get("date")); 
             Time time = Time.valueOf((String) jo.get("time"));
             Long id_long = Long.parseLong(String.valueOf(jo.get("identifier")));
@@ -51,7 +50,6 @@ public class MQConsumer {
 
         }
         if (method.equals("NEW_IDENTIFIER")) {
-            System.out.println("OLAAAA ENTREI NO CONSUMER SOU O IDENTIFIER");
             String registration = (String) jo.get("registration");
             Integer classe = (int) (long) (Long.parseLong(String.valueOf(jo.get("classe"))));
             Long id_client = Long.parseLong(String.valueOf(jo.get("client")));
