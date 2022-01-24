@@ -15,57 +15,7 @@ public class IdentifierService{
     private IdentifierRepository identifierRepository;
     
     public Identifier saveIdentifier(Identifier identifier){
-        Identifier identifier2 =  identifierRepository.save(identifier);
-        System.out.println("ANTES DO TRY");
-        try        
-        {
-            System.out.println("INICIO DO SLEEP");
-            Thread.sleep(20000);
-        } 
-        catch(InterruptedException ex) 
-        {
-            Thread.currentThread().interrupt();
-        }
-        System.out.println("FIM DO SLEEP");
-        System.out.println("ANTES DO SET" + identifier2);
-        identifier2.setState(StateIdentifier.PAID);
-        System.out.println("DEPOIS DO SET" + identifier2);
-        updateIdentifier(identifier2);
-        try        
-        {
-            System.out.println("INICIO DO SLEEP");
-            Thread.sleep(20000);
-        } 
-        catch(InterruptedException ex) 
-        {
-            Thread.currentThread().interrupt();
-        }
-        identifier2.setState(StateIdentifier.SENDING);
-        updateIdentifier(identifier2);
-        try        
-        {
-            System.out.println("INICIO DO SLEEP");
-            Thread.sleep(20000);
-        } 
-        catch(InterruptedException ex) 
-        {
-            Thread.currentThread().interrupt();
-        }
-        identifier2.setState(StateIdentifier.RECEIVED);
-        updateIdentifier(identifier2);
-        try        
-        {
-            System.out.println("INICIO DO SLEEP");
-            Thread.sleep(20000);
-        } 
-        catch(InterruptedException ex) 
-        {
-            Thread.currentThread().interrupt();
-        }
-        identifier2.setState(StateIdentifier.ACTIVATE);
-        updateIdentifier(identifier2);
-        return identifier2;
-        
+        return identifierRepository.save(identifier);
     }
 
     public List<Identifier> saveIdentifiers(List<Identifier> identifiers) {

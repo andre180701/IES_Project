@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.model.Scut;
+import com.FastTravel.FastTravelService.model.StateIdentifier;
+import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.controller.*;
@@ -26,10 +28,7 @@ public class MQConsumer {
     private ScutController scutController;
 
     @Autowired
-    private ClientController clientController;
-
-    @Autowired
-    private CreditCardController creditCardController;
+    private IdentifierService identifierService;
 
     @RabbitListener(queues = MQConfig.QUEUE)
     public void listen(String input) {
@@ -49,16 +48,13 @@ public class MQConsumer {
             passageController.addPassage(passage);
 
         }
-        if (method.equals("NEW_IDENTIFIER")) {
-            String registration = (String) jo.get("registration");
-            Integer classe = (int) (long) (Long.parseLong(String.valueOf(jo.get("classe"))));
-            Long id_client = Long.parseLong(String.valueOf(jo.get("client")));
-            Long id_cerdit_card = Long.parseLong(String.valueOf(jo.get("credit_card")));
-            Client client = clientController.findClientById(id_client);
-            CreditCard credit_card = creditCardController.findCreditCardById(id_cerdit_card);
-            Identifier identifier = new Identifier(registration, classe, client, credit_card);
-            identifierController.addIdentifier(identifier);
-
+        if (method.equals("UPDATE_IDENTIFIER")) {
+            System.out.println("WHERE HAVE YOU BEEN LOCA");
+            Identifier existing_identifier = identifierService.getIdentifierById(Long.parseLong(String.valueOf(jo.get("id_identifier"))));
+            String new_state = String.valueOf(jo.get("new_state"));
+            System.out.println("OLHA AQUI BURRO DO CARALHO " + new_state);
+            existing_identifier.setState(StateIdentifier.valueOf(new_state));
+            identifierService.updateIdentifier(existing_identifier);
         }
     }
 
