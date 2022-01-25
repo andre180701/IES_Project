@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.validation.Valid;
 
 import com.FastTravel.FastTravelService.model.Passage;
-import com.FastTravel.FastTravelService.repository.PassageRepository;
 import com.FastTravel.FastTravelService.controller.PassageController;
 
 import java.util.*;
@@ -20,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpSession;  
 
 @Controller
-//@EnableJpaRepositories(basePackageClasses = {PassageRepository.class})
 public class PassagesController {
     @Autowired
     ObjectFactory<HttpSession> httpSessionFactory;
@@ -28,7 +26,6 @@ public class PassagesController {
     @Autowired
     private PassageController passageController;
 
-    //@CrossOrigin(origins = "http://localhost:8000/")
     @GetMapping("admin/passages")
     public String getAllPassages( Model model) {
         HttpSession session = httpSessionFactory.getObject();
@@ -37,6 +34,7 @@ public class PassagesController {
         model.addAttribute("lastName", session.getAttribute("lastName"));
         model.addAttribute("email", session.getAttribute("email"));
         List<Passage> passages = passageController.findAllPassages();
+        Collections.sort(passages);
 		model.addAttribute("passages", passages);
 		return "admin/passages";
     }   

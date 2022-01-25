@@ -12,8 +12,76 @@
     <link rel="stylesheet" href="../../assets/css/shared/style.css">
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+   
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js" integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+      var stompClient = null;
+      
+      function connect() {
+          var socket = new SockJS('/chat');
+          stompClient = Stomp.over(socket);  
+          stompClient.connect({}, function(frame) {
+              stompClient.subscribe('/topic/messages', function(messageOutput) {
+                  showMessageOutput(JSON.parse(messageOutput.body));
+              });
+          });
+      }
+      
+      function disconnect() {
+          if(stompClient != null) {
+              stompClient.disconnect();
+          }
+          console.log("Disconnected");
+      }
+      
+      function showMessageOutput(messageOutput) {
+          let tableRef = document.getElementById('idTable');
+
+          // Insert a row at the end of the table
+          let newRow = tableRef.insertRow(2);
+
+          // Insert a cell in the row at index 0
+          let newCell0 = newRow.insertCell(0);
+          let newCell1 = newRow.insertCell(1);
+          let newCell2 = newRow.insertCell(2);
+          let newCell3 = newRow.insertCell(3);
+          let newCell4 = newRow.insertCell(4);
+          let newCell5 = newRow.insertCell(5);
+          let newCell6 = newRow.insertCell(6);
+          let newCell7 = newRow.insertCell(7);
+          let newCell8 = newRow.insertCell(8);
+          let newCell9 = newRow.insertCell(9);
+          let newCell10 = newRow.insertCell(10);
+          let newCell11 = newRow.insertCell(11);
+
+          // Append a text node to the cell
+          let newText = document.createTextNode(messageOutput.clientEmail);
+          newCell1.appendChild(newText);
+          newText = document.createTextNode(messageOutput.registration);
+          newCell2.appendChild(newText);
+          newText = document.createTextNode(messageOutput.identifier);
+          newCell3.appendChild(newText);
+          newText = document.createTextNode(messageOutput.date);
+          newCell4.appendChild(newText);
+          newText = document.createTextNode(messageOutput.time);
+          newCell5.appendChild(newText);
+          newText = document.createTextNode(messageOutput.scutLongitude);
+          newCell6.appendChild(newText);
+          newText = document.createTextNode(messageOutput.scutLatitude);
+          newCell7.appendChild(newText);
+          newText = document.createTextNode(messageOutput.scutDescription);
+          newCell8.appendChild(newText);
+          newText = document.createTextNode(messageOutput.price);
+          newCell9.appendChild(newText);
+          newText = document.createTextNode(messageOutput.paymentState);
+          newCell10.appendChild(newText);
+      }
+  </script>
   </head>
-  <body>
+  <body onload="connect()">
     <div class="container-scroller">
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -83,7 +151,7 @@
                 </a>
               </li>
               <li class="nav-item nav-category">Main Menu</li>
-              <li class="nav-item">
+              <li class="nav-item" onclick="disconnect();">
                 <a class="nav-link" href="/admin/dashboard">
                   <i class="menu-icon typcn typcn-document-text"></i>
                   <span class="menu-title">Dashboard</span>
@@ -161,7 +229,7 @@
                     <br>
                     <br>
                     <br>
-                    <table class="table">
+                    <table id="idTable" class="table">
                       <thead>
                         <tr>
                           <th></th>
