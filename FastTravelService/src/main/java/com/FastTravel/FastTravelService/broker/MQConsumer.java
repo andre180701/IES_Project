@@ -11,9 +11,6 @@ import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.controller.*;
 import com.FastTravel.FastTravelService.modelMessages.Message;
-import com.FastTravel.FastTravelService.service.IdentifierService;
-import com.FastTravel.FastTravelService.service.PassageService;
-import com.FastTravel.FastTravelService.service.ScutService;
 
 import org.json.simple.JSONObject;  
 import org.json.simple.JSONValue;  
@@ -25,12 +22,10 @@ public class MQConsumer {
     private PassageController passageController;
 
     @Autowired
-
     private IdentifierController identifierController;
-    SimpMessagingTemplate template;
 
     @Autowired
-    private IdentifierService identifierService;
+    SimpMessagingTemplate template;
 
     @Autowired
     private ScutController scutController;
@@ -59,6 +54,10 @@ public class MQConsumer {
             Passage passage = new Passage(date, time, identifier, scut);
             passageController.addPassage(passage);
 
+            Message message = new Message(method, String.valueOf(jo.get("identifier")), String.valueOf(jo.get("scut")), ((String) jo.get("date")), ((String) jo.get("time")));
+            System.out.println("mensagem a enviar " + message);
+            template.convertAndSend("/chat", message);
+
         }
         if (method.equals("NEW_IDENTIFIER")) {
             System.out.println("OLAAAA ENTREI NO CONSUMER SOU O IDENTIFIER");
@@ -70,11 +69,6 @@ public class MQConsumer {
             CreditCard credit_card = creditCardController.findCreditCardById(id_cerdit_card);
             Identifier identifier = new Identifier(registration, classe, client, credit_card);
             identifierController.addIdentifier(identifier);
-
-            Message message = new Message(method, String.valueOf(jo.get("identifier")), String.valueOf(jo.get("scut")), ((String) jo.get("date")), ((String) jo.get("time")));
-            System.out.println("mensagem a enviar " + message);
-            template.convertAndSend("http://localhost:6868/app/chat", message);
-
         }
     }
 
