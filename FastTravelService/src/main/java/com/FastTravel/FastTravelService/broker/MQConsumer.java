@@ -7,10 +7,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.model.Scut;
-import com.FastTravel.FastTravelService.model.Client;
-import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.controller.*;
-import com.FastTravel.FastTravelService.modelMessages.Message;
+import com.FastTravel.FastTravelService.modelMessages.MsgNewPassageAdmin;
 
 import org.json.simple.JSONObject;  
 import org.json.simple.JSONValue;  
@@ -30,11 +28,6 @@ public class MQConsumer {
     @Autowired
     private ScutController scutController;
 
-    @Autowired
-    private ClientController clientController;
-
-    @Autowired
-    private CreditCardController creditCardController;
 
     @RabbitListener(queues = MQConfig.QUEUE)
     public void listen(String input) {
@@ -44,7 +37,6 @@ public class MQConsumer {
         String method = (String) jo.get("method");  
 
         if (method.equals("NEW_PASSAGE")) {
-            System.out.println("OLAAAA ENTREI NO CONSUMER");
             Date date = Date.valueOf((String) jo.get("date")); 
             Time time = Time.valueOf((String) jo.get("time"));
             Long id_long = Long.parseLong(String.valueOf(jo.get("identifier")));
@@ -54,9 +46,8 @@ public class MQConsumer {
             Passage passage = new Passage(date, time, identifier, scut);
             passageController.addPassage(passage);
 
-            Message message = new Message(method, String.valueOf(jo.get("identifier")), String.valueOf(jo.get("scut")), ((String) jo.get("date")), ((String) jo.get("time")));
-            System.out.println("mensagem a enviar " + message);
-            template.convertAndSend("/chat", message);
+            MsgNewPassageAdmin message = new MsgNewPassageAdmin(method, identifier.getClient().getEmail(), identifier.getRegistration(), String.valueOf(jo.get("identifier")), ((String) jo.get("date")), ((String) jo.get("time")), String.valueOf(scut.getLongitude()), String.valueOf(scut.getLatitude()), scut.getDescription(), String.valueOf(passage.getPrice()), String.valueOf(passage.getPaymentState()));
+            this.template.convertAndSend("/topic/messages", message);
 
         }
     }
