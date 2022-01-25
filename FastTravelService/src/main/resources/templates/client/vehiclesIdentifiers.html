@@ -121,61 +121,67 @@
                     <br>
                     <div class = "w3-container">
                       <p>Filter by:</p>
+                      <form action="#" th:action="@{/client/filteridentifier}" th:object="${filterForm}" method="post">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="border: none;">Registration</th>
+                              <th style="border: none;">Identifier</th>
+                              <th style="border: none;">Class</th>
+                              <th style="border: none;">Means of Payment</th>
+                              <th style="border: none;">State</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="border: none;"><input type="text" th:field="*{registration}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{identifier}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{classe}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{meansPayment}"></td>
+                              <td style="border: none;"><input type="text" th:field="*{state}"></td>
+                              <!-- <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
+                              <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td> -->
+                            </tr>
+                            <tr>
+                              <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                              <td align="center" style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </form>
+                      </div>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
                       <table class="table">
                         <thead>
                           <tr>
-                            <th style="border: none;">Registration</th>
-                            <th style="border: none;">Identifier</th>
-                            <th style="border: none;">Class</th>
-                            <th style="border: none;">Means of Payment</th>
-                            <th style="border: none;">State</th>
+                            <th>Registration</th>
+                            <th>Identifier</th>
+                            <th>Class</th>
+                            <th>Means of Payment</th>
+                            <th>State</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none;"><input type="text"></td>
-                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
-                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
+                          <tr th:each="identifier : ${identifiers}"  >
+                              <td th:text="${{identifier.registration}}"/>
+                              <td th:text="${{identifier.id}}"/>
+                              <td th:text="${{identifier.classe}}"/>
+                              <td th:text="${{identifier.creditCard.number}}"/>
+                              <td th:text="${{identifier.state}}"/>
+                              <!--<td>
+                                  <label class="badge badge-success">Completed</label>
+                              </td>-->
+                              <td><a href="#" class="button-12">Change State</a> </td>  
+                              
                           </tr>
                         </tbody>
-                      </table>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Registration</th>
-                          <th>Identifier</th>
-                          <th>Class</th>
-                          <th>Means of Payment</th>
-                          <th>State</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr th:each="identifier : ${identifiers}"  >
-                            <td th:text="${{identifier.registration}}"/>
-                            <td th:text="${{identifier.id}}"/>
-                            <td th:text="${{identifier.classe}}"/>
-                            <td th:text="${{identifier.creditCard.number}}"/>
-                            <td th:text="${{identifier.state}}"/>
-                            <!--<td>
-                                <label class="badge badge-success">Completed</label>
-                            </td>-->
-                            <td><a href="#" class="button-12">Edit</a> </td>  
-                            
-                        </tr>
-                      </tbody>
                       
                       
-                    </table>
+                     </table>
                   </div>
                 </div>
               </div>
