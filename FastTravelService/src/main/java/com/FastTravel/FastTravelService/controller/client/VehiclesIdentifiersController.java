@@ -113,16 +113,8 @@ public class VehiclesIdentifiersController {
         }
       }
     }
-    System.out.println("INICIO");
     if(filterIdentifiers.getMeansPayment().strip() != ""){
-      System.out.println("Entrou no payment");
-      System.out.println("formulario");
-      System.out.println(filterIdentifiers.getMeansPayment());
-      System.out.println("valor da bd");
-      
       for(Identifier pc : identifiersClient){
-        System.out.println("valor da bd");
-        System.out.println(pc.getCreditCard().getId());
         if(pc.getCreditCard().getNumber() != (Long.parseLong(String.valueOf(filterIdentifiers.getMeansPayment().strip()))) && identifiersClient2.contains(pc)){
             identifiersClient2.remove(pc);
         }
