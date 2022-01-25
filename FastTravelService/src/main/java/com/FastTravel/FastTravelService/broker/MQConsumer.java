@@ -59,17 +59,6 @@ public class MQConsumer {
             template.convertAndSend("/chat", message);
 
         }
-        if (method.equals("NEW_IDENTIFIER")) {
-            System.out.println("OLAAAA ENTREI NO CONSUMER SOU O IDENTIFIER");
-            String registration = (String) jo.get("registration");
-            Integer classe = (int) (long) (Long.parseLong(String.valueOf(jo.get("classe"))));
-            Long id_client = Long.parseLong(String.valueOf(jo.get("client")));
-            Long id_cerdit_card = Long.parseLong(String.valueOf(jo.get("credit_card")));
-            Client client = clientController.findClientById(id_client);
-            CreditCard credit_card = creditCardController.findCreditCardById(id_cerdit_card);
-            Identifier identifier = new Identifier(registration, classe, client, credit_card);
-            identifierController.addIdentifier(identifier);
-        }
     }
 
 }
