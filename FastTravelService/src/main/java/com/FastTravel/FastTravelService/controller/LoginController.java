@@ -9,12 +9,18 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest; 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.FastTravel.FastTravelService.inputsForms.InputLogin;
 import com.FastTravel.FastTravelService.model.Admin;
 import com.FastTravel.FastTravelService.model.Client;
+import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.service.AdminService;
 import com.FastTravel.FastTravelService.service.ClientService;
+import com.FastTravel.FastTravelService.controller.PassageController;
 
 import org.springframework.beans.factory.ObjectFactory;
 import javax.servlet.http.HttpSession;  
@@ -23,6 +29,9 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class LoginController {
+
+  @Autowired
+  private PassageController passageController;
 
   @Autowired
   private ClientService clientService;
@@ -95,6 +104,28 @@ public class LoginController {
       model.addAttribute("firstName", admin.getFirst_name());
       model.addAttribute("lastName", admin.getLast_name());
       model.addAttribute("email", email);
+
+
+      HashMap<String, Integer> hm = new HashMap<String, Integer>(); 
+      List<Passage> passages = passageController.findAllPassages();
+      for(Passage p : passages) {
+        if(hm.containsKey(p.getScut().getDescription())){
+          hm.put(p.getScut().getDescription(), hm.get(p.getScut().getDescription()) + 1);
+
+        }
+        else{
+          hm.put(p.getScut().getDescription(), 1);
+        }
+      }
+
+
+      Map<String, Integer> graphData = new TreeMap<>();
+      for(String i : hm.keySet()) {
+        graphData.put(i, hm.get(i));
+      }
+      
+      model.addAttribute("chartData", graphData);
+      
       return "admin/dashboard";
     }
 
