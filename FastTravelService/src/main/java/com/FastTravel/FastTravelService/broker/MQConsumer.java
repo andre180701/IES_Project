@@ -8,8 +8,6 @@ import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.model.Scut;
 import com.FastTravel.FastTravelService.model.StateIdentifier;
 import com.FastTravel.FastTravelService.service.IdentifierService;
-import com.FastTravel.FastTravelService.model.Client;
-import com.FastTravel.FastTravelService.model.CreditCard;
 import com.FastTravel.FastTravelService.controller.*;
 
 import org.json.simple.JSONObject;  
@@ -49,12 +47,27 @@ public class MQConsumer {
 
         }
         if (method.equals("UPDATE_IDENTIFIER")) {
-            System.out.println("WHERE HAVE YOU BEEN LOCA");
-            Identifier existing_identifier = identifierService.getIdentifierById(Long.parseLong(String.valueOf(jo.get("id_identifier"))));
+            Identifier existing_identifier = identifierController.findIdentifierById(Long.parseLong(String.valueOf(jo.get("id_identifier"))));
             String new_state = String.valueOf(jo.get("new_state"));
             System.out.println("OLHA AQUI BURRO DO CARALHO " + new_state);
-            existing_identifier.setState(StateIdentifier.valueOf(new_state));
-            identifierService.updateIdentifier(existing_identifier);
+            existing_identifier.setState(StateIdentifier.getEnum(new_state));
+            identifierController.updateIdentifier(existing_identifier);
+        }
+        if (method.equals("UPDATE_PASSAGE")) {
+            System.out.println("UPDATE_PASSAGE");
+            /*
+            System.out.println(String.valueOf(jo.get("id_passage")));
+            System.out.println((Long.parseLong(String.valueOf(jo.get("id_passage")))));
+            Passage passage = passageController.findPassageById(Long.parseLong(String.valueOf(jo.get("id_passage"))));
+            System.out.println(passage);
+
+            String new_state = String.valueOf(jo.get("new_state"));
+            System.out.println(new_state);
+
+            passage.setPaymentState(PaymentState.getEnum(new_state));
+            System.out.println(passage);
+
+            passageController.updatePassage(passage);*/
         }
     }
 

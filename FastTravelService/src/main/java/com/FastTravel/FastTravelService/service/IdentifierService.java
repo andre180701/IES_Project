@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import com.FastTravel.FastTravelService.model.Identifier;
-import com.FastTravel.FastTravelService.model.PaymentState;
-import com.FastTravel.FastTravelService.model.StateIdentifier;
 import com.FastTravel.FastTravelService.repository.IdentifierRepository;
 
 @Service
