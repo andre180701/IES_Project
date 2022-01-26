@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="../../assets/css/shared/style.css">
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
-   
+    <link rel="stylesheet" href="../../assets/css/slide/file.css">
+    <link rel="stylesheet" href="../../assets/css/mbm/styles_mbm.css">
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js" integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -89,30 +90,7 @@
               <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center">
-            <form class="ml-auto search-form d-none d-md-block" action="#">
-              <div class="form-group">
-                <input type="search" class="form-control" placeholder="Search Here">
-              </div>
-            </form>
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-bell-outline"></i>
-                  <span class="count">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                  <a class="dropdown-item py-3">
-                    <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                    <span class="badge badge-pill badge-primary float-right">View all</span>
-                  </a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-email-outline"></i>
-                  <span class="count bg-success">3</span>
-                </a>
-              </li>
               <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                   <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
@@ -122,11 +100,7 @@
                     <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
                     <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
                   </div>
-                  <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                  <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                  <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                  <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                  <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                  <a href="/" class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
                 </div>
               </li>
             </ul>
@@ -218,8 +192,8 @@
                             <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>--> 
                           </tr> 
                           <tr>
-                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
-                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
+                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw" style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                
                           </tr>
                         </tbody>
