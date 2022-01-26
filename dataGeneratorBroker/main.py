@@ -20,9 +20,11 @@ class DataGenerator:
 
         identifier_ids = []
         scut_ids = []
-        cursor.execute("select identifier_id from identifier;")
+        cursor.execute("select * from identifier;")
         for i in cursor.fetchall():
-            identifier_ids.append(i)
+            print("TESTEEEEEEEEEEEEE1 DATA GENERATOR")#check if the position 3 equals 6
+            print(i)
+            identifier_ids.append("1")#add 0 fro  tuple
         cursor.execute("select scut_id from scut;")
         for i in cursor.fetchall():
             scut_ids.append(i)
