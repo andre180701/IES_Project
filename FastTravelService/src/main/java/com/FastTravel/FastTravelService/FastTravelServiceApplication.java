@@ -4,11 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.FastTravel.FastTravelService.model.*;
-import com.FastTravel.FastTravelService.repository.*;
-import com.FastTravel.FastTravelService.service.AdminService;
-import com.FastTravel.FastTravelService.service.ClientService;
-import com.FastTravel.FastTravelService.service.CreditCardService;
-import com.FastTravel.FastTravelService.service.ScutService;
+import com.FastTravel.FastTravelService.service.*;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -31,20 +27,11 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 	@Autowired
 	private CreditCardService creditCardService;
 	@Autowired
-	private ClientRepository clientRepository;
-	@Autowired
 	private AdminService adminService;
 	@Autowired
 	private ScutService scutService;
 	@Autowired
-	private CreditCardRepository creditCardRepository;
-	@Autowired
-	private ScutRepository scutRepository;
-	@Autowired
-	private AdminRepository adminRepository;
-
-	@Autowired
-	private IdentifierRepository identifierRepository;
+	private IdentifierService identifierService;
 
 	public static byte[] getSHA(String input) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -71,8 +58,9 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 				flag = false;
 			}
 		}
-		if (flag == true) {
-			clientRepository.save(Pedro);
+
+		if (flag == true){
+			clientService.saveClient(Pedro);
 		}
 
 		flag = true;
@@ -83,8 +71,9 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 				flag = false;
 			}
 		}
-		if (flag == true) {
-			creditCardRepository.save(cartaoPedro);
+
+		if (flag == true){
+			creditCardService.saveCreditCard(cartaoPedro);
 		}
 
 		flag = true;
@@ -95,8 +84,9 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 				flag = false;
 			}
 		}
-		if (flag == true) {
-			scutRepository.save(scut1);
+
+		if (flag == true){
+			scutService.saveScut(scut1);
 		}
 
 		Scut scut2 = new Scut(51.4679, 51.3333, "Vila Real S O/E", Date.valueOf("2001-12-17"), 1.75, 3.27, 2.75, 2.25,
@@ -107,9 +97,11 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 				flag = false;
 			}
 		}
-		if (flag == true) {
-			scutRepository.save(scut2);
+
+		if (flag == true){
+			scutService.saveScut(scut2);
 		}
+    
 		Scut scut3 = new Scut(60.8901, 45.6709, "Campea O/E", Date.valueOf("2001-5-20"), 1.70, 2.56, 3.98, 2.28, 2.61);
 		flag = true;
 		for (Scut scut : scutService.getScuts()) {
@@ -117,9 +109,11 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 				flag = false;
 			}
 		}
-		if (flag == true) {
-			scutRepository.save(scut3);
+
+		if (flag == true){
+			scutService.saveScut(scut3);
 		}
+    
 		flag = true;
 		Admin admin1 = new Admin("andrefreixo18@ua.pt", toHexString(getSHA("andrefreixo!")), "André", "Freixo");
 		for (Admin admin : adminService.getAdmins()) {
@@ -127,15 +121,16 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 				flag = false;
 			}
 		}
-		if (flag == true) {
-			adminRepository.save(admin1);
+
+		if (flag == true){
+			adminService.saveAdmin(admin1);
 		}
 
-		if (identifierRepository.findAll().isEmpty()) {
-			identifierRepository.save(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
-			identifierRepository.save(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
-		}
-
+		if(identifierService.getIdentifiers().isEmpty()){
+			identifierService.saveIdentifier(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
+			identifierService.saveIdentifier(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
+		} 
+		
 	}
-
+	
 }

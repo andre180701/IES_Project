@@ -36,12 +36,12 @@ public class IdentifierService{
     
     public Identifier updateIdentifier(Identifier identifier) {
         Identifier existingIdentifier = identifierRepository.findById(identifier.getId()).orElse(null);
-        identifier.setClasse(existingIdentifier.getClasse());
-        identifier.setClient(existingIdentifier.getClient());
-        identifier.setCreditCard(existingIdentifier.getCreditCard());
-        identifier.setPassages(existingIdentifier.getPassages());
-        identifier.setRegistration(existingIdentifier.getRegistration());
-        identifier.setState(existingIdentifier.getState());
+        existingIdentifier.setClasse(identifier.getClasse());
+        existingIdentifier.setClient(identifier.getClient());
+        existingIdentifier.setCreditCard(identifier.getCreditCard());
+        existingIdentifier.setPassages(identifier.getPassages());
+        existingIdentifier.setRegistration(identifier.getRegistration());
+        existingIdentifier.setState(identifier.getState());
         return identifierRepository.save(existingIdentifier);
     }
 }

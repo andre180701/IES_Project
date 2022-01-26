@@ -65,7 +65,7 @@ services:
         interval: 20s
         timeout: 10s
         retries: 2
-
+    
     generator:
       build: ./dataGeneratorBroker/
       restart: on-failure
@@ -78,6 +78,7 @@ services:
           condition: service_healthy
       links:
         - messageBroker
+    
 
 volumes:
   datafiles:

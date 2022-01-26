@@ -35,16 +35,16 @@ public class ScutService {
     
     public Scut updateScut(Scut scut) {
         Scut existingScut = scutRepository.findById(scut.getId()).orElse(null);
-        scut.setDescription(existingScut.getDescription());
-        scut.setInstalationDate(existingScut.getInstalationDate());
-        scut.setLatitude(existingScut.getLatitude());
-        scut.setLongitude(existingScut.getLongitude());
-        scut.setPassages(existingScut.getPassages());
-        scut.setPrice1(existingScut.getPrice1());
-        scut.setPrice2(existingScut.getPrice2());
-        scut.setPrice3(existingScut.getPrice3());
-        scut.setPrice4(existingScut.getPrice4());
-        scut.setPrice5(existingScut.getPrice5());
+        existingScut.setDescription(scut.getDescription());
+        existingScut.setInstalationDate(scut.getInstalationDate());
+        existingScut.setLatitude(scut.getLatitude());
+        existingScut.setLongitude(scut.getLongitude());
+        existingScut.setPassages(scut.getPassages());
+        existingScut.setPrice1(scut.getPrice1());
+        existingScut.setPrice2(scut.getPrice2());
+        existingScut.setPrice3(scut.getPrice3());
+        existingScut.setPrice4(scut.getPrice4());
+        existingScut.setPrice5(scut.getPrice5());
         return scutRepository.save(existingScut);
     }
 }
