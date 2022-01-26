@@ -98,7 +98,7 @@ public class MovementsController {
 
     if(filterForms.getIdentifier().strip() != ""){
       for(Passage pc : passages_client){
-        if(pc.getIdentifier().getId() != (Long.parseLong(String.valueOf(filterForms.getIdentifier().strip())))){
+        if(pc.getIdentifier().getId() != (Double.parseDouble(String.valueOf(filterForms.getIdentifier().strip())))){
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc);
           }
@@ -124,9 +124,6 @@ public class MovementsController {
          
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc);
-            
-
-
           }
         }
       }
@@ -148,15 +145,11 @@ public class MovementsController {
     if(filterForms.getScutslongitude().strip() != ""){
       for(Passage pc : passages_client){
         if(pc.getScut().getLongitude() != Double.parseDouble(filterForms.getScutslongitude().strip()) ){
-          
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc); 
-
-          }
-          
+          } 
         }
       }
-      
     }
     if(filterForms.getScutsdescription().strip() != ""){
       for(Passage pc : passages_client){
