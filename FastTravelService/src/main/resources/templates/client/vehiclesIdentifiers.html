@@ -15,8 +15,52 @@
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
 
     <link rel="stylesheet" href="../../assets/css/slide/file.css">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js" integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+      var stompClient = null;
+      
+      function connect() {
+          var socket = new SockJS('/endpoint');
+          stompClient = Stomp.over(socket);  
+          stompClient.connect({}, function(frame) {
+              stompClient.subscribe('/topic/updateidentifier', function(messageOutput) {
+                  showMessageOutput(JSON.parse(messageOutput.body));
+              });
+          });
+      }
+      
+      function disconnect() {
+          if(stompClient != null) {
+              stompClient.disconnect();
+          }
+          console.log("Disconnected");
+      }
+      
+      function showMessageOutput(messageOutput) {
+        console.log(messageOutput.id_identifier);
+        console.log(messageOutput.new_state);
+
+        switch(messageOutput.new_state) {
+          case 1:
+            document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "PAID";
+            break;
+          case 3:
+            document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "SENDING";
+            break;
+          case 4:
+            document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "RECEIVED";
+            break;
+          default:
+            document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "DESACTIVATE";
+        } 
+
+      }
+  </script>
   </head>
-  <body>
+  <body onload="connect()">
     <div class="container-scroller">
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -147,7 +191,7 @@
                               <td th:text="${{identifier.id}}"/>
                               <td th:text="${{identifier.classe}}"/>
                               <td th:text="${{identifier.creditCard.number}}"/>
-                              <td th:text="${{identifier.state}}"/>
+                              <td th:id="${{identifier.id}}" th:text="${{identifier.state}}"/>
                               <!--<td>
                                   <label class="badge badge-success">Completed</label>
                               </td>-->

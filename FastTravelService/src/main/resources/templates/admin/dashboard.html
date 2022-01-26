@@ -22,10 +22,10 @@
       var stompClient = null;
       
       function connect() {
-          var socket = new SockJS('/chat');
+          var socket = new SockJS('/endpoint');
           stompClient = Stomp.over(socket);  
           stompClient.connect({}, function(frame) {
-              stompClient.subscribe('/topic/messages', function(messageOutput) {
+              stompClient.subscribe('/topic/newpassage', function(messageOutput) {
                   showMessageOutput(JSON.parse(messageOutput.body));
               });
           });

@@ -47,7 +47,7 @@ public class MQConsumer {
             passageController.addPassage(passage);
             
             MsgNewPassageAdmin message = new MsgNewPassageAdmin(method, identifier.getClient().getEmail(), identifier.getRegistration(), String.valueOf(jo.get("identifier")), ((String) jo.get("date")), ((String) jo.get("time")), String.valueOf(scut.getLongitude()), String.valueOf(scut.getLatitude()), scut.getDescription(), String.valueOf(passage.getPrice()), String.valueOf(passage.getPaymentState()));
-            this.template.convertAndSend("/topic/messages", message);
+            this.template.convertAndSend("/topic/newpassage", message);
         }
         if (method.equals("UPDATE_IDENTIFIER")) {
             Identifier existing_identifier = identifierController.findIdentifierById(Long.parseLong(String.valueOf(jo.get("id_identifier"))));
@@ -55,6 +55,8 @@ public class MQConsumer {
             System.out.println("OLHA AQUI BURRO DO CARALHO " + new_state);
             existing_identifier.setState(StateIdentifier.getEnum(new_state));
             identifierController.updateIdentifier(existing_identifier);
+
+            this.template.convertAndSend("/topic/updateidentifier", input);
         }
         if (method.equals("UPDATE_PASSAGE")) {
             System.out.println("UPDATE_PASSAGE");
