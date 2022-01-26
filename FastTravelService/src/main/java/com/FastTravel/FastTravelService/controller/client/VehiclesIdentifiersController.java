@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.StateIdentifier;
-import com.FastTravel.FastTravelService.model.PaymentState;
 import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.controller.IdentifierController;
 
