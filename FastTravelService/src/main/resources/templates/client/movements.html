@@ -14,8 +14,118 @@
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
     <link rel="stylesheet" href="../../assets/css/slide/file.css">
     <link rel="stylesheet" href="../../assets/css/mbm/styles_mbm.css">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js" integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+      var stompClient = null;
+      var clientEmail = null;
+      var formRegistration = "";
+      var formIdentifier = "";
+      var formDate = "";
+      var formHour = "";
+      var formScutslatitude = "";
+      var formScutslongitude = "";
+      var formScutsdescription = "";
+      var formPrice = "";
+      var formPaymentstate = "";
+      
+      function connect() {
+          var socket = new SockJS('/chat');
+          stompClient = Stomp.over(socket);
+          clientEmail = document.getElementById("clientEmail").innerHTML;
+          console.log(clientEmail);
+          stompClient.connect({}, function(frame) {
+              stompClient.subscribe('/topic/messages', function(messageOutput) {
+                  showMessageOutput(JSON.parse(messageOutput.body));
+              });
+          });
+      }
+      
+      function disconnect() {
+          if(stompClient != null) {
+              stompClient.disconnect();
+          }
+          console.log("Disconnected");
+      }
+      
+      function showMessageOutput(messageOutput) {
+          if(clientEmail == messageOutput.clientEmail){
+            console.log("AQUI");
+            console.log(formRegistration);
+            console.log(messageOutput.registration);
+            console.log(formRegistration.replace(" ", "").toLowerCase());
+            console.log(messageOutput.registration.replace(" ", "").toLowerCase());
+
+            if ((formRegistration === "" || formRegistration.replace(" ", "").toLowerCase() == messageOutput.registration.replace(" ", "").toLowerCase()) 
+                && (formIdentifier === "" || formIdentifier.replace(" ", "").toLowerCase() == messageOutput.identifier.replace(" ", "").toLowerCase()) 
+                && (formHour === "" || formHour.replace(" ", "").toLowerCase() == messageOutput.time.replace(" ", "").toLowerCase()) 
+                && (formScutslatitude === "" || formScutslatitude.replace(" ", "").toLowerCase() == messageOutput.scutLatitude.replace(" ", "").toLowerCase()) 
+                && (formScutslongitude === "" || formScutslongitude.replace(" ", "").toLowerCase() == messageOutput.scutLongitude.replace(" ", "").toLowerCase()) 
+                && (formScutsdescription === "" || formScutsdescription.replace(" ", "").toLowerCase() == messageOutput.scutDescription.replace(" ", "").toLowerCase()) 
+                && (formPrice === "" || formPrice.replace(" ", "").toLowerCase() == messageOutput.price.replace(" ", "").toLowerCase()) 
+                && (formPaymentstate === "" || formPaymentstate.replace(" ", "").toLowerCase() == messageOutput.paymentState.replace(" ", "").toLowerCase()) 
+                && (formDate === "" || formDate.replace(" ", "").toLowerCase() == messageOutput.date.replace(" ", "").toLowerCase())
+                ){
+                  let tableRef = document.getElementById('idTable');
+
+                  // Insert a row at the end of the table
+                  let newRow = tableRef.insertRow(2);
+
+                  // Insert a cell in the row at index 0
+                  let newCell0 = newRow.insertCell(0);
+                  let newCell1 = newRow.insertCell(1);
+                  let newCell2 = newRow.insertCell(2);
+                  let newCell3 = newRow.insertCell(3);
+                  let newCell4 = newRow.insertCell(4);
+                  let newCell5 = newRow.insertCell(5);
+                  let newCell6 = newRow.insertCell(6);
+                  let newCell7 = newRow.insertCell(7);
+                  let newCell8 = newRow.insertCell(8);
+                  let newCell9 = newRow.insertCell(9);
+                  let newCell10 = newRow.insertCell(10);
+
+                  newText = document.createTextNode(messageOutput.registration);
+                  newCell1.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.identifier);
+                  newCell2.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.date);
+                  newCell3.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.time);
+                  newCell4.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.scutLatitude);
+                  newCell5.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.scutLongitude);
+                  newCell6.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.scutDescription);
+                  newCell7.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.price);
+                  newCell8.appendChild(newText);
+                  newText = document.createTextNode(messageOutput.paymentState);
+                  newCell9.appendChild(newText);
+
+            }
+          }
+      }
+
+
+      function clickFiltrar() {
+        formRegistration = document.getElementById("formRegistration").value;
+        formIdentifier = document.getElementById("formIdentifier").value;
+        formDate = document.getElementById("formDate").value;
+        formHour = document.getElementById("formHour").value;
+        formScutslatitude = document.getElementById("formScutslatitude").value;
+        formScutslongitude = document.getElementById("formScutslongitude").value;
+        formScutsdescription = document.getElementById("formScutsdescription").value;
+        formPrice = document.getElementById("formPrice").value;
+        formPaymentstate = document.getElementById("formPaymentstate").value;
+        console.log("FILTREI: " + formRegistration);
+
+      }
+  </script>
   </head>
-  <body>
+  <body onload="connect()">
     <div class="container-scroller">
       <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -33,7 +143,7 @@
                 <div class="dropdown-header text-center">
                   <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
                   <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
-                  <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
+                  <p id="clientEmail" class="font-weight-light text-muted mb-0" th:text="${email}"/>
                 </div>
                 <a href="/" class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
               </div>
@@ -111,11 +221,11 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td style="border: none;"><input type="text" th:field="*{registration}"/></td>
-                            <td style="border: none;"><input type="text" th:field="*{identifier}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{date}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{hour}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{scutslatitude}"></td>
+                            <td style="border: none;"><input id="formRegistration" type="text" th:field="*{registration}"/></td>
+                            <td style="border: none;"><input id="formIdentifier" type="text" th:field="*{identifier}"></td>
+                            <td style="border: none;"><input id="formDate" type="text" th:field="*{date}"></td>
+                            <td style="border: none;"><input id="formHour" type="text" th:field="*{hour}"></td>
+                            <td style="border: none;"><input id="formScutslatitude" type="text" th:field="*{scutslatitude}"></td>
                           </tr>
                           <tr>
                             <th style="border: none;">Scut's Latitude</th>
@@ -125,12 +235,12 @@
                             <th style="border: none;"> </th>
                           </tr>
                           <tr>
-                            <td style="border: none;"><input type="text" th:field="*{scutslongitude}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{scutsdescription}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{price}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{paymentstate}"></td>
+                            <td style="border: none;"><input id="formScutslongitude" type="text" th:field="*{scutslongitude}"></td>
+                            <td style="border: none;"><input id="formScutsdescription" type="text" th:field="*{scutsdescription}"></td>
+                            <td style="border: none;"><input id="formPrice" type="text" th:field="*{price}"></td>
+                            <td style="border: none;"><input id="formPaymentstate" type="text" th:field="*{paymentstate}"></td>
                             <td style="border: none;"> </td>
-                            <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                            <td align="center" style="border: none; float: right;"><button onclick="clickFiltrar()" type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
                             <td align="center" style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                           </tr>
                         </tbody>
@@ -141,7 +251,7 @@
                     <br>
                     <br>
                     <br>
-                    <table class="table">
+                    <table id="idTable" class="table">
                       <thead>
                         <tr>
                           <th></th>

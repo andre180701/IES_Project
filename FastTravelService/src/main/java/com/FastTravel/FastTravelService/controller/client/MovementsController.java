@@ -8,8 +8,6 @@ import java.sql.Date;
 import java.sql.Time;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-
 import com.FastTravel.FastTravelService.controller.PassageController;
 import com.FastTravel.FastTravelService.inputsForms.FilterForms;
 import com.FastTravel.FastTravelService.model.Client;
@@ -19,6 +17,7 @@ import org.springframework.beans.factory.ObjectFactory;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -57,7 +56,7 @@ public class MovementsController {
         passages_client.add(passage);
       }
     }
-
+    Collections.sort(passages_client);
     model.addAttribute("passages", passages_client);
     return "client/movements";
 
