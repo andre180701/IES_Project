@@ -78,7 +78,6 @@ public class MovementsController {
     List<Passage> passages = passageController.findAllPassages();
     List<Passage> passages_client = new ArrayList<Passage>();
     List<Passage> passages_client2 = new ArrayList<Passage>();
-    List<Passage> filter_passages = new ArrayList<Passage>();
 
     for (Passage passage : passages) {
       if ( passage.getIdentifier().getClient().getId() == client.getId() ) {
