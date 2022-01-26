@@ -12,8 +12,77 @@
     <link rel="stylesheet" href="../../assets/css/shared/style.css">
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../../assets/css/slide/file.css">
+    <link rel="stylesheet" href="../../assets/css/mbm/styles_mbm.css">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js" integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+      var stompClient = null;
+      
+      function connect() {
+          var socket = new SockJS('/chat');
+          stompClient = Stomp.over(socket);  
+          stompClient.connect({}, function(frame) {
+              stompClient.subscribe('/topic/messages', function(messageOutput) {
+                  showMessageOutput(JSON.parse(messageOutput.body));
+              });
+          });
+      }
+      
+      function disconnect() {
+          if(stompClient != null) {
+              stompClient.disconnect();
+          }
+          console.log("Disconnected");
+      }
+      
+      function showMessageOutput(messageOutput) {
+          let tableRef = document.getElementById('idTable');
+
+          // Insert a row at the end of the table
+          let newRow = tableRef.insertRow(2);
+
+          // Insert a cell in the row at index 0
+          let newCell0 = newRow.insertCell(0);
+          let newCell1 = newRow.insertCell(1);
+          let newCell2 = newRow.insertCell(2);
+          let newCell3 = newRow.insertCell(3);
+          let newCell4 = newRow.insertCell(4);
+          let newCell5 = newRow.insertCell(5);
+          let newCell6 = newRow.insertCell(6);
+          let newCell7 = newRow.insertCell(7);
+          let newCell8 = newRow.insertCell(8);
+          let newCell9 = newRow.insertCell(9);
+          let newCell10 = newRow.insertCell(10);
+          let newCell11 = newRow.insertCell(11);
+
+          // Append a text node to the cell
+          let newText = document.createTextNode(messageOutput.clientEmail);
+          newCell1.appendChild(newText);
+          newText = document.createTextNode(messageOutput.registration);
+          newCell2.appendChild(newText);
+          newText = document.createTextNode(messageOutput.identifier);
+          newCell3.appendChild(newText);
+          newText = document.createTextNode(messageOutput.date);
+          newCell4.appendChild(newText);
+          newText = document.createTextNode(messageOutput.time);
+          newCell5.appendChild(newText);
+          newText = document.createTextNode(messageOutput.scutLongitude);
+          newCell6.appendChild(newText);
+          newText = document.createTextNode(messageOutput.scutLatitude);
+          newCell7.appendChild(newText);
+          newText = document.createTextNode(messageOutput.scutDescription);
+          newCell8.appendChild(newText);
+          newText = document.createTextNode(messageOutput.price);
+          newCell9.appendChild(newText);
+          newText = document.createTextNode(messageOutput.paymentState);
+          newCell10.appendChild(newText);
+      }
+  </script>
   </head>
-  <body>
+  <body onload="connect()">
     <div class="container-scroller">
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -21,30 +90,7 @@
               <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center">
-            <form class="ml-auto search-form d-none d-md-block" action="#">
-              <div class="form-group">
-                <input type="search" class="form-control" placeholder="Search Here">
-              </div>
-            </form>
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-bell-outline"></i>
-                  <span class="count">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                  <a class="dropdown-item py-3">
-                    <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                    <span class="badge badge-pill badge-primary float-right">View all</span>
-                  </a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-email-outline"></i>
-                  <span class="count bg-success">3</span>
-                </a>
-              </li>
               <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                   <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
@@ -54,11 +100,7 @@
                     <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
                     <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
                   </div>
-                  <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                  <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                  <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                  <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                  <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                  <a href="/" class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
                 </div>
               </li>
             </ul>
@@ -83,7 +125,7 @@
                 </a>
               </li>
               <li class="nav-item nav-category">Main Menu</li>
-              <li class="nav-item">
+              <li class="nav-item" onclick="disconnect();">
                 <a class="nav-link" href="/admin/dashboard">
                   <i class="menu-icon typcn typcn-document-text"></i>
                   <span class="menu-title">Dashboard</span>
@@ -116,7 +158,7 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th style="border: none;"><b>Email</b></th>
+                            <th style="border: none;"><b>Client Email</b></th>
                             <th style="border: none;"><b>Registration</b></th>
                             <th style="border: none;"><b>Identifier</b></th>
                             <th style="border: none;"><b>Date</b></th>
@@ -150,8 +192,8 @@
                             <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>--> 
                           </tr> 
                           <tr>
-                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
-                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>
+                            <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                            <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw" style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                
                           </tr>
                         </tbody>
@@ -161,11 +203,11 @@
                     <br>
                     <br>
                     <br>
-                    <table class="table">
+                    <table id="idTable" class="table">
                       <thead>
                         <tr>
                           <th></th>
-                          <th>Email</th>
+                          <th>Client Email</th>
                           <th>Registration</th>
                           <th>Identifier</th>
                           <th>Date</th>

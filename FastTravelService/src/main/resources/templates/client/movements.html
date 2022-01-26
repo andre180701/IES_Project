@@ -12,104 +12,80 @@
     <link rel="stylesheet" href="../../assets/css/shared/style.css">
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../../assets/css/slide/file.css">
+    <link rel="stylesheet" href="../../assets/css/mbm/styles_mbm.css">
   </head>
   <body>
     <div class="container-scroller">
-        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-          <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-            <a class="navbar-brand brand-logo" href="/client/home">
-              <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
-          </div>
-          <div class="navbar-menu-wrapper d-flex align-items-center">
-  
-            <form class="ml-auto search-form d-none d-md-block" action="#">
-              <div class="form-group">
-                <input type="search" class="form-control" placeholder="Search Here">
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+          <a class="navbar-brand brand-logo" href="/client/home">
+            <img src="../../assets/images/logo_FastTravel.png" alt="logo" /> </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
+                  <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
+                  <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
+                </div>
+                <a href="/" class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
               </div>
-            </form>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <i class="mdi mdi-bell-outline"></i>
-                  <span class="count">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                  <a class="dropdown-item py-3">
-                    <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                    <span class="badge badge-pill badge-primary float-right">View all</span>
-                  </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="profile-image">
+                  <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="profile image">
+                  <div class="dot-indicator bg-success"></div>
                 </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                  <i class="mdi mdi-email-outline"></i>
-                  <span class="count bg-success">3</span>
-                </a>
-              </li>
-              <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                  <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                  <div class="dropdown-header text-center">
-                    <img class="img-md rounded-circle" src="../../assets/images/faces/face8.jpg" alt="Profile image">
-                    <p class="mb-1 mt-3 font-weight-semibold" th:text="${firstName} + ' ' + ${lastName}" />
-                    <p class="font-weight-light text-muted mb-0" th:text="${email}"/>
-                  </div>
-                  <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                  <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                  <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                  <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                  <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                <div class="text-wrapper">
+                  <p class="profile-name" th:text="${firstName} + ' ' + ${lastName}"/>
+                  <p class="designation">Client</p>
                 </div>
-              </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-              <span class="mdi mdi-menu"></span>
-            </button>
-          </div>
+              </a>
+            </li>
+            <li class="nav-item nav-category">Main Menu</li>
+            <li class="nav-item">
+              <a class="nav-link" href="/client/home">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/client/vehiclesIdentifiers">
+                <i class="menu-icon typcn typcn-shopping-bag"></i>
+                <span class="menu-title">Vehicles and Identifiers</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/client/requestIdentifier">
+                <i class="menu-icon typcn typcn-th-large-outline"></i>
+                <span class="menu-title">Request Identifiers</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/client/movements">
+                <i class="menu-icon typcn typcn-th-large-outline"></i>
+                <span class="menu-title">Movements</span>
+              </a>
+            </li>
+          </ul>
         </nav>
-        <div class="container-fluid page-body-wrapper">
-          <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-              <li class="nav-item nav-profile">
-                <a href="#" class="nav-link">
-                  <div class="profile-image">
-                    <img class="img-xs rounded-circle" src="../../assets/images/faces/face8.jpg" alt="profile image">
-                    <div class="dot-indicator bg-success"></div>
-                  </div>
-                  <div class="text-wrapper">
-                    <p class="profile-name" th:text="${firstName} + ' ' + ${lastName}" />
-                    <p class="designation">Client</p>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item nav-category">Main Menu</li>
-              <li class="nav-item">
-                <a class="nav-link" href="/client/home">
-                  <i class="menu-icon typcn typcn-document-text"></i>
-                  <span class="menu-title">Home</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/client/vehiclesIdentifiers">
-                  <i class="menu-icon typcn typcn-shopping-bag"></i>
-                  <span class="menu-title">Vehicles and Identifiers</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/client/requestIdentifier">
-                  <i class="menu-icon typcn typcn-th-large-outline"></i>
-                  <span class="menu-title">Request Identifiers</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/client/movements">
-                  <i class="menu-icon typcn typcn-th-large-outline"></i>
-                  <span class="menu-title">Movements</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -154,14 +130,8 @@
                             <td style="border: none;"><input type="text" th:field="*{price}"></td>
                             <td style="border: none;"><input type="text" th:field="*{paymentstate}"></td>
                             <td style="border: none;"> </td>
-                            
-                          </tr>
-                           
-                          <tr >
                             <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
                             <td align="center" style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
-                          
-
                           </tr>
                         </tbody>
                       </table>

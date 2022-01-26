@@ -8,7 +8,7 @@ import java.sql.Time;
 @Entity
 @Data
 @Table(name = "passage")
-public class Passage {
+public class Passage implements Comparable<Passage>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +41,23 @@ public class Passage {
         this.identifier = identifier;
         this.scut = scut;
         this.paymentState = PaymentState.UNPAID;
+    }
+
+    public int compareTo(Passage passage) {
+        if ( date.compareTo(passage.getDate()) < 0){
+            return 1;
+        }
+        else if ( date.compareTo(passage.getDate()) > 0){
+            return -1;
+        }
+        else if ( time.compareTo(passage.getTime()) < 0){
+            return 1;
+        }
+        else if ( time.compareTo(passage.getTime()) > 0){
+            return -1;
+        }else{
+            return 0;
+        }
     }
 
     public double getPrice(){
