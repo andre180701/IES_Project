@@ -8,7 +8,6 @@ import com.FastTravel.FastTravelService.model.Identifier;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.model.Scut;
 import com.FastTravel.FastTravelService.model.StateIdentifier;
-import com.FastTravel.FastTravelService.service.IdentifierService;
 import com.FastTravel.FastTravelService.controller.*;
 import com.FastTravel.FastTravelService.modelMessages.MsgNewPassageAdmin;
 
