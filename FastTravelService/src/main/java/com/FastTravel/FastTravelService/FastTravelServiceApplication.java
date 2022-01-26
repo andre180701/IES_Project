@@ -51,19 +51,28 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 
 	public void run(String... args) throws Exception {
 		Client Pedro = new Client("pedrofigs@ua.pt", toHexString(getSHA("pedroFigs!")), 237789, "Pedro", "Figueiredo");
+		Client filipe = new Client("filipe2@ua.pt", toHexString(getSHA("filipe2!")), 237710, "Filipe", "Alexandre");
 
-		Boolean flag = true;
+		Boolean flagPedro = true;
+		Boolean flagFilipe = true;
 		for (Client client : clientService.getClients()) {
 			if (Pedro.getEmail().equals(client.getEmail()) && Pedro.getNif() == client.getNif()) {
-				flag = false;
+				flagPedro = false;
+			}
+			if (filipe.getEmail().equals(client.getEmail()) && filipe.getNif() == client.getNif()) {
+				flagFilipe = false;
 			}
 		}
 
-		if (flag == true){
+		if (flagPedro == true){
 			clientService.saveClient(Pedro);
 		}
 
-		flag = true;
+		if (flagFilipe == true){
+			clientService.saveClient(filipe);
+		}
+
+		Boolean flag = true;
 		CreditCard cartaoPedro = new CreditCard(1234567890, "Pedro Figueiredo", Date.valueOf("2023-10-1"), "Portugal",
 				123);
 		for (CreditCard creditCard : creditCardService.getCreditCards()) {
@@ -129,6 +138,8 @@ public class FastTravelServiceApplication implements CommandLineRunner {
 		if(identifierService.getIdentifiers().isEmpty()){
 			identifierService.saveIdentifier(new Identifier("AA-BB-18", 3, Pedro, cartaoPedro));
 			identifierService.saveIdentifier(new Identifier("CC-18-VV", 1, Pedro, cartaoPedro));
+			identifierService.saveIdentifier(new Identifier("LM-NE-20", 2, filipe, cartaoPedro));
+			identifierService.saveIdentifier(new Identifier("NJ-38-KV", 5, filipe, cartaoPedro));
 		} 
 		
 	}
