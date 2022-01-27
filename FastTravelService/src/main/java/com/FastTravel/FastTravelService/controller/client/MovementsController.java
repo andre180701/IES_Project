@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import java.sql.Date;
 import java.sql.Time;
 import org.springframework.stereotype.Controller;
+
+import com.FastTravel.FastTravelService.controller.ClientController;
 import com.FastTravel.FastTravelService.controller.PassageController;
 import com.FastTravel.FastTravelService.inputsForms.FilterForms;
 import com.FastTravel.FastTravelService.model.Client;
@@ -23,7 +25,7 @@ import java.util.List;
 public class MovementsController {
 
   @Autowired
-  private ClientService clientService;
+  private ClientController clientController;
 
   @ModelAttribute("filterForms")
   public FilterForms getGreetingObject() {
@@ -45,7 +47,7 @@ public class MovementsController {
     model.addAttribute("lastName", session.getAttribute("lastName"));
     model.addAttribute("email", session.getAttribute("email"));
 
-    Client client = clientService.getClientByEmail(email);
+    Client client = clientController.findClientByEmail(email);
 
     List<Passage> passages = passageController.findAllPassages();
     List<Passage> passages_client = new ArrayList<Passage>();
@@ -71,7 +73,7 @@ public class MovementsController {
     model.addAttribute("lastName", session.getAttribute("lastName"));
     model.addAttribute("email", session.getAttribute("email"));
 
-    Client client = clientService.getClientByEmail(email);
+    Client client = clientController.findClientByEmail(email);
 
     List<Passage> passages = passageController.findAllPassages();
     List<Passage> passages_client = new ArrayList<Passage>();

@@ -34,6 +34,10 @@ public class ClientController {
         return clientService.getClientById(id);
     }
 
+    @GetMapping("/clientByEmail/{email}")
+    public Client findClientByEmail(@PathVariable String email) {
+        return clientService.getClientByEmail(email);
+    }
     
     @PutMapping("/update/client")
     public Client updateClient(@RequestBody Client client) {
