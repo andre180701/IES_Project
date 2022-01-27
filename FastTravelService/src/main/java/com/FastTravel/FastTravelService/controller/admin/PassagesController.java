@@ -1,21 +1,17 @@
 package com.FastTravel.FastTravelService.controller.admin;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import javax.validation.Valid;
-
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.controller.PassageController;
-
-import java.util.*;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.http.HttpSession;  
 
 @Controller

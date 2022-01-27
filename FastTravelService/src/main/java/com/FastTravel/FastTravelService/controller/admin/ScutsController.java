@@ -1,18 +1,12 @@
 package com.FastTravel.FastTravelService.controller.admin;
 
-import com.FastTravel.FastTravelService.repository.*;
 import com.FastTravel.FastTravelService.model.*;
 import com.FastTravel.FastTravelService.controller.*;
 import java.sql.Date;
-import java.sql.Time;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.FastTravel.FastTravelService.inputsForms.FilterAdminScuts;
 import java.util.List;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +14,6 @@ import org.springframework.beans.factory.ObjectFactory;
 import javax.servlet.http.HttpSession;  
 
 
-//@EnableJpaRepositories(basePackageClasses = {ScutRepository.class})
-//@RestController
 @Controller
 public class ScutsController{
     @Autowired

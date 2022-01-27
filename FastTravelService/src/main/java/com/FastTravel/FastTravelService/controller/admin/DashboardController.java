@@ -1,22 +1,19 @@
 package com.FastTravel.FastTravelService.controller.admin;
 
 import org.springframework.ui.Model;
-import java.util.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.ObjectFactory;
 import com.FastTravel.FastTravelService.model.Passage;
-import com.FastTravel.FastTravelService.repository.PassageRepository;
 import com.FastTravel.FastTravelService.controller.PassageController;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import javax.servlet.http.HttpSession;  
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
- 
-
 
 @Controller
 public class DashboardController {
