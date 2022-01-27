@@ -7,6 +7,8 @@ import org.springframework.beans.factory.ObjectFactory;
 import com.FastTravel.FastTravelService.model.Passage;
 import com.FastTravel.FastTravelService.controller.PassageController;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +35,12 @@ public class DashboardController {
       model.addAttribute("email", session.getAttribute("email"));
 
 
+      System.out.println("ANTES DE IR VUSCAR COISAS");
       HashMap<String, Integer> hm = new HashMap<String, Integer>(); 
+      HashMap<Time, Double> hmProfit  = new HashMap<Time, Double>(); 
       List<Passage> passages = passageController.findAllPassages();
       for(Passage p : passages) {
+        System.out.println("Passagem: " + p.getScut().getDescription());
         if(hm.containsKey(p.getScut().getDescription())){
           hm.put(p.getScut().getDescription(), hm.get(p.getScut().getDescription()) + 1);
 
@@ -43,17 +48,50 @@ public class DashboardController {
         else{
           hm.put(p.getScut().getDescription(), 1);
         }
+
+        if(!hmProfit.containsKey(p.getTime())){
+          hmProfit.put(p.getTime(), 0.0);
+        }
+
+        switch (p.getIdentifier().getClasse()) {
+          case 1:
+            hmProfit.put(p.getTime(), hmProfit.get(p.getTime()) + p.getScut().getPrice1());
+            break;
+          case 2:
+            hmProfit.put(p.getTime(), hmProfit.get(p.getTime()) + p.getScut().getPrice2());
+            break;
+          case 3:
+            hmProfit.put(p.getTime(), hmProfit.get(p.getTime()) + p.getScut().getPrice3());
+            break;
+          case 4:
+            hmProfit.put(p.getTime(), hmProfit.get(p.getTime()) + p.getScut().getPrice4());
+            break;
+          default:
+            hmProfit.put(p.getTime(), hmProfit.get(p.getTime()) + p.getScut().getPrice5());
+            break;
+        }
+        
+        System.out.println("CHave: " + String.valueOf(p.getTime()) + ", Tipo:" + String.valueOf(p.getTime()).getClass().getName());
+        System.out.println("Value: " + String.valueOf(hmProfit.get(p.getTime())) + ", Tipo:" + String.valueOf(hmProfit.get(p.getTime())).getClass().getName());
       }
 
 
       Map<String, Integer> graphData = new TreeMap<>();
+      Map<String, Double> graphDataProfit = new TreeMap<>();
       for(String i : hm.keySet()) {
         graphData.put(i, hm.get(i));
       }
+      System.out.println("New grah");
+      for(Time i : hmProfit.keySet()) {
+        graphDataProfit.put(String.valueOf(i), hmProfit.get(i));
+        System.out.println("CHave: " + String.valueOf(i) + ", Tipo:" + String.valueOf(i).getClass().getName());
+        System.out.println("Value: " + String.valueOf(hmProfit.get(i)) + ", Tipo:" + String.valueOf(hmProfit.get(i)).getClass().getName());
+      }
       
       model.addAttribute("chartData", graphData);
-
-		return "admin/dashboard";
+      model.addAttribute("chartDataProfit", graphDataProfit);
+      
+      return "admin/dashboard";
     }
 
    

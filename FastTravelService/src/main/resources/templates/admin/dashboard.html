@@ -31,18 +31,22 @@
           });
       }
       
-      function showMessageOutput(messageOutput) {
+        function showMessageOutput(messageOutput) {
 
-        if (messageOutput.scutDescription in real_data) {
-          real_data[messageOutput.scutDescription] = real_data[messageOutput.scutDescription] + 1 
+          if (messageOutput.scutDescription in real_data) {
+            real_data[messageOutput.scutDescription] = real_data[messageOutput.scutDescription] + 1
+          }
+
+          if (messageOutput.time in real_dataProfit) {
+            real_dataProfit[messageOutput.time] = messageOutput.price 
+          }
+
+          google.charts.load('current', {
+            packages: ['corechart', 'bar']
+          });
+          google.charts.setOnLoadCallback(drawColumnChart);
+          google.charts.setOnLoadCallback(drawPieChart);
         }
-        
-        google.charts.load('current', {
-              packages : [ 'corechart', 'bar' ]
-        });
-        google.charts.setOnLoadCallback(drawColumnChart);
-        google.charts.setOnLoadCallback(drawPieChart);
-      }
   </script>
   </head>
   <body onload="connect()">
@@ -140,6 +144,9 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script th:inline="javascript">
       var real_data = /*[[${chartData}]]*/'noValue';
+      var real_dataProfit = /*[[${chartDataProfit}]]*/'noValue';
+      console.log("real_dataProfit");
+      console.log(real_dataProfit);
       $(document).ready(function() {
           google.charts.load('current', {
               packages : [ 'corechart', 'bar' ]
@@ -149,22 +156,21 @@
       });
       function drawColumnChart() {
           var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Scuts');
-          data.addColumn('number', 'Passages');
-          Object.keys(real_data).forEach(function(key) {
-              data.addRow([ key, real_data[key] ]);
+          data.addColumn('string', 'Days');
+          data.addColumn('number', 'Profit');
+          Object.keys(real_dataProfit).forEach(function(key) {
+              data.addRow([ key, real_dataProfit[key] ]);
           });
           var options = {
-              title : 'Number of passages on each Scut',
+              title : 'Profit each day',
               hAxis : {
-                  title : 'Scuts',
+                  title : 'Days',
               },
               vAxis : {
-                  title : 'Passages Count'
+                  title : 'Profit'
               }
           };
-          var chart = new google.visualization.ColumnChart(document
-                  .getElementById('chart_div'));
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(data, options);
       }
       function drawPieChart() {
