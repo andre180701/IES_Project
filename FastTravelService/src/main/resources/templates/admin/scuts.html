@@ -16,6 +16,20 @@
     <link rel="stylesheet" href="../../assets/css/slide/file.css">
 
     <link rel="stylesheet" href="../../assets/css/mbm/styles_mbm.css">
+    <script>
+      function cleanFilter() {
+        document.getElementById("formId").value = "";
+        document.getElementById("formLatitude").value = "";
+        document.getElementById("formLongitude").value = "";
+        document.getElementById("formInstalation").value = "";
+        document.getElementById("formDescription").value = "";
+        document.getElementById("formClass1").value = "";
+        document.getElementById("formClass2").value = "";
+        document.getElementById("formClass3").value = "";
+        document.getElementById("formClass4").value = "";
+        document.getElementById("formClass5").value = "";
+      }
+    </script>
   </head>
   <body>
     <div class="container-scroller">
@@ -90,50 +104,6 @@
                     <div class = "w3-container">
                       <br>
                       <p>Filter by:</p>
-                      
-                      <!-- <form action="#" th:action="@{/admin/filter}" th:object="${filterForms}" method="post">
-
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th style="border: none;">ID</th>
-                              <th style="border: none;">Latitude</th>
-                              <th style="border: none;">Longitude</th>
-                              <th style="border: none;">Instalation Date</th>
-                              <th style="border: none;">Description</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td style="border: none;"><input type="text" th:field="*{id}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{latitude}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{longitude}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{instalationDate}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{description}"></td>
-                              <td style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
-                              <td style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111"Clean Filter</button></td>
-                            </tr>
-                            <tr>
-                              <th style="border: none;">Price Class 1</th>
-                              <th style="border: none;">Price Class 2</th>
-                              <th style="border: none;">Price Class 3</th>
-                              <th style="border: none;">Price Class 4</th>
-                              <th style="border: none;">Price Class 5</th>
-                              <th style="border: none;"> </th>
-                            </tr>
-                            <tr>
-                              <td style="border: none;"><input type="text" th:field="*{price1}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{price2}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{price3}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{price4}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{price5}"></td>
-                              <td style="border: none;"> </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </form> -->
-
-
                       <form action="#" th:action="@{/admin/filterscuts}" th:object="${filterAdminScuts}" method="post">
                         <table class="table">
                           <thead>
@@ -147,11 +117,11 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td style="border: none;"><input type="text" th:field="*{id}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{latitude}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{longitude}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{instalationdate}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{description}"></td>
+                              <td style="border: none;"><input id="formId" type="text" th:field="*{id}"></td>
+                              <td style="border: none;"><input id="formLatitude" type="text" th:field="*{latitude}"></td>
+                              <td style="border: none;"><input id="formLongitude" type="text" th:field="*{longitude}"></td>
+                              <td style="border: none;"><input id="formInstalation" type="text" th:field="*{instalationdate}"></td>
+                              <td style="border: none;"><input id="formDescription" type="text" th:field="*{description}"></td>
                               <!-- <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
                               <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td> -->
                             </tr>
@@ -164,16 +134,16 @@
                               <th style="border: none;"> </th>
                             </tr>
                             <tr>
-                              <td style="border: none;"><input type="text" th:field="*{priceclass1}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{priceclass2}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{priceclass3}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{priceclass4}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{priceclass5}"></td>
+                              <td style="border: none;"><input id="formClass1" type="text" th:field="*{priceclass1}"></td>
+                              <td style="border: none;"><input id="formClass2" type="text" th:field="*{priceclass2}"></td>
+                              <td style="border: none;"><input id="formClass3" type="text" th:field="*{priceclass3}"></td>
+                              <td style="border: none;"><input id="formClass4" type="text" th:field="*{priceclass4}"></td>
+                              <td style="border: none;"><input id="formClass5" type="text" th:field="*{priceclass5}"></td>
                               <td style="border: none;"> </td>
                             </tr>
                             <tr>
                               <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
-                              <td align="center" style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
+                              <td align="center" style="border: none;"> <button onclick="cleanFilter()" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                             </tr>
                           </tbody>
                         </table>

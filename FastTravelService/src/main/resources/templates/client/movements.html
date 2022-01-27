@@ -123,6 +123,18 @@
         console.log("FILTREI: " + formRegistration);
 
       }
+
+      function cleanFilter() {
+        document.getElementById("formRegistration").value = "";
+        document.getElementById("formIdentifier").value = "";
+        document.getElementById("formDate").value = "";
+        document.getElementById("formHour").value = "";
+        document.getElementById("formScutslatitude").value = "";
+        document.getElementById("formScutslongitude").value = "";
+        document.getElementById("formScutsdescription").value = "";
+        document.getElementById("formPrice").value = "";
+        document.getElementById("formPaymentstate").value = "";
+      }
   </script>
   </head>
   <body onload="connect()">
@@ -241,7 +253,7 @@
                             <td style="border: none;"><input id="formPaymentstate" type="text" th:field="*{paymentstate}"></td>
                             <td style="border: none;"> </td>
                             <td align="center" style="border: none; float: right;"><button onclick="clickFiltrar()" type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
-                            <td align="center" style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
+                            <td align="center" style="border: none;"> <button onclick="cleanFilter()" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                           </tr>
                         </tbody>
                       </table>

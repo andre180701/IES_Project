@@ -58,6 +58,14 @@
         } 
 
       }
+
+      function cleanFilter() {
+        document.getElementById("formRegistration").value = "";
+        document.getElementById("formIdentifier").value = "";
+        document.getElementById("formClasee").value = "";
+        document.getElementById("formPayment").value = "";
+        document.getElementById("formState").value = "";
+      }
   </script>
   </head>
   <body onload="connect()">
@@ -154,17 +162,17 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td style="border: none;"><input type="text" th:field="*{registration}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{identifier}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{classe}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{meansPayment}"></td>
-                              <td style="border: none;"><input type="text" th:field="*{state}"></td>
+                              <td style="border: none;"><input id="formRegistration" type="text" th:field="*{registration}"></td>
+                              <td style="border: none;"><input id="formIdentifier" type="text" th:field="*{identifier}"></td>
+                              <td style="border: none;"><input id="formClasee" type="text" th:field="*{classe}"></td>
+                              <td style="border: none;"><input id="formPayment" type="text" th:field="*{meansPayment}"></td>
+                              <td style="border: none;"><input id="formState" type="text" th:field="*{state}"></td>
                               <!-- <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
                               <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td> -->
                             </tr>
                             <tr>
                               <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
-                              <td align="center" style="border: none;"> <button type="reset" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
+                              <td align="center" style="border: none;"> <button onclick="cleanFilter()" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                             </tr>
                           </tbody>
                         </table>

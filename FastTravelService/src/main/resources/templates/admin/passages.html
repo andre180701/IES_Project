@@ -80,6 +80,19 @@
           newText = document.createTextNode(messageOutput.paymentState);
           newCell10.appendChild(newText);
       }
+
+      function cleanFilter() {
+        document.getElementById("formEmail").value = "";
+        document.getElementById("formRegistration").value = "";
+        document.getElementById("formIdentifier").value = "";
+        document.getElementById("formDate").value = "";
+        document.getElementById("formHour").value = "";
+        document.getElementById("formLatitude").value = "";
+        document.getElementById("formLongitude").value = "";
+        document.getElementById("formDescription").value = "";
+        document.getElementById("formPrice").value = "";
+        document.getElementById("formPayment").value = "";
+      }
   </script>
   </head>
   <body onload="connect()">
@@ -162,18 +175,18 @@
                           <tr>
                             <th style="border: none;"><b>Client Email</b></th>
                             <th style="border: none;"><b>Registration</b></th>
-                            <th style="border: none;"><b>Identifier</b></th>
+                            <th style="border: none;"><b>Identifier</b></th>formRegistration
                             <th style="border: none;"><b>Date</b></th>
                             <th style="border: none;"><b>Hour</b></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td style="border: none;"><input type="text" th:field="*{cemail}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{registration}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{identifier}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{date}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{hour}"></td>
+                            <td style="border: none;"><input id="formEmail" type="text" th:field="*{cemail}"></td>
+                            <td style="border: none;"><input id="formRegistration" type="text" th:field="*{registration}"></td>
+                            <td style="border: none;"><input id="formIdentifier" type="text" th:field="*{identifier}"></td>
+                            <td style="border: none;"><input id="formDate" type="text" th:field="*{date}"></td>
+                            <td style="border: none;"><input id="formHour" type="text" th:field="*{hour}"></td>
                           </tr>
                           <tr>
                             <th style="border: none;"><b>Scut's Latitude</b></th>
@@ -184,18 +197,18 @@
                             <th style="border: none;"> </th>
                           </tr>
                           <tr>
-                            <td style="border: none;"><input type="text" th:field="*{scutslatitude}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{scutslongitude}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{scutsdescription}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{price}"></td>
-                            <td style="border: none;"><input type="text" th:field="*{paymentstate}"></td>
+                            <td style="border: none;"><input id="formLatitude" type="text" th:field="*{scutslatitude}"></td>
+                            <td style="border: none;"><input id="formLongitude" type="text" th:field="*{scutslongitude}"></td>
+                            <td style="border: none;"><input id="formDescription" tScutslype="text" th:field="*{scutsdescription}"></td>
+                            <td style="border: none;"><input id="formPrice" type="text" th:field="*{price}"></td>
+                            <td style="border: none;"><input id="formPayment" type="text" th:field="*{paymentstate}"></td>
                             <td style="border: none;"> </td>
                             <!-- <td style="border: none; float: right;"><button type="button" class="btn btn-secondary btn-fw">Filter</button></td>
                             <td style="border: none;"> <button type="button" class="btn btn-danger btn-fw">Clean Filter</button></td>--> 
                           </tr> 
                           <tr>
                             <td style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
-                            <td style="border: none;"> <button type="reset" class="btn btn-danger btn-fw" style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
+                            <td style="border: none;"> <button onclick="cleanFilter()" class="btn btn-danger btn-fw" style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                
                           </tr>
                         </tbody>
