@@ -40,10 +40,9 @@
       }
       
       function showMessageOutput(messageOutput) {
-        console.log(messageOutput.id_identifier);
-        console.log(messageOutput.new_state);
 
-        switch(messageOutput.new_state) {
+        if (document.getElementById(messageOutput.id_identifier.toString()).innerHTML !== null) {
+          switch(messageOutput.new_state) {
           case 1:
             document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "PAID";
             break;
@@ -54,8 +53,9 @@
             document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "RECEIVED";
             break;
           default:
-            document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "DESACTIVATE";
-        } 
+            document.getElementById(messageOutput.id_identifier.toString()).innerHTML = "ACTIVATE";
+          } 
+        }
 
       }
 

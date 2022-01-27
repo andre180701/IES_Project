@@ -1,37 +1,33 @@
 package com.FastTravel.FastTravelService.controller.client;
+
 import com.FastTravel.FastTravelService.inputsForms.FilterIdentifiers;
-
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.beans.factory.ObjectFactory;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpSession;  
 import org.springframework.beans.factory.annotation.Autowired;
-import com.FastTravel.FastTravelService.service.ClientService;
 import com.FastTravel.FastTravelService.model.Client;
 import com.FastTravel.FastTravelService.model.StateIdentifier;
 import com.FastTravel.FastTravelService.model.Identifier;
+import com.FastTravel.FastTravelService.controller.ClientController;
 import com.FastTravel.FastTravelService.controller.IdentifierController;
 
 
 @Controller
 public class VehiclesIdentifiersController {
 
-  @Autowired
-  private ClientService clientService;
-
   @ModelAttribute("filterForm")
   public FilterIdentifiers getGreetingObject() {
     return new FilterIdentifiers();
   }
+
+  @Autowired
+  private ClientController clientController;
 
   @Autowired
   ObjectFactory<HttpSession> httpSessionFactory;
@@ -50,7 +46,7 @@ public class VehiclesIdentifiersController {
 
       String email = (String) session.getAttribute("email");
 
-      Client client = clientService.getClientByEmail(email);
+      Client client = clientController.findClientByEmail(email);
 
       List<Identifier> identifiersClient = new ArrayList<Identifier>();
       List<Identifier> identifiers = identifierController.findAllIdentifiers();
@@ -74,7 +70,7 @@ public class VehiclesIdentifiersController {
     model.addAttribute("email", session.getAttribute("email"));
 
     String email = (String) session.getAttribute("email");
-    Client client = clientService.getClientByEmail(email);
+    Client client = clientController.findClientByEmail(email);
 
     List<Identifier> identifiersClient = new ArrayList<Identifier>();
     List<Identifier> identifiersClient2 = new ArrayList<Identifier>();
@@ -94,8 +90,6 @@ public class VehiclesIdentifiersController {
         }
       }
     }
-
-
 
     if(filterIdentifiers.getIdentifier().strip() != ""){
       for(Identifier pc : identifiersClient){
@@ -127,8 +121,6 @@ public class VehiclesIdentifiersController {
         }
       }
     }
-
-
 
     model.addAttribute("identifiers", identifiersClient2);
     return "client/vehiclesIdentifiers";

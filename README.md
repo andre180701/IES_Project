@@ -14,8 +14,9 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 
 ##  Constituição do projeto
 
-* **[reports](https://github.com/eva-pomposo/IES_Project/tree/main/Reports)**
-* **[prototype](https://github.com/eva-pomposo/IES_Project/tree/main/projFastTravel)**
+* **[reports](https://github.com/eva-pomposo/IES_Project/tree/main/reports)**
+* **[FastTravelService](https://github.com/eva-pomposo/IES_Project/tree/main/FastTravelService)**
+* **[dataGeneratorBroker](https://github.com/eva-pomposo/IES_Project/tree/main/dataGeneratorBroker)**
 
 ## Correr FastTravel
 
@@ -25,7 +26,7 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
     ssh user@deti-engsoft-12
     ```
 2. De seguida ira ser pedido a password da conta da UA, inserir a password da conta da UA
-3. Navegar para o diretório ./home/luisccmartins88/IES_Project
+3. Navegar para o diretório ./home/evabartolomeu/IES_Project
 4. Depois é só correr o docker:
     ```
     sudo docker-compose down -v
@@ -75,20 +76,6 @@ Para monitorizar as tarefas e acompanhar o desenvolvimento do projeto, usamos:
 
 4. Observar os resultados Website
     http://localhost:6868/
-
-### Observar a base de dados
-1. Colocar o docker a correr como explicado anteriormente
-2. Executar na linha de comandos:
-    > docker exec -it  ies_project_dataBase_1 bash
-    > mysql --user admin --password fastTravelDB
-3. Irá ser pedido a password, que é:
-    ```
-    admin
-    ```
-
-### Remover docker images
-> docker volume rm $(docker volume ls | awk '{print $2}')
-> docker rmi -f $(docker images -aq)
 
 ## Iteracao 3
 1. Userstory do Login;
