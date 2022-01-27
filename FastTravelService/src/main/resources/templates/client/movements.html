@@ -35,7 +35,6 @@
           var socket = new SockJS('/endpoint');
           stompClient = Stomp.over(socket);
           clientEmail = document.getElementById("clientEmail").innerHTML;
-          console.log(clientEmail);
           stompClient.connect({}, function(frame) {
               stompClient.subscribe('/topic/newpassage', function(messageOutput) {
                   showMessageOutput(JSON.parse(messageOutput.body));
@@ -51,12 +50,17 @@
       }
       
       function showMessageOutput(messageOutput) {
+        formRegistration = document.getElementById("formRegistration").value;
+        formIdentifier = document.getElementById("formIdentifier").value;
+        formDate = document.getElementById("formDate").value;
+        formHour = document.getElementById("formHour").value;
+        formScutslatitude = document.getElementById("formScutslatitude").value;
+        formScutslongitude = document.getElementById("formScutslongitude").value;
+        formScutsdescription = document.getElementById("formScutsdescription").value;
+        formPrice = document.getElementById("formPrice").value;
+        formPaymentstate = document.getElementById("formPaymentstate").value;
+
           if(clientEmail == messageOutput.clientEmail){
-            console.log("AQUI");
-            console.log(formRegistration);
-            console.log(messageOutput.registration);
-            console.log(formRegistration.replace(" ", "").toLowerCase());
-            console.log(messageOutput.registration.replace(" ", "").toLowerCase());
 
             if ((formRegistration === "" || formRegistration.replace(" ", "").toLowerCase() == messageOutput.registration.replace(" ", "").toLowerCase()) 
                 && (formIdentifier === "" || formIdentifier.replace(" ", "").toLowerCase() == messageOutput.identifier.replace(" ", "").toLowerCase()) 
@@ -107,21 +111,6 @@
 
             }
           }
-      }
-
-
-      function clickFiltrar() {
-        formRegistration = document.getElementById("formRegistration").value;
-        formIdentifier = document.getElementById("formIdentifier").value;
-        formDate = document.getElementById("formDate").value;
-        formHour = document.getElementById("formHour").value;
-        formScutslatitude = document.getElementById("formScutslatitude").value;
-        formScutslongitude = document.getElementById("formScutslongitude").value;
-        formScutsdescription = document.getElementById("formScutsdescription").value;
-        formPrice = document.getElementById("formPrice").value;
-        formPaymentstate = document.getElementById("formPaymentstate").value;
-        console.log("FILTREI: " + formRegistration);
-
       }
 
       function cleanFilter() {
@@ -252,7 +241,7 @@
                             <td style="border: none;"><input id="formPrice" type="text" th:field="*{price}"></td>
                             <td style="border: none;"><input id="formPaymentstate" type="text" th:field="*{paymentstate}"></td>
                             <td style="border: none;"> </td>
-                            <td align="center" style="border: none; float: right;"><button onclick="clickFiltrar()" type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
+                            <td align="center" style="border: none; float: right;"><button type="submit" class="btn btn-secondary btn-fw" style="background-color: #F96E46; border: none; color: #ffffff">Filter</button></td>
                             <td align="center" style="border: none;"> <button onclick="cleanFilter()" class="btn btn-danger btn-fw"  style="background-color: #F8F1FF; border: none; color: #111111">Clean Filter</button></td>
                           </tr>
                         </tbody>
