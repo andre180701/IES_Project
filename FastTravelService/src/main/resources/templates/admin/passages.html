@@ -39,49 +39,72 @@
       }
       
       function showMessageOutput(messageOutput) {
-        /*
-          let tableRef = document.getElementById('idTable');
+          var formEmail = document.getElementById("formEmail").value;
+          var formRegistration = document.getElementById("formRegistration").value;
+          var formIdentifier = document.getElementById("formIdentifier").value;
+          var formDate = document.getElementById("formDate").value;
+          var formHour = document.getElementById("formHour").value;
+          var formLatitude = document.getElementById("formLatitude").value;
+          var formLongitude = document.getElementById("formLongitude").value;
+          var formDescription = document.getElementById("formDescription").value;
+          var formPrice = document.getElementById("formPrice").value;
+          var formPayment = document.getElementById("formPayment").value;
 
-          // Insert a row at the end of the table
-          let newRow = tableRef.insertRow(2);
 
-          // Insert a cell in the row at index 0
-          let newCell0 = newRow.insertCell(0);
-          let newCell1 = newRow.insertCell(1);
-          let newCell2 = newRow.insertCell(2);
-          let newCell3 = newRow.insertCell(3);
-          let newCell4 = newRow.insertCell(4);
-          let newCell5 = newRow.insertCell(5);
-          let newCell6 = newRow.insertCell(6);
-          let newCell7 = newRow.insertCell(7);
-          let newCell8 = newRow.insertCell(8);
-          let newCell9 = newRow.insertCell(9);
-          let newCell10 = newRow.insertCell(10);
-          let newCell11 = newRow.insertCell(11);
+          if ((formEmail === "" || formEmail.replace(" ", "").toLowerCase() == messageOutput.clientEmail.replace(" ", "").toLowerCase())
+            && (formRegistration === "" || formRegistration.replace(" ", "").toLowerCase() == messageOutput.registration.replace(" ", "").toLowerCase())
+            && (formIdentifier === "" || formIdentifier.replace(" ", "").toLowerCase() == messageOutput.identifier.replace(" ", "").toLowerCase())
+            && (formDate === "" || formDate.replace(" ", "").toLowerCase() == messageOutput.date.replace(" ", "").toLowerCase())
+            && (formHour === "" || formHour.replace(" ", "").toLowerCase() == messageOutput.time.replace(" ", "").toLowerCase())
+            && (formLatitude === "" || formLatitude.replace(" ", "").toLowerCase() == messageOutput.scutLatitude.replace(" ", "").toLowerCase())
+            && (formLongitude === "" || formLongitude.replace(" ", "").toLowerCase() == messageOutput.scutLongitude.replace(" ", "").toLowerCase())
+            && (formDescription === "" || formDescription.replace(" ", "").toLowerCase() == messageOutput.scutDescription.replace(" ", "").toLowerCase())
+            && (formPayment === "" || formPayment.replace(" ", "").toLowerCase() == messageOutput.paymentState.replace(" ", "").toLowerCase())
+            && (formPrice === "" || formPrice.replace(" ", "").toLowerCase() == messageOutput.price.replace(" ", "").toLowerCase())
+          ) {
 
-          // Append a text node to the cell
-          let newText = document.createTextNode(messageOutput.clientEmail);
-          newCell1.appendChild(newText);
-          newText = document.createTextNode(messageOutput.registration);
-          newCell2.appendChild(newText);
-          newText = document.createTextNode(messageOutput.identifier);
-          newCell3.appendChild(newText);
-          newText = document.createTextNode(messageOutput.date);
-          newCell4.appendChild(newText);
-          newText = document.createTextNode(messageOutput.time);
-          newCell5.appendChild(newText);
-          newText = document.createTextNode(messageOutput.scutLongitude);
-          newCell6.appendChild(newText);
-          newText = document.createTextNode(messageOutput.scutLatitude);
-          newCell7.appendChild(newText);
-          newText = document.createTextNode(messageOutput.scutDescription);
-          newCell8.appendChild(newText);
-          newText = document.createTextNode(messageOutput.price);
-          newCell9.appendChild(newText);
-          newText = document.createTextNode(messageOutput.paymentState);
-          newCell10.appendChild(newText);
-          */
-      }
+            let tableRef = document.getElementById('idTable');
+
+            // Insert a row at the end of the table
+            let newRow = tableRef.insertRow(2);
+
+            // Insert a cell in the row at index 0
+            let newCell0 = newRow.insertCell(0);
+            let newCell1 = newRow.insertCell(1);
+            let newCell2 = newRow.insertCell(2);
+            let newCell3 = newRow.insertCell(3);
+            let newCell4 = newRow.insertCell(4);
+            let newCell5 = newRow.insertCell(5);
+            let newCell6 = newRow.insertCell(6);
+            let newCell7 = newRow.insertCell(7);
+            let newCell8 = newRow.insertCell(8);
+            let newCell9 = newRow.insertCell(9);
+            let newCell10 = newRow.insertCell(10);
+            let newCell11 = newRow.insertCell(11);
+
+            // Append a text node to the cell
+            let newText = document.createTextNode(messageOutput.clientEmail);
+            newCell1.appendChild(newText);
+            newText = document.createTextNode(messageOutput.registration);
+            newCell2.appendChild(newText);
+            newText = document.createTextNode(messageOutput.identifier);
+            newCell3.appendChild(newText);
+            newText = document.createTextNode(messageOutput.date);
+            newCell4.appendChild(newText);
+            newText = document.createTextNode(messageOutput.time);
+            newCell5.appendChild(newText);
+            newText = document.createTextNode(messageOutput.scutLongitude);
+            newCell6.appendChild(newText);
+            newText = document.createTextNode(messageOutput.scutLatitude);
+            newCell7.appendChild(newText);
+            newText = document.createTextNode(messageOutput.scutDescription);
+            newCell8.appendChild(newText);
+            newText = document.createTextNode(messageOutput.price);
+            newCell9.appendChild(newText);
+            newText = document.createTextNode(messageOutput.paymentState);
+            newCell10.appendChild(newText);
+          }
+        }
 
       function cleanFilter() {
         document.getElementById("formEmail").value = "";
