@@ -6,10 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import java.sql.Date;
 import java.sql.Time;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-
 import com.FastTravel.FastTravelService.controller.PassageController;
 import com.FastTravel.FastTravelService.inputsForms.FilterForms;
 import com.FastTravel.FastTravelService.model.Client;
@@ -78,7 +75,6 @@ public class MovementsController {
     List<Passage> passages = passageController.findAllPassages();
     List<Passage> passages_client = new ArrayList<Passage>();
     List<Passage> passages_client2 = new ArrayList<Passage>();
-    List<Passage> filter_passages = new ArrayList<Passage>();
 
     for (Passage passage : passages) {
       if ( passage.getIdentifier().getClient().getId() == client.getId() ) {
@@ -98,7 +94,7 @@ public class MovementsController {
 
     if(filterForms.getIdentifier().strip() != ""){
       for(Passage pc : passages_client){
-        if(pc.getIdentifier().getId() != (Double.parseDouble(String.valueOf(filterForms.getIdentifier().strip())))){
+        if(pc.getIdentifier().getId() != (Long.parseLong(String.valueOf(filterForms.getIdentifier().strip())))){
           if(passages_client2.contains(pc)){
             passages_client2.remove(pc);
           }
@@ -203,15 +199,7 @@ public class MovementsController {
       } 
     }
 
-    
-
     model.addAttribute("passages", passages_client2);
     return "client/movements";
-    
-
-
-
-    
-
   }
 }
