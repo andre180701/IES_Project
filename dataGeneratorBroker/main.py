@@ -46,7 +46,7 @@ class DataGenerator:
                 self.nextUpdatesIdentifiers.append((i[0], 1, time.time() + 45))
                 self.nextUpdatesIdentifiers.append((i[0], 3, time.time() + 45 + 45))
                 self.nextUpdatesIdentifiers.append((i[0], 4, time.time() + 45 + 45 + 45))
-                self.nextUpdatesIdentifiers.append((i[0], 5, time.time() + 45 + 45 + 45 + 45))
+                self.nextUpdatesIdentifiers.append((i[0], 6, time.time() + 45 + 45 + 45 + 45))
                 self.identifiersAnalyzed.append(i[0])
 
     def checkNextUpdatesPassages(self, cursor):
